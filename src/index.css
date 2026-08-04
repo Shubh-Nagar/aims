@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Design tokens. Everything visual derives from these — re-theming the
+   whole site is one edit here plus tailwind.config.js.
+   ------------------------------------------------------------------ */
+@layer base {
+  :root {
+    --pine: 10 58 51;
+    --pine-deep: 7 42 38;
+    --gold: 233 168 37;
+    --header-h: 76px;
+  }
+
+  * { @apply border-line; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-brand-900;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  ::selection { @apply bg-gold-300 text-brand-900; }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-paper rounded-sm;
+  }
+
+  /* Honour the OS motion preference, including for Framer Motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Eyebrow — small tracked label above every section heading */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-2xs font-semibold uppercase tracking-eyebrow text-brand-600;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-6 bg-gold-500;
+  }
+
+  /* Buttons — fill wipes up from the bottom edge on hover */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden
+           rounded-full px-6 py-3 text-sm font-semibold tracking-wide
+           transition-colors duration-300 ease-smooth;
+  }
+  .btn > * { @apply relative z-10; }
+  .btn::after {
+    content: '';
+    @apply absolute inset-0 z-0 translate-y-full transition-transform ease-smooth;
+    transition-duration: 420ms;
+  }
+  .btn:hover::after,
+  .btn:focus-visible::after { @apply translate-y-0; }
+
+  .btn-primary { @apply bg-brand-800 text-white; }
+  .btn-primary::after { @apply bg-gold-500; }
+  .btn-primary:hover { @apply text-brand-900; }
+
+  .btn-gold { @apply bg-gold-500 text-brand-900; }
+  .btn-gold::after { @apply bg-brand-800; }
+  .btn-gold:hover { @apply text-white; }
+
+  .btn-outline { @apply border border-brand-800/25 text-brand-800; }
+  .btn-outline::after { @apply bg-brand-800; }
+  .btn-outline:hover { @apply border-brand-800 text-white; }
+
+  .btn-ghost-light { @apply border border-white/35 text-white; }
+  .btn-ghost-light::after { @apply bg-white; }
+  .btn-ghost-light:hover { @apply border-white text-brand-900; }
+
+  /* Nav link — rule grows from the left */
+  .nav-link {
+    @apply relative inline-flex items-center gap-1 py-2 text-sm font-medium transition-colors duration-200;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-gold-500
+           transition-transform duration-300 ease-smooth;
+  }
+  .nav-link:hover::after,
+  .nav-link[data-active='true']::after { @apply scale-x-100; }
+
+  /* Card — lifts, warms its ring, zooms its media */
+  .card {
+    @apply relative rounded-2xl bg-surface shadow-card ring-1 ring-line
+           transition-all duration-500 ease-smooth;
+  }
+  .card:hover { @apply -translate-y-1.5 shadow-lift ring-gold-300; }
+
+  .card-media { @apply overflow-hidden; }
+  .card-media img {
+    @apply h-full w-full object-cover transition-transform duration-700 ease-smooth;
+  }
+  .card:hover .card-media img { @apply scale-[1.06]; }
+
+  .prose-aims { @apply text-[15px] leading-[1.75] text-muted; }
+  .prose-aims strong { @apply font-semibold text-brand-900; }
+
+  .rule-gold { @apply h-px w-full bg-gradient-to-r from-gold-500/70 via-line to-transparent; }
+
+  .surface-dark { @apply bg-pine-fade text-white; }
+  .surface-dark h1,
+  .surface-dark h2,
+  .surface-dark h3,
+  .surface-dark h4 { @apply text-white; }
+}
+
+@layer utilities {
+  .section { @apply py-16 md:py-24; }
+  .section-tight { @apply py-12 md:py-16; }
+  .grain {
+    background-image: radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
