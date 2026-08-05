@@ -11,21 +11,17 @@ const strands = [
   { label: 'Community service projects', image: '/images/student-life/community.jpg' },
 ]
 
-// Residential and study facilities, shown as a photographic strip.
-const facilities = [
-  { label: "Girls' hostels", image: '/images/facilities/hostel-girls.jpg' },
-  { label: "Boys' hostels", image: '/images/facilities/hostel-boys.jpg' },
-  { label: 'Gymnasium', image: '/images/facilities/gym.jpg' },
-  { label: 'Reading room', image: '/images/facilities/reading-room.jpg' },
-]
-
 export default function StudentLife() {
   return (
     <section className="section">
       <div className="container">
         <SectionHeading
           eyebrow="Student life"
-          title="Our students create a vibrant and inclusive community"
+          title={
+            <>
+              A vibrant, <span className="text-muted">inclusive community</span>
+            </>
+          }
           action={{ label: 'More information', to: '/events' }}
         />
 
@@ -47,37 +43,14 @@ export default function StudentLife() {
           ))}
         </ul>
 
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {facilities.map((facility, i) => (
-            <Reveal as="li" key={facility.label} delay={i * 0.06}>
-              <figure className="group relative overflow-hidden rounded-2xl">
-                <Img
-                  src={facility.image}
-                  alt={facility.label}
-                  ratio="aspect-[4/3]"
-                  className="transition-transform duration-700 ease-smooth group-hover:scale-[1.06]"
-                />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-brand-950/85 via-brand-950/20 to-transparent"
-                  aria-hidden="true"
-                />
-                <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-4 text-sm font-medium text-white">
-                  <span className="h-px w-4 bg-gold-500 transition-all duration-400 ease-smooth group-hover:w-8" />
-                  {facility.label}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </ul>
-
         <Reveal delay={0.1} className="mt-8">
-          <div className="grid gap-8 rounded-2xl bg-brand-800 p-8 text-white md:grid-cols-[1.4fr_1fr] md:items-center md:p-12">
+          <div className="grid gap-8 rounded-2xl bg-brand-100 p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:p-12">
             <div>
-              <p className="eyebrow text-gold-300">Safeguarding student welfare</p>
-              <h3 className="mt-4 text-2xl md:text-3xl">
+              <p className="eyebrow text-gold-700">Safeguarding student welfare</p>
+              <h3 className="mt-4 text-2xl text-brand-900 md:text-3xl">
                 A proactive Anti-Ragging Committee, and a helpline that answers around the clock
               </h3>
-              <p className="mt-4 text-[15px] leading-relaxed text-white/70">
+              <p className="mt-4 text-[15px] leading-relaxed text-muted">
                 At Amaltas Institute of Medical Sciences we prioritise student safety and well-being. Our
                 Anti-Ragging Committee ensures a secure campus, with a dedicated toll-free helpline and
                 additional support lines.
@@ -86,23 +59,23 @@ export default function StudentLife() {
                 <Button to="/antiragging-measures" variant="gold">
                   Anti-ragging measures
                 </Button>
-                <Button to="/contact" variant="light">
+                <Button to="/contact" variant="outline">
                   Contact us
                 </Button>
               </div>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-7">
-              <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-300">Toll free</p>
+            <div className="rounded-2xl border border-brand-900/10 bg-white/60 p-7">
+              <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">Toll free</p>
               <a
                 href={`tel:${helplines.tollFree.replace(/-/g, '')}`}
-                className="mt-3 block font-display text-3xl leading-none transition-colors hover:text-gold-300"
+                className="mt-3 block font-display text-3xl leading-none text-brand-900 transition-colors hover:text-gold-700"
               >
                 {helplines.tollFree}
               </a>
-              <ul className="mt-5 space-y-2 text-sm text-white/65">
+              <ul className="mt-5 space-y-2 text-sm text-brand-800">
                 {helplines.numbers.map((number) => (
                   <li key={number}>
-                    <a href={`tel:${number.replace(/-/g, '')}`} className="transition-colors hover:text-gold-300">
+                    <a href={`tel:${number.replace(/-/g, '')}`} className="transition-colors hover:text-gold-700">
                       {number}
                     </a>
                   </li>

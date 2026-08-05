@@ -12,7 +12,7 @@ export default function Img({ src, alt, className = '', wrapperClassName = '', r
     <div className={`relative overflow-hidden bg-brand-50 ${ratio} ${wrapperClassName}`}>
       {failed ? (
         <div
-          className="absolute inset-0 grid place-items-center bg-gradient-to-br from-brand-800 to-brand-950 grain"
+          className="absolute inset-0 grid place-items-center bg-gradient-to-br from-brand-600 to-brand-800 grain"
           role="img"
           aria-label={alt}
         >

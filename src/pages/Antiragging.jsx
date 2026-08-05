@@ -53,36 +53,36 @@ export default function Antiragging() {
           </div>
 
           <Reveal delay={0.1}>
-            <div className="sticky top-28 rounded-2xl bg-brand-800 p-8 text-white">
-              <ShieldCheck className="h-7 w-7 text-gold-400" aria-hidden="true" />
-              <p className="mt-5 text-2xs font-semibold uppercase tracking-eyebrow text-gold-300">
+            <div className="sticky top-28 rounded-2xl bg-brand-100 p-8">
+              <ShieldCheck className="h-7 w-7 text-gold-700" aria-hidden="true" />
+              <p className="mt-5 text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">
                 Toll-free helpline
               </p>
               <a
                 href={`tel:${helplines.tollFree.replace(/-/g, '')}`}
-                className="mt-3 block font-display text-3xl transition-colors hover:text-gold-300"
+                className="mt-3 block font-display text-3xl text-brand-900 transition-colors hover:text-gold-700"
               >
                 {helplines.tollFree}
               </a>
-              <ul className="mt-6 space-y-3 border-t border-white/10 pt-6">
+              <ul className="mt-6 space-y-3 border-t border-brand-900/10 pt-6">
                 {helplines.numbers.map((number) => (
                   <li key={number}>
                     <a
                       href={`tel:${number.replace(/-/g, '')}`}
-                      className="flex items-center gap-3 text-sm text-white/75 transition-colors hover:text-gold-300"
+                      className="flex items-center gap-3 text-sm text-brand-800 transition-colors hover:text-gold-700"
                     >
-                      <Phone className="h-4 w-4 text-gold-500" aria-hidden="true" />
+                      <Phone className="h-4 w-4 text-gold-600" aria-hidden="true" />
                       {number}
                     </a>
                   </li>
                 ))}
               </ul>
               <div className="mt-7">
-                <Button to="/contact" variant="light" className="w-full">
+                <Button to="/contact" variant="outline" className="w-full">
                   Contact the college
                 </Button>
               </div>
-              <p className="mt-5 text-xs leading-relaxed text-white/50">{site.address}</p>
+              <p className="mt-5 text-xs leading-relaxed text-muted">{site.address}</p>
             </div>
           </Reveal>
         </div>

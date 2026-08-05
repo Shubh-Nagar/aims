@@ -8,8 +8,8 @@
    ------------------------------------------------------------------ */
 @layer base {
   :root {
-    --pine: 10 58 51;
-    --pine-deep: 7 42 38;
+    --pine: 16 126 59;
+    --pine-deep: 11 81 38;
     --gold: 233 168 37;
     --header-h: 76px;
   }
@@ -76,17 +76,17 @@
   .btn:hover::after,
   .btn:focus-visible::after { @apply translate-y-0; }
 
-  .btn-primary { @apply bg-brand-800 text-white; }
+  .btn-primary { @apply bg-brand-700 text-white; }
   .btn-primary::after { @apply bg-gold-500; }
   .btn-primary:hover { @apply text-brand-900; }
 
   .btn-gold { @apply bg-gold-500 text-brand-900; }
-  .btn-gold::after { @apply bg-brand-800; }
+  .btn-gold::after { @apply bg-brand-700; }
   .btn-gold:hover { @apply text-white; }
 
   .btn-outline { @apply border border-brand-800/25 text-brand-800; }
-  .btn-outline::after { @apply bg-brand-800; }
-  .btn-outline:hover { @apply border-brand-800 text-white; }
+  .btn-outline::after { @apply bg-brand-700; }
+  .btn-outline:hover { @apply border-brand-700 text-white; }
 
   .btn-ghost-light { @apply border border-white/35 text-white; }
   .btn-ghost-light::after { @apply bg-white; }
@@ -122,11 +122,23 @@
 
   .rule-gold { @apply h-px w-full bg-gradient-to-r from-gold-500/70 via-line to-transparent; }
 
-  .surface-dark { @apply bg-pine-fade text-white; }
+  /* A soft, airy tint of the theme green — used for flat section
+     backgrounds (Stats, Footer, CampusEvents, NotFound). Dark text throughout,
+     since the background is light. */
+  .surface-dark { @apply bg-pine-fade text-brand-900; }
   .surface-dark h1,
   .surface-dark h2,
   .surface-dark h3,
-  .surface-dark h4 { @apply text-white; }
+  .surface-dark h4 { @apply text-brand-900; }
+
+  /* The one place a genuinely dark, white-on-green panel still belongs:
+     photo-backed banners (PageHero), where a light background would leave
+     the photo washed out and the heading illegible over it. */
+  .surface-photo-dark { @apply bg-gradient-to-b from-brand-700 to-brand-900 text-white; }
+  .surface-photo-dark h1,
+  .surface-photo-dark h2,
+  .surface-photo-dark h3,
+  .surface-photo-dark h4 { @apply text-white; }
 }
 
 @layer utilities {

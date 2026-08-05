@@ -47,7 +47,11 @@ export default function NewsGrid() {
       <div className="container">
         <SectionHeading
           eyebrow="Events & activities"
-          title="What has been happening on campus"
+          title={
+            <>
+              What has been <span className="text-muted">happening on campus</span>
+            </>
+          }
           lede="Developments, achievements and announcements from Amaltas Institute of Medical Sciences — medical breakthroughs, research, events and student success stories."
           action={{ label: 'View all', to: '/news-press-release' }}
         />

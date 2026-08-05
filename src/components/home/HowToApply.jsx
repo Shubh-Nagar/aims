@@ -12,7 +12,11 @@ export default function HowToApply() {
       <div className="container">
         <SectionHeading
           eyebrow="How to apply"
-          title="Three steps from enquiry to enrolment"
+          title={
+            <>
+              Three steps <span className="text-muted">from enquiry to enrolment</span>
+            </>
+          }
           action={{ label: 'View all requirements', to: '/admission' }}
         />
 

@@ -20,7 +20,11 @@ export default function Accreditation() {
       <div className="container">
         <SectionHeading
           eyebrow="Awards & accreditation"
-          title="Recognised standards, verifiable on paper"
+          title={
+            <>
+              Recognised standards, <span className="text-muted">verifiable on paper</span>
+            </>
+          }
           lede="At AIMS we celebrate excellence and recognise outstanding contributions from our students and faculty. Every certificate below is published in full."
         />
 
@@ -52,22 +56,25 @@ export default function Accreditation() {
           <p className="text-2xs font-semibold uppercase tracking-eyebrow text-muted">
             Recognised by
           </p>
-          <ul className="mt-6 grid grid-cols-3 items-center gap-x-6 gap-y-8 sm:grid-cols-6">
-            {regulators.map((body) => (
-              <li key={body.label} className="flex justify-center">
+          <div className="group relative mt-6 overflow-hidden">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-surface to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-surface to-transparent" />
+            <div className="flex w-max animate-marquee items-center gap-16 py-2 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+              {[...regulators, ...regulators].map((body, i) => (
                 <img
+                  key={`${body.label}-${i}`}
                   src={body.src}
                   alt={body.label}
                   title={body.label}
                   loading="lazy"
-                  className="h-14 w-auto max-w-full opacity-70 grayscale transition duration-500 ease-smooth hover:opacity-100 hover:grayscale-0"
+                  className="h-14 w-auto max-w-none shrink-0 opacity-70 grayscale transition duration-500 ease-smooth hover:opacity-100 hover:grayscale-0"
                   onError={(e) => {
-                    e.currentTarget.closest('li').style.display = 'none'
+                    e.currentTarget.style.display = 'none'
                   }}
                 />
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

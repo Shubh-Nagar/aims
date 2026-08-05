@@ -10,7 +10,7 @@ import Vitals from './Vitals'
  */
 export default function PageHero({ title, lede, breadcrumb, image = '/images/campus/night.jpg' }) {
   return (
-    <header className="surface-dark relative overflow-hidden pt-[calc(var(--header-h)+3rem)] pb-14 md:pb-20">
+    <header className="surface-photo-dark relative overflow-hidden pt-[calc(var(--header-h)+3rem)] pb-14 md:pb-20">
       {image && (
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <img src={image} alt="" loading="lazy" className="h-full w-full object-cover opacity-30" />

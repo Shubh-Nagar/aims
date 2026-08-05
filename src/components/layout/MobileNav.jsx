@@ -41,7 +41,7 @@ export default function MobileNav({ open, onClose }) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close menu"
-                className="grid h-10 w-10 place-items-center rounded-full border border-line text-brand-900 transition-colors hover:bg-brand-800 hover:text-white"
+                className="grid h-10 w-10 place-items-center rounded-full border border-line text-brand-900 transition-colors hover:bg-brand-700 hover:text-white"
               >
                 <X className="h-5 w-5" aria-hidden="true" />
               </button>
@@ -88,6 +88,7 @@ export default function MobileNav({ open, onClose }) {
                                       href={child.href}
                                       target="_blank"
                                       rel="noreferrer noopener"
+                                      onClick={onClose}
                                       className="block rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:text-brand-700"
                                     >
                                       {child.label}

@@ -8,9 +8,9 @@ import { news } from '@/data/news'
 export default function NewsTicker() {
   const items = news.slice(0, 8)
   return (
-    <div className="border-y border-line bg-surface">
+    <div className="sticky top-[var(--header-h)] z-40 border-y border-line bg-surface">
       <div className="flex items-center">
-        <div className="hidden shrink-0 items-center gap-2 bg-brand-800 px-6 py-3.5 text-2xs font-semibold uppercase tracking-eyebrow text-white sm:flex">
+        <div className="hidden shrink-0 items-center gap-2 bg-brand-700 px-6 py-3.5 text-2xs font-semibold uppercase tracking-eyebrow text-white sm:flex">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold-400" aria-hidden="true" />
           Latest news
         </div>

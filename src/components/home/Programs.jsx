@@ -10,7 +10,11 @@ export default function Programs() {
       <div className="container">
         <SectionHeading
           eyebrow="Graduate and postgraduate programmes"
-          title="Four routes into clinical practice"
+          title={
+            <>
+              Four routes <span className="text-muted">into clinical practice</span>
+            </>
+          }
           lede="630+ places across undergraduate, postgraduate and paramedical fields, each combining high-quality education with practical training at Amaltas Hospital."
           action={{ label: 'See all courses', to: '/courses' }}
         />

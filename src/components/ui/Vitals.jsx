@@ -11,7 +11,7 @@ const TRACE =
 
 export default function Vitals({ className = '', tone = 'gold', duration = 2.4, repeat = false }) {
   const reduced = useReducedMotion()
-  const stroke = tone === 'gold' ? '#E9A825' : tone === 'light' ? 'rgba(255,255,255,.55)' : '#17806F'
+  const stroke = tone === 'gold' ? '#E9A825' : tone === 'light' ? 'rgba(255,255,255,.55)' : '#107E3B'
 
   return (
     <svg

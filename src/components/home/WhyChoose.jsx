@@ -156,15 +156,12 @@ export default function WhyChoose() {
         />
 
         {/* Hub and spokes — lg and up */}
-        <div className="mt-16 hidden grid-cols-[minmax(0,1fr)_minmax(2.5rem,0.85fr)_auto_minmax(2.5rem,0.85fr)_minmax(0,1fr)] gap-y-6 lg:grid">
+        <div className="mt-16 hidden grid-cols-[minmax(0,1.3fr)_minmax(2rem,0.5fr)_auto_minmax(2rem,0.5fr)_minmax(0,1.3fr)] gap-y-6 lg:grid">
           {leftColumn.map((item, i) => {
             const outer = i === 0 || i === 3
             return (
               <Fragment key={item.title}>
-                <Reveal
-                  delay={i * 0.06}
-                  className={`col-start-1 ${rowStart[i]} ${outer ? 'xl:ml-20' : ''}`}
-                >
+                <Reveal delay={i * 0.06} className={`col-start-1 ${rowStart[i]}`}>
                   <Feature item={item} />
                 </Reveal>
                 <div className={`col-start-2 ${rowStart[i]}`}>
@@ -181,18 +178,15 @@ export default function WhyChoose() {
                 <div className={`col-start-4 ${rowStart[i]}`}>
                   <Connector side="right" elbow={outer ? (i === 0 ? 'down' : 'up') : null} />
                 </div>
-                <Reveal
-                  delay={i * 0.06}
-                  className={`col-start-5 ${rowStart[i]} ${outer ? 'xl:mr-20' : ''}`}
-                >
+                <Reveal delay={i * 0.06} className={`col-start-5 ${rowStart[i]}`}>
                   <Feature item={item} />
                 </Reveal>
               </Fragment>
             )
           })}
 
-          <Reveal className="col-start-3 row-start-1 row-span-4 self-center px-8">
-            <Crest className="h-52 w-52 xl:h-60 xl:w-60" size="h-24 xl:h-28" />
+          <Reveal className="col-start-3 row-start-1 row-span-4 self-center px-4">
+            <Crest className="h-40 w-40 xl:h-48 xl:w-48" size="h-20 xl:h-24" />
           </Reveal>
         </div>
 

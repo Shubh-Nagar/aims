@@ -6,7 +6,7 @@ export default function DataTable({ caption, head, rows, total }) {
         <table className="w-full min-w-[420px] border-collapse text-left text-sm">
           {caption && <caption className="sr-only">{caption}</caption>}
           <thead>
-            <tr className="bg-brand-800 text-white">
+            <tr className="bg-brand-700 text-white">
               {head.map((cell) => (
                 <th key={cell} scope="col" className="px-5 py-3.5 text-2xs font-semibold uppercase tracking-eyebrow">
                   {cell}

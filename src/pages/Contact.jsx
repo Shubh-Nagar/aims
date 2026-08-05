@@ -56,19 +56,19 @@ export default function Contact() {
               ))}
             </ul>
 
-            <Reveal delay={0.25} className="mt-6 rounded-2xl bg-brand-800 p-7 text-white">
-              <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-300">
+            <Reveal delay={0.25} className="mt-6 rounded-2xl bg-brand-100 p-7">
+              <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">
                 Anti-ragging helpline
               </p>
               <a
                 href={`tel:${helplines.tollFree.replace(/-/g, '')}`}
-                className="mt-3 block font-display text-3xl transition-colors hover:text-gold-300"
+                className="mt-3 block font-display text-3xl text-brand-900 transition-colors hover:text-gold-700"
               >
                 {helplines.tollFree}
               </a>
-              <p className="mt-3 text-sm text-white/65">{helplines.numbers.join(' · ')}</p>
+              <p className="mt-3 text-sm text-muted">{helplines.numbers.join(' · ')}</p>
               <div className="mt-6">
-                <Button to="/antiragging-measures" variant="light">
+                <Button to="/antiragging-measures" variant="outline">
                   Anti-ragging measures
                 </Button>
               </div>

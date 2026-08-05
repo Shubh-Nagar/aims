@@ -9,19 +9,19 @@ export default {
     },
     extend: {
       colors: {
-        // Deep clinical pine — the institutional voice of the college
+        // Official theme green (#107E3B) — the institutional voice of the college
         brand: {
-          50: '#EAF5F2',
-          100: '#CDE8E1',
-          200: '#9DD1C5',
-          300: '#66B4A4',
-          400: '#329585',
-          500: '#17806F',
-          600: '#0F6759',
-          700: '#0C5147',
-          800: '#0A3A33',
-          900: '#072A26',
-          950: '#041917',
+          50: '#F2FAF5',
+          100: '#DFF4E7',
+          200: '#B1E7C6',
+          300: '#6ED898',
+          400: '#26C564',
+          500: '#107E3B',
+          600: '#0D6831',
+          700: '#0B5126',
+          800: '#093C1D',
+          900: '#072B15',
+          950: '#051B0D',
         },
         // Amaltas — the golden shower blossom the institution is named for
         gold: {
@@ -48,12 +48,12 @@ export default {
       },
       letterSpacing: { eyebrow: '0.18em' },
       boxShadow: {
-        card: '0 1px 2px rgba(7,42,38,.04), 0 12px 32px -12px rgba(7,42,38,.14)',
-        lift: '0 24px 60px -22px rgba(7,42,38,.32)',
+        card: '0 1px 2px rgba(7,43,21,.04), 0 12px 32px -12px rgba(7,43,21,.14)',
+        lift: '0 24px 60px -22px rgba(7,43,21,.32)',
         ring: '0 0 0 1px rgba(226,234,231,1)',
       },
       backgroundImage: {
-        'pine-fade': 'linear-gradient(180deg,#0A3A33 0%,#072A26 100%)',
+        'pine-fade': 'linear-gradient(180deg,#DFF4E7 0%,#B1E7C6 100%)',
         'gold-sweep': 'linear-gradient(100deg,#E9A825 0%,#F4CC63 55%,#E9A825 100%)',
       },
       keyframes: {

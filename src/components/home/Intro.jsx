@@ -1,8 +1,9 @@
-import { ArrowUpRight } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { ArrowUpRight, Pause, Play, Volume2, VolumeX } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useReducedMotion } from 'framer-motion'
 import Reveal from '@/components/ui/Reveal'
 import Button from '@/components/ui/Button'
-import Img from '@/components/ui/Img'
 import { scaleIn } from '@/lib/motion'
 
 const quickLinks = [
@@ -13,6 +14,30 @@ const quickLinks = [
 ]
 
 export default function Intro() {
+  const videoRef = useRef(null)
+  const reduced = useReducedMotion()
+  const [playing, setPlaying] = useState(!reduced)
+  const [muted, setMuted] = useState(true)
+
+  const togglePlay = () => {
+    const v = videoRef.current
+    if (!v) return
+    if (v.paused) {
+      v.play()
+      setPlaying(true)
+    } else {
+      v.pause()
+      setPlaying(false)
+    }
+  }
+
+  const toggleSound = () => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = !v.muted
+    setMuted(v.muted)
+  }
+
   return (
     <section className="section">
       <div className="container grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
@@ -21,7 +46,7 @@ export default function Intro() {
             Welcome to AIMS
           </Reveal>
           <Reveal as="h2" delay={0.05} className="mt-5 text-3xl leading-[1.14] md:text-[2.7rem]">
-            Medical education built around a working hospital
+            Medical education <span className="text-muted">built around a working hospital</span>
           </Reveal>
           <Reveal as="p" delay={0.1} className="prose-aims mt-6">
             <strong>Amaltas Institute of Medical Sciences, supported by the Amaltas Educational Welfare Society,</strong>{' '}
@@ -71,31 +96,52 @@ export default function Intro() {
         </div>
 
         <Reveal variants={scaleIn} className="relative">
-          <div className="grid grid-cols-2 gap-4">
-            <Img
-              src="/images/campus/labs.jpg"
-              alt="Anatomy laboratory at AIMS"
-              ratio="aspect-[3/4]"
-              wrapperClassName="rounded-2xl"
+          <div className="group relative overflow-hidden rounded-2xl bg-brand-50">
+            <video
+              ref={videoRef}
+              src="/images/intro.mp4"
+              poster="/images/campus/labs.jpg"
+              autoPlay={!reduced}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="aspect-[4/5] w-full object-cover"
             />
-            <div className="mt-10 space-y-4">
-              <Img
-                src="/images/campus/lecture-hall.jpg"
-                alt="Lecture hall at AIMS"
-                ratio="aspect-square"
-                wrapperClassName="rounded-2xl"
-              />
-              <Img
-                src="/images/campus/library.jpg"
-                alt="Library at AIMS"
-                ratio="aspect-[4/3]"
-                wrapperClassName="rounded-2xl"
-              />
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-950/50 via-transparent to-transparent"
+              aria-hidden="true"
+            />
+            <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-2">
+              <button
+                type="button"
+                onClick={togglePlay}
+                aria-label={playing ? 'Pause video' : 'Play video'}
+                className="grid h-10 w-10 place-items-center rounded-full bg-brand-950/70 text-white backdrop-blur-sm transition-colors duration-300 hover:bg-brand-950/90"
+              >
+                {playing ? (
+                  <Pause className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Play className="h-4 w-4" aria-hidden="true" />
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={toggleSound}
+                className="flex items-center gap-2 rounded-full bg-brand-950/70 px-4 py-2.5 text-2xs font-semibold uppercase tracking-eyebrow text-white backdrop-blur-sm transition-colors duration-300 hover:bg-brand-950/90"
+              >
+                {muted ? (
+                  <VolumeX className="h-3.5 w-3.5" aria-hidden="true" />
+                ) : (
+                  <Volume2 className="h-3.5 w-3.5" aria-hidden="true" />
+                )}
+                {muted ? 'Click to enable sound' : 'Sound on'}
+              </button>
             </div>
           </div>
-          <div className="mt-6 rounded-2xl bg-brand-800 p-6 text-white">
-            <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-300">Our mission</p>
-            <p className="mt-3 text-[15px] leading-relaxed text-white/80">
+          <div className="mt-6 rounded-2xl bg-brand-100 p-6">
+            <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">Our mission</p>
+            <p className="mt-3 text-[15px] leading-relaxed text-brand-800">
               Amaltas Hospital aims at serving the society by providing the best possible medical treatment
               delivered most efficiently in the shortest possible time.
             </p>

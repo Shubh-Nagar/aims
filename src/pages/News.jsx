@@ -35,7 +35,7 @@ export default function News({ title, lede, breadcrumb, only, path }) {
                   aria-pressed={active === category}
                   className={`rounded-full border px-5 py-2.5 text-xs font-medium transition-all duration-300 ease-smooth ${
                     active === category
-                      ? 'border-brand-800 bg-brand-800 text-white'
+                      ? 'border-brand-700 bg-brand-700 text-white'
                       : 'border-line bg-surface text-brand-900 hover:border-gold-400 hover:bg-gold-100'
                   }`}
                 >

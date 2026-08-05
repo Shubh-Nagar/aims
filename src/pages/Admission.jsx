@@ -56,7 +56,7 @@ export default function Admission() {
             <ol className="mt-10 space-y-8">
               {applySteps.map((step, i) => (
                 <Reveal as="li" key={step.title} delay={0.06 * i} className="flex gap-5">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-800 font-display text-sm text-white">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-700 font-display text-sm text-white">
                     {i + 1}
                   </span>
                   <div>
@@ -93,7 +93,7 @@ export default function Admission() {
 
               {sent ? (
                 <div className="mt-8 flex items-start gap-4 rounded-xl bg-brand-50 p-6">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-800 text-white">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-700 text-white">
                     <Check className="h-4 w-4" aria-hidden="true" />
                   </span>
                   <div>
