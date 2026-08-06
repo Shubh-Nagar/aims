@@ -1,5 +1,5 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
-import { ExternalLink } from 'lucide-react'
+import { Navigate, useParams } from 'react-router-dom'
+import { ExternalLink, Mail, MapPin, Phone, Smartphone } from 'lucide-react'
 import { leadership } from '@/data/leadership'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
@@ -11,8 +11,6 @@ export default function LeadershipPage({ slug: fixedSlug }) {
   const slug = fixedSlug ?? params.slug
   const person = leadership.find((entry) => entry.slug === slug)
   if (!person) return <Navigate to="/404" replace />
-
-  const others = leadership.filter((entry) => entry.slug !== slug)
 
   return (
     <>
@@ -31,6 +29,47 @@ export default function LeadershipPage({ slug: fixedSlug }) {
             <p className="mt-1 text-2xs font-semibold uppercase tracking-eyebrow text-gold-600">
               {person.role}
             </p>
+            {person.qualifications && (
+              <p className="mt-1 text-sm text-muted">{person.qualifications}</p>
+            )}
+
+            {person.contact && (
+              <ul className="mt-6 space-y-3 border-t border-line pt-6 text-sm">
+                {person.contact.phone && (
+                  <li className="flex items-start gap-3">
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
+                    <a href={person.contact.phoneHref} className="text-brand-800 transition-colors hover:text-gold-700">
+                      {person.contact.phone}
+                    </a>
+                  </li>
+                )}
+                {person.contact.mobile && (
+                  <li className="flex items-start gap-3">
+                    <Smartphone className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
+                    <a href={person.contact.mobileHref} className="text-brand-800 transition-colors hover:text-gold-700">
+                      {person.contact.mobile}
+                    </a>
+                  </li>
+                )}
+                {person.contact.email && (
+                  <li className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
+                    <a
+                      href={`mailto:${person.contact.email}`}
+                      className="break-all text-brand-800 transition-colors hover:text-gold-700"
+                    >
+                      {person.contact.email}
+                    </a>
+                  </li>
+                )}
+                {person.contact.address && (
+                  <li className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
+                    <span className="text-muted">{person.contact.address}</span>
+                  </li>
+                )}
+              </ul>
+            )}
           </Reveal>
 
           <Reveal delay={0.08}>
@@ -67,27 +106,6 @@ export default function LeadershipPage({ slug: fixedSlug }) {
                 )}
               </div>
             )}
-
-            <div className="mt-14">
-              <h3 className="text-2xs font-semibold uppercase tracking-eyebrow text-muted">
-                Other office bearers
-              </h3>
-              <ul className="mt-5 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2">
-                {others.map((entry) => (
-                  <li key={entry.slug}>
-                    <Link
-                      to={`/${entry.slug}`}
-                      className="group flex flex-col gap-1 bg-surface px-5 py-4 transition-colors duration-300 hover:bg-brand-50"
-                    >
-                      <span className="text-2xs uppercase tracking-eyebrow text-muted">{entry.role}</span>
-                      <span className="text-sm font-medium text-brand-900 transition-colors group-hover:text-brand-600">
-                        {entry.name}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </Reveal>
         </div>
       </section>

@@ -7,44 +7,17 @@
  * rather than placeholder prose, so nothing invented ever ships.
  */
 export const contentPages = {
-  'about-the-society': {
-    title: 'About the Society',
-    lede: 'The Amaltas Educational Welfare Society, formed on 18 December 2013, includes eminent professionals committed to the society\u2019s educational goals.',
-    breadcrumb: 'About Us',
-    sections: [
-      {
-        heading: 'Our Mission',
-        body: [
-          'Amaltas Hospital aims at serving the society by providing the best possible medical treatment delivered most efficiently in the shortest possible time.',
-        ],
-      },
-      {
-        heading: 'The institution',
-        body: [
-          'Amaltas Institute of Medical Sciences, supported by the Amaltas Educational Welfare Society, aims at providing the undergraduate course for Bachelor of Medicine and Bachelor of Surgery (M.B.B.S) with all academic facilities as per Medical Council of India.',
-        ],
-      },
-    ],
-    pendingSource: 'https://amaltasmedicalcollege.in/about-the-society/',
-  },
-
   'details-of-institution': {
     title: 'Details of Institution',
     breadcrumb: 'About Us',
     lede: 'A 27.378-acre campus in village Bangar on the Dewas-Ujjain Highway, eight kilometres from Dewas.',
-    image: '/images/campus/aerial.jpg',
+    image: '/images/details-of-institution.jpg',
     sections: [
       {
         heading: 'Location',
         body: [
-          'Amaltas Institute of Medical Sciences is located in village Bangar on Dewas-Ujjain Highway in a pollution-free environment surrounded by lush green fields spread over 27.378 acres of land. The campus is 08 km from Dewas.',
-          'The institution aims at providing the undergraduate course for Bachelor of Medicine and Bachelor of Surgery (M.B.B.S) with all academic facilities as per Medical Council of India.',
-        ],
-      },
-      {
-        heading: 'Campus overview',
-        body: [
-          'Explore our campus, featuring advanced labs for Anatomy, Biochemistry and Physiology, along with modern student amenities, spacious lecture halls and a well-stocked library to support academic excellence.',
+          'Amaltas Institute of Medical Sciences is located in village Bangar on Dewas-Ujjain Highway in pollution free environment surrounded by lush green fields spread over 27.378 acres of land. The campus is 08 km from Dewas.',
+          'The institution aims at providing undergraduate course for Bachelor of Medicine and Bachelor of Surgery (M.B.B.S) with all academic facilities as per Medical Council of India.',
         ],
       },
     ],
@@ -65,11 +38,6 @@ export const contentPages = {
     title: 'Built Up Area',
     breadcrumb: 'Infrastructure',
     pendingSource: 'https://amaltasmedicalcollege.in/built-up-area/',
-  },
-  'pre-clinical-departments': {
-    title: 'Pre-Clinical Departments',
-    breadcrumb: 'Infrastructure',
-    pendingSource: 'https://amaltasmedicalcollege.in/pre-clinical-departments/',
   },
   'college-layout': {
     title: 'College Layout',
@@ -96,11 +64,6 @@ export const contentPages = {
     title: 'Teaching Schedule',
     breadcrumb: 'Institutional',
     pendingSource: 'https://amaltasmedicalcollege.in/teaching-schedule/',
-  },
-  publications: {
-    title: 'Publications',
-    breadcrumb: 'Institutional',
-    pendingSource: 'https://amaltasmedicalcollege.in/publications/',
   },
   fees: {
     title: 'Fees',

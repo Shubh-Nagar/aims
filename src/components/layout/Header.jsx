@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ChevronDown, Menu, Phone, Mail, FileText } from 'lucide-react'
 import { navigation } from '@/data/navigation'
 import { site } from '@/data/site'
@@ -9,14 +9,13 @@ import { useScrollState } from '@/hooks/useScrollState'
 import Button from '@/components/ui/Button'
 import MobileNav from './MobileNav'
 
-function MegaPanel({ items, onClose }) {
+function MegaPanel({ items, onClose, left }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 6 }}
-      transition={{ duration: 0.24, ease: EASE }}
-      className="absolute left-0 top-full z-50 pt-3"
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.24, ease: EASE } }}
+      className="absolute top-full z-50 pt-3"
+      style={{ left }}
     >
       <div className="min-w-[290px] overflow-hidden rounded-2xl bg-surface p-2 shadow-lift ring-1 ring-line">
         <ul>
@@ -59,23 +58,21 @@ function MegaPanel({ items, onClose }) {
 export default function Header() {
   const { scrolled } = useScrollState()
   const [openMenu, setOpenMenu] = useState(null)
+  const [panelLeft, setPanelLeft] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const navRef = useRef(null)
+  const triggerRefs = useRef({})
 
-  // Closing a menu by clicking a link inside it can be followed by a
-  // spurious synthetic mouseenter on the trigger — the browser re-runs
-  // hit-testing under the still-stationary cursor once the panel's exit
-  // animation removes it from the layout, and that re-hover looks
-  // identical to the user having moved the mouse back in. Suppress hover
-  // opens for a beat after an explicit close so the panel actually stays
-  // shut instead of springing back open.
-  const suppressHoverRef = useRef(false)
-  const closeMenu = () => {
-    suppressHoverRef.current = true
-    setOpenMenu(null)
-    window.setTimeout(() => {
-      suppressHoverRef.current = false
-    }, 400)
+  const closeMenu = () => setOpenMenu(null)
+  // Only one mega panel is ever rendered (single AnimatePresence below,
+  // keyed by label with mode="wait"), so switching triggers can never
+  // leave two panels mounted at once — the previous one fully exits
+  // before the next one enters.
+  const openMenuNow = (label) => {
+    const el = triggerRefs.current[label]
+    if (el) setPanelLeft(el.offsetLeft)
+    setOpenMenu(label)
   }
 
   useEffect(() => {
@@ -84,10 +81,21 @@ export default function Header() {
   }, [location.pathname])
 
   useEffect(() => {
-    const onKey = (e) => e.key === 'Escape' && setOpenMenu(null)
+    const onKey = (e) => e.key === 'Escape' && closeMenu()
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
+
+  // Standard dropdown pattern: clicking anywhere outside the nav closes
+  // whatever is open.
+  useEffect(() => {
+    if (openMenu === null) return
+    const onPointerDown = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) closeMenu()
+    }
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => document.removeEventListener('pointerdown', onPointerDown)
+  }, [openMenu])
 
   return (
     <>
@@ -142,25 +150,28 @@ export default function Header() {
               />
             </Link>
 
-            <nav aria-label="Primary" className="hidden xl:block">
+            {/* onMouseLeave lives on <nav> rather than each trigger: the panel
+                is a sibling of the trigger row, not nested inside it, but it's
+                still a DOM descendant of <nav> — so moving the pointer down
+                into the panel never actually leaves <nav>, and closing only
+                needs to react to the pointer leaving the whole nav region. */}
+            <nav aria-label="Primary" className="relative hidden xl:block" ref={navRef} onMouseLeave={closeMenu}>
               <ul className="flex items-center gap-7">
                 {navigation.map((entry) =>
                   entry.children ? (
                     <li
                       key={entry.label}
-                      className="relative"
-                      onMouseEnter={() => {
-                        if (suppressHoverRef.current) return
-                        setOpenMenu(entry.label)
+                      ref={(el) => {
+                        triggerRefs.current[entry.label] = el
                       }}
-                      onMouseLeave={() => setOpenMenu(null)}
+                      onMouseEnter={() => openMenuNow(entry.label)}
                     >
                       <button
                         type="button"
                         className="nav-link text-brand-900 hover:text-brand-600"
                         aria-expanded={openMenu === entry.label}
                         aria-haspopup="true"
-                        onClick={() => (openMenu === entry.label ? closeMenu() : setOpenMenu(entry.label))}
+                        onClick={() => (openMenu === entry.label ? closeMenu() : openMenuNow(entry.label))}
                       >
                         {entry.label}
                         <ChevronDown
@@ -170,12 +181,9 @@ export default function Header() {
                           aria-hidden="true"
                         />
                       </button>
-                      <AnimatePresence>
-                        {openMenu === entry.label && <MegaPanel items={entry.children} onClose={closeMenu} />}
-                      </AnimatePresence>
                     </li>
                   ) : (
-                    <li key={entry.label}>
+                    <li key={entry.label} onMouseEnter={closeMenu}>
                       <NavLink
                         to={entry.to}
                         className="nav-link text-brand-900 hover:text-brand-600"
@@ -187,6 +195,20 @@ export default function Header() {
                   ),
                 )}
               </ul>
+
+              {/* A single shared panel (rather than one per nav item), rendered with a
+                  plain conditional instead of AnimatePresence: unmounting through
+                  AnimatePresence's exit lifecycle depends on Framer Motion's own
+                  effect scheduling, which can get starved when a large, unrelated
+                  re-render happens in the same commit — e.g. the page-level
+                  AnimatePresence in Layout.jsx swapping route content on navigation.
+                  That left this panel visibly stuck open after clicking an item that
+                  navigates. A plain conditional unmounts synchronously with React's
+                  render, so it can't get stuck regardless of what else re-renders. */}
+              {(() => {
+                const activeEntry = navigation.find((entry) => entry.children && entry.label === openMenu)
+                return activeEntry && <MegaPanel key={activeEntry.label} items={activeEntry.children} onClose={closeMenu} left={panelLeft} />
+              })()}
             </nav>
 
             <div className="flex items-center gap-3">
@@ -195,7 +217,10 @@ export default function Header() {
               </Button>
               <button
                 type="button"
-                onClick={() => setMobileOpen(true)}
+                onClick={() => {
+                  closeMenu()
+                  setMobileOpen(true)
+                }}
                 className="grid h-11 w-11 place-items-center rounded-full border border-line text-brand-900 transition-colors duration-300 hover:border-brand-700 hover:bg-brand-700 hover:text-white xl:hidden"
                 aria-label="Open menu"
               >

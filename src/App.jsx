@@ -10,26 +10,31 @@ const Admission = lazy(() => import('@/pages/Admission'))
 const Contact = lazy(() => import('@/pages/Contact'))
 const News = lazy(() => import('@/pages/News'))
 const ClinicalDepartments = lazy(() => import('@/pages/ClinicalDepartments'))
+const ClinicalDepartmentDetail = lazy(() => import('@/pages/ClinicalDepartmentDetail'))
+const PreClinicalDepartments = lazy(() => import('@/pages/PreClinicalDepartments'))
+const PreClinicalDepartmentDetail = lazy(() => import('@/pages/PreClinicalDepartmentDetail'))
 const ContentPage = lazy(() => import('@/pages/ContentPage'))
 const LeadershipPage = lazy(() => import('@/pages/LeadershipPage'))
 const Antiragging = lazy(() => import('@/pages/Antiragging'))
 const Gallery = lazy(() => import('@/pages/Gallery'))
+const AboutSociety = lazy(() => import('@/pages/AboutSociety'))
+const Publications = lazy(() => import('@/pages/Publications'))
+const NewsPressRelease = lazy(() => import('@/pages/NewsPressRelease'))
+const BedDistribution = lazy(() => import('@/pages/BedDistribution'))
+const EventDetail = lazy(() => import('@/pages/EventDetail'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
 // Every slug below resolves against src/data/pages.js.
 const CONTENT_SLUGS = [
-  'about-the-society',
   'details-of-institution',
   'quality-policy',
   'academic-and-hospital-facilities',
   'built-up-area',
-  'pre-clinical-departments',
   'college-layout',
   'library-photography',
   'residential-facilities',
   'students',
   'teaching-schedule',
-  'publications',
   'fees',
   'committees',
   'citizen-charter',
@@ -69,8 +74,14 @@ export default function App() {
           <Route path="admission" element={<Admission />} />
           <Route path="contact" element={<Contact />} />
           <Route path="clinical-departments" element={<ClinicalDepartments />} />
+          <Route path="clinical-departments/:slug" element={<ClinicalDepartmentDetail />} />
+          <Route path="pre-clinical-departments" element={<PreClinicalDepartments />} />
+          <Route path="pre-clinical-departments/:slug" element={<PreClinicalDepartmentDetail />} />
           <Route path="antiragging-measures" element={<Antiragging />} />
           <Route path="photogallery" element={<Gallery />} />
+          <Route path="about-the-society" element={<AboutSociety />} />
+          <Route path="publications" element={<Publications />} />
+          <Route path="bed-distribution" element={<BedDistribution />} />
 
           <Route
             path="events"
@@ -79,21 +90,13 @@ export default function App() {
                 title="Activities / Events"
                 lede="Campus festivities, sports, community service and everything else our students organise through the year."
                 breadcrumb="Events"
+                only="Activities / Events"
                 path="/events"
               />
             }
           />
-          <Route
-            path="news-press-release"
-            element={
-              <News
-                title="News - Press Release"
-                lede="Stay updated with the latest developments, achievements and announcements from Amaltas Institute of Medical Sciences."
-                breadcrumb="Events"
-                path="/news-press-release"
-              />
-            }
-          />
+          <Route path="events/:slug" element={<EventDetail />} />
+          <Route path="news-press-release" element={<NewsPressRelease />} />
           <Route
             path="cme-conference-academic-activities"
             element={

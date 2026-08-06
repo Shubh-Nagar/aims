@@ -20,6 +20,13 @@
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-h) + 16px);
     -webkit-text-size-adjust: 100%;
+    /* Keep the scrollbar gutter reserved at all times. Without this, a
+       route change to a page with a different content height toggles the
+       vertical scrollbar and shifts the whole layout (including the fixed
+       header's nav) sideways under a stationary cursor. That shift lands
+       the cursor back on a dropdown trigger and fires a genuine mouseenter
+       — reopening a menu that had just been closed by a click. */
+    overflow-y: scroll;
   }
 
   body {

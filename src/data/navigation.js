@@ -27,7 +27,7 @@ export const navigation = [
       { label: 'Publications', to: '/publications' },
       { label: 'Student Feedback Form', href: '/documents/student_feedback_form.pdf', file: true },
       { label: 'Faculty Feedback Form', href: '/documents/faculty_feedback_form.pdf', file: true },
-      { label: 'Bed Distribution', href: '/documents/BED-DISTRIBUTION.pdf', file: true },
+      { label: 'Bed Distribution', to: '/bed-distribution' },
     ],
   },
   {
@@ -79,7 +79,7 @@ export const footerColumns = [
       { label: 'Teaching Schedule', to: '/teaching-schedule' },
       { label: 'Student Feedback Form', href: '/documents/student_feedback_form.pdf', file: true },
       { label: 'Faculty Feedback Form', href: '/documents/faculty_feedback_form.pdf', file: true },
-      { label: 'Bed Distribution', href: '/documents/BED-DISTRIBUTION.pdf', file: true },
+      { label: 'Bed Distribution', to: '/bed-distribution' },
       { label: 'Contact Us', to: '/contact' },
     ],
   },

@@ -4,7 +4,14 @@ import { news, categories } from '@/data/news'
 import { EASE } from '@/lib/motion'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
+import Button from '@/components/ui/Button'
 import { NewsCard } from '@/components/home/NewsGrid'
+
+const PAGE_SIZE = 12
+
+function inCategory(item, category) {
+  return (item.categories ?? [item.category]).includes(category)
+}
 
 /**
  * Shared listing for Events, News and CME. `only` restricts the filter to a
@@ -12,11 +19,19 @@ import { NewsCard } from '@/components/home/NewsGrid'
  */
 export default function News({ title, lede, breadcrumb, only, path }) {
   const [active, setActive] = useState(only ?? 'All')
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
-  const visible = useMemo(() => {
-    const base = only ? news.filter((item) => item.category === only) : news
-    return active === 'All' ? base : base.filter((item) => item.category === active)
+  const filtered = useMemo(() => {
+    const base = only ? news.filter((item) => inCategory(item, only)) : news
+    return active === 'All' ? base : base.filter((item) => inCategory(item, active))
   }, [active, only])
+
+  const visible = filtered.slice(0, visibleCount)
+
+  const handleCategory = (category) => {
+    setActive(category)
+    setVisibleCount(PAGE_SIZE)
+  }
 
   return (
     <>
@@ -31,7 +46,7 @@ export default function News({ title, lede, breadcrumb, only, path }) {
                 <button
                   key={category}
                   type="button"
-                  onClick={() => setActive(category)}
+                  onClick={() => handleCategory(category)}
                   aria-pressed={active === category}
                   className={`rounded-full border px-5 py-2.5 text-xs font-medium transition-all duration-300 ease-smooth ${
                     active === category
@@ -45,6 +60,10 @@ export default function News({ title, lede, breadcrumb, only, path }) {
             </div>
           )}
 
+          <p className="mb-6 text-xs text-muted">
+            Showing {visible.length} of {filtered.length}
+          </p>
+
           <AnimatePresence mode="wait">
             <motion.ul
               key={active}
@@ -55,12 +74,20 @@ export default function News({ title, lede, breadcrumb, only, path }) {
               className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
             >
               {visible.map((item, i) => (
-                <NewsCard key={item.slug} item={item} delay={(i % 3) * 0.06} />
+                <NewsCard key={item.slug} item={item} delay={(i % PAGE_SIZE) * 0.05} />
               ))}
             </motion.ul>
           </AnimatePresence>
 
-          {visible.length === 0 && (
+          {visibleCount < filtered.length && (
+            <div className="mt-12 flex justify-center">
+              <Button as="button" type="button" onClick={() => setVisibleCount((c) => c + PAGE_SIZE)} variant="outline" arrow={false}>
+                Load more
+              </Button>
+            </div>
+          )}
+
+          {filtered.length === 0 && (
             <p className="rounded-2xl bg-surface p-10 text-center text-sm text-muted ring-1 ring-line">
               Nothing published in this category yet. Check back soon, or browse all activities.
             </p>

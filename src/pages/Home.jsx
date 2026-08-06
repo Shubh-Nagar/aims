@@ -6,7 +6,6 @@ import Intro from '@/components/home/Intro'
 import CinematicBreak from '@/components/home/CinematicBreak'
 import Stats from '@/components/home/Stats'
 import WhyChoose from '@/components/home/WhyChoose'
-import Departments from '@/components/home/Departments'
 import Programs from '@/components/home/Programs'
 import CampusEvents from '@/components/home/CampusEvents'
 import Facilities from '@/components/home/Facilities'
@@ -35,7 +34,6 @@ export default function Home() {
       <CinematicBreak />
       <Stats />
       <WhyChoose />
-      <Departments />
       <Programs />
       <CampusEvents />
       <Facilities />
