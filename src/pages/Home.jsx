@@ -7,9 +7,11 @@ import CinematicBreak from '@/components/home/CinematicBreak'
 import Stats from '@/components/home/Stats'
 import WhyChoose from '@/components/home/WhyChoose'
 import Programs from '@/components/home/Programs'
+import Departments from '@/components/home/Departments'
 import CampusEvents from '@/components/home/CampusEvents'
 import Facilities from '@/components/home/Facilities'
 import StudentLife from '@/components/home/StudentLife'
+import Testimonials from '@/components/home/Testimonials'
 import Leadership from '@/components/home/Leadership'
 import HowToApply from '@/components/home/HowToApply'
 import Accreditation from '@/components/home/Accreditation'
@@ -35,9 +37,11 @@ export default function Home() {
       <Stats />
       <WhyChoose />
       <Programs />
+      <Departments />
       <CampusEvents />
       <Facilities />
       <StudentLife />
+      <Testimonials />
       <Leadership />
       <HowToApply />
       <Accreditation />
