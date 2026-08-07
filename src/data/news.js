@@ -73,8 +73,7 @@ export const news = [
     slug: 'guest-lecture-cardiac-arrhythmia',
     title: 'A special guest lecture on Cardiac Arrhythmia',
     date: '2026-02-18',
-    category: 'CME & Academic',
-    categories: ['CME & Academic', 'Activities / Events'],
+    category: 'Activities / Events',
     excerpt: 'A special guest lecture on Cardiac Arrhythmia was organised at Amaltas Institute of Medical Sciences, Amaltas University. Renowned expert Dr. Abhay Bajpai shared valuable clinical insights.',
     body: 'A special guest lecture on Cardiac Arrhythmia was organized at Amaltas Institute of Medical Sciences, at Amaltas University. Renowned expert Dr. Abhay Bajpai shared valuable insights on Cardio-Neuro Ablation, enhancing knowledge and learning for medical students and faculty.',
     image: '/images/news/cardiac-arrhythmia.jpg',
@@ -145,8 +144,7 @@ export const news = [
     slug: 'ai-in-healthcare-workshop',
     title: 'Workshop on AI in Healthcare',
     date: '2026-01-21',
-    category: 'CME & Academic',
-    categories: ['CME & Academic', 'Activities / Events'],
+    category: 'Activities / Events',
     excerpt: 'A workshop exploring the clinical applications of artificial intelligence in healthcare.',
     body: '“AI in Healthcare” पर आधारित इस वर्कशॉप में तकनीक और चिकित्सा के संगम को समझा गया।\n' +
       '\n' +
@@ -277,8 +275,7 @@ export const news = [
     slug: 'cpr-awareness-week',
     title: 'CPR Awareness Week',
     date: '2025-10-15',
-    category: 'CME & Academic',
-    categories: ['CME & Academic', 'Activities / Events'],
+    category: 'Activities / Events',
     excerpt: '“Empowered hands, prepared hearts.” Day 3 of CPR Awareness Week inspired participants through the Pledge Ceremony, Mass Demonstration, Street Play (Nukkad Natak) and hands-on CPR training.',
     body: '“Empowered hands, prepared hearts.”\n' +
       '\n' +
@@ -580,20 +577,38 @@ export const news = [
   {
     slug: 'central-india-oncology-conclave',
     title: 'Central India Oncology Conclave',
-    date: '2025-03-12',
+    date: '2025-02-23',
     category: 'CME & Academic',
     excerpt: 'Clinicians from across central India convened at Amaltas for the oncology conclave.',
     image: '/images/news/oncology-conclave.jpg',
-    gallery: ['/images/news/oncology-conclave.jpg'],
+    gallery: ['/images/news/gallery/central-india-oncology-conclave__1.jpg', '/images/news/gallery/central-india-oncology-conclave__2.jpg', '/images/news/gallery/central-india-oncology-conclave__3.jpg', '/images/news/gallery/central-india-oncology-conclave__4.jpg', '/images/news/gallery/central-india-oncology-conclave__5.jpg', '/images/news/gallery/central-india-oncology-conclave__6.jpg', '/images/news/gallery/central-india-oncology-conclave__7.jpg', '/images/news/gallery/central-india-oncology-conclave__8.jpg', '/images/news/gallery/central-india-oncology-conclave__9.jpg', '/images/news/gallery/central-india-oncology-conclave__10.jpg', '/images/news/gallery/central-india-oncology-conclave__11.jpg'],
   },
   {
     slug: 'ilizarov-live-surgery-workshop',
     title: 'Ilizarov Live Surgery Workshop',
-    date: '2025-08-14',
+    date: '2025-04-07',
     category: 'CME & Academic',
     excerpt: 'A live surgery workshop on the Ilizarov technique hosted by the Department of Orthopaedics.',
     image: '/images/news/ilizarov.jpg',
-    gallery: ['/images/news/ilizarov.jpg'],
+    gallery: ['/images/news/gallery/ilizarov-live-surgery-workshop__1.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__2.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__3.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__4.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__5.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__6.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__7.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__8.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__9.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__10.jpg', '/images/news/gallery/ilizarov-live-surgery-workshop__11.jpg'],
+  },
+  {
+    slug: 'hmpv-workshop',
+    title: 'HMPV Workshop',
+    date: '2025-02-10',
+    category: 'CME & Academic',
+    excerpt: 'A workshop on Human Metapneumovirus (HMPV) held at Amaltas Institute of Medical Sciences.',
+    image: '/images/news/hmpv-workshop.jpg',
+    gallery: ['/images/news/gallery/hmpv-workshop__1.jpg', '/images/news/gallery/hmpv-workshop__2.jpg', '/images/news/gallery/hmpv-workshop__3.jpg', '/images/news/gallery/hmpv-workshop__4.jpg', '/images/news/gallery/hmpv-workshop__5.jpg', '/images/news/gallery/hmpv-workshop__6.jpg', '/images/news/gallery/hmpv-workshop__7.jpg'],
+  },
+  {
+    slug: 'cancer-awareness-lecture',
+    title: 'Cancer Awareness Lecture',
+    date: '2025-02-07',
+    category: 'CME & Academic',
+    excerpt: 'A cancer awareness lecture held at Amaltas Institute of Medical Sciences.',
+    image: '/images/news/cancer-awareness-lecture.jpg',
+    gallery: ['/images/news/gallery/cancer-awareness-lecture__1.jpg', '/images/news/gallery/cancer-awareness-lecture__2.jpg', '/images/news/gallery/cancer-awareness-lecture__3.jpg', '/images/news/gallery/cancer-awareness-lecture__4.jpg', '/images/news/gallery/cancer-awareness-lecture__5.jpg', '/images/news/gallery/cancer-awareness-lecture__6.jpg', '/images/news/gallery/cancer-awareness-lecture__7.jpg'],
   },
 ]
 

@@ -74,8 +74,26 @@ export const contentPages = {
 
   committees: {
     title: 'Committees',
-    breadcrumb: 'Quick Links',
-    pendingSource: 'https://amaltasmedicalcollege.in/committees/',
+    breadcrumb: 'Institutional',
+    lede: 'Statutory and institutional committees at Amaltas Institute of Medical Sciences, with member lists published in full.',
+    sections: [
+      {
+        heading: 'Institutional Committees',
+        body: [],
+        documents: [
+          { label: 'Institutional Anti-Ragging Committee', href: '/documents/committees/Institutional-Anti-Ragging-Committee.pdf' },
+          { label: 'Scientific Research Committee', href: '/documents/committees/Scientific-Research-Committee.pdf' },
+          { label: 'Food Committee', href: '/documents/committees/Food-Committee.pdf' },
+          { label: 'Medical Education Unit', href: '/documents/committees/Medical-Education-Unit.pdf' },
+          { label: 'Gender Harassment Prevention Committee', href: '/documents/committees/Gender-Harassment-Prevention-Committee.pdf' },
+          { label: 'Details of Curriculum Committee (CC) Member', href: '/documents/committees/Curriculum-Committee-Members.pdf' },
+          { label: 'Pharmacovigilance Committee', href: '/documents/committees/Pharmacovigilance-Committee.pdf' },
+          { label: 'Discipline Committee', href: '/documents/committees/Discipline-Committee.pdf' },
+          { label: 'Departmental Promotion Committee', href: '/documents/committees/Departmental-Promotion-Committee.pdf' },
+          { label: 'Scientific Review Committee', href: '/documents/committees/Scientific-Review-Committee.pdf' },
+        ],
+      },
+    ],
   },
   'citizen-charter': {
     title: 'Citizen Charter',

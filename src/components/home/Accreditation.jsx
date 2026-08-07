@@ -45,7 +45,7 @@ export default function Accreditation() {
                   <h3 className="text-base leading-snug transition-colors duration-300 group-hover:text-brand-600">
                     {item.label}
                   </h3>
-                  <p className="mt-2 text-2xs uppercase tracking-eyebrow text-muted">PDF</p>
+                  <p className="mt-2 text-2xs uppercase tracking-eyebrow text-muted">{item.href.split('.').pop()}</p>
                 </div>
               </a>
             </Reveal>

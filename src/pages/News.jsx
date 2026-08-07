@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { FileDown } from 'lucide-react'
 import { news, categories } from '@/data/news'
 import { EASE } from '@/lib/motion'
 import Seo from '@/components/ui/Seo'
@@ -17,7 +18,7 @@ function inCategory(item, category) {
  * Shared listing for Events, News and CME. `only` restricts the filter to a
  * single category so the three routes stay distinct without duplicating code.
  */
-export default function News({ title, lede, breadcrumb, only, path }) {
+export default function News({ title, lede, breadcrumb, only, path, downloadPdf }) {
   const [active, setActive] = useState(only ?? 'All')
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
@@ -40,6 +41,17 @@ export default function News({ title, lede, breadcrumb, only, path }) {
 
       <section className="section">
         <div className="container">
+          {downloadPdf && (
+            <div className="mb-10">
+              <Button href={downloadPdf.href} download variant="outline" arrow={false}>
+                <span className="inline-flex items-center gap-2">
+                  <FileDown className="h-4 w-4" aria-hidden="true" />
+                  {downloadPdf.label}
+                </span>
+              </Button>
+            </div>
+          )}
+
           {!only && (
             <div className="mb-12 flex flex-wrap gap-2">
               {categories.map((category) => (

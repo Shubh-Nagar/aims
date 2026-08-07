@@ -12,7 +12,7 @@ import Vitals from './Vitals'
  * "Event Amaltas" / Stats sections. Pass `tone="dark"` to fall back to the
  * photo-backed wash instead (uses `image` as the background).
  */
-export default function PageHero({ title, lede, breadcrumb, image = '/images/campus/night.jpg', tone = 'light' }) {
+export default function PageHero({ title, lede, breadcrumb, image = '/images/campus/night.jpg', tone = 'light', vitals = false }) {
   const light = tone === 'light'
 
   return (
@@ -77,7 +77,7 @@ export default function PageHero({ title, lede, breadcrumb, image = '/images/cam
           </motion.p>
         )}
       </div>
-      <Vitals tone={light ? 'gold' : 'light'} className="mt-10 h-8 opacity-70" duration={2} />
+      {vitals && <Vitals tone={light ? 'gold' : 'light'} className="mt-10 h-8 opacity-70" duration={2} />}
     </header>
   )
 }

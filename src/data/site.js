@@ -36,10 +36,11 @@ export const stats = [
 ]
 
 export const accreditations = [
-  { label: 'Certificate of CMHO', href: '/documents/certificate-of-CMHO.pdf' },
-  { label: 'Certification of ISO', href: '/documents/AIMS-ISO-9001.pdf' },
-  { label: 'Certificate of NABH Accreditation', href: '/documents/NABH-Certificate-2025.pdf' },
-  { label: 'Certificate of NABL Accreditation', href: '/documents/NABL-Certificate-MC-5580.pdf' },
+  { label: 'Certificate of CMHO', href: '/documents/CMHO.jpeg' },
+  { label: 'Certification of ISO', href: '/documents/ISO.jpeg' },
+  { label: 'Certificate of NABH Accreditation', href: '/documents/NABH.jpeg' },
+  { label: 'Certificate of NABL Accreditation', href: '/documents/NABL.jpeg' },
+  { label: 'Awards & Achievements', href: '/documents/Awards-and-Achievement.pdf' },
 ]
 
 export const applySteps = [

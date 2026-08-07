@@ -127,6 +127,10 @@ export default function Header() {
                 <Mail className="h-3.5 w-3.5" aria-hidden="true" />
                 {site.email}
               </a>
+              <Link to="/information-under-msr-clause-b-1-11" className="flex items-center gap-2 transition-colors hover:text-gold-300">
+                <FileText className="h-3.5 w-3.5" aria-hidden="true" />
+                Information Under MSR Clause B.1.11
+              </Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, FileText } from 'lucide-react'
 import { contentPages } from '@/data/pages'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
@@ -46,6 +46,28 @@ export default function ContentPage({ slug: fixedSlug }) {
                       <li key={item} className="flex gap-3 text-sm text-muted">
                         <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-500" aria-hidden="true" />
                         {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.documents && (
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {section.documents.map((doc) => (
+                      <li key={doc.label}>
+                        <a
+                          href={doc.href}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="card group flex items-center gap-3 p-4"
+                        >
+                          <FileText
+                            className="h-5 w-5 shrink-0 text-brand-400 transition-colors duration-300 group-hover:text-gold-500"
+                            aria-hidden="true"
+                          />
+                          <span className="text-sm leading-snug text-brand-900 transition-colors duration-300 group-hover:text-brand-600">
+                            {doc.label}
+                          </span>
+                        </a>
                       </li>
                     ))}
                   </ul>

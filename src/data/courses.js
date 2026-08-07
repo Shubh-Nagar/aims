@@ -103,9 +103,8 @@ export const paramedicalCourses = {
 }
 
 export const permissionLetters = [
-  { label: 'Letter of Permission for UG', href: '/documents/LOP-UG.pdf' },
-  { label: 'Letter of Permission for PG - 01', href: '/documents/LOP-PG-1.pdf' },
-  { label: 'Letter of Permission for PG - 02', href: '/documents/LOP-PG-2.pdf' },
+  { label: 'Letter of Permission for UG', href: '/documents/LOP%20UG.pdf' },
+  { label: 'Letter of Permission for PG', href: '/documents/LOP%20PG%20merged.pdf' },
 ]
 
 export const programmeHighlights = [

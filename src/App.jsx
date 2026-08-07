@@ -22,6 +22,8 @@ const Publications = lazy(() => import('@/pages/Publications'))
 const NewsPressRelease = lazy(() => import('@/pages/NewsPressRelease'))
 const BedDistribution = lazy(() => import('@/pages/BedDistribution'))
 const EventDetail = lazy(() => import('@/pages/EventDetail'))
+const AwardsAchievements = lazy(() => import('@/pages/AwardsAchievements'))
+const MsrDisclosure = lazy(() => import('@/pages/MsrDisclosure'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
 // Every slug below resolves against src/data/pages.js.
@@ -106,21 +108,12 @@ export default function App() {
                 breadcrumb="Events"
                 only="CME & Academic"
                 path="/cme-conference-academic-activities"
+                downloadPdf={{ href: '/documents/CMEs-Workshop-Details.pdf', label: 'Download CME & Workshop List (PDF)' }}
               />
             }
           />
-          <Route
-            path="awards-achievements"
-            element={
-              <News
-                title="Awards & Achievements"
-                lede="Recognitions earned by our students, faculty and the wider Amaltas Group."
-                breadcrumb="Events"
-                only="Awards & Achievements"
-                path="/awards-achievements"
-              />
-            }
-          />
+          <Route path="awards-achievements" element={<AwardsAchievements />} />
+          <Route path="information-under-msr-clause-b-1-11" element={<MsrDisclosure />} />
 
           {LEADERSHIP_SLUGS.map((slug) => (
             <Route key={slug} path={slug} element={<LeadershipPage slug={slug} />} />

@@ -28,6 +28,7 @@ export const navigation = [
       { label: 'Student Feedback Form', href: '/documents/student_feedback_form.pdf', file: true },
       { label: 'Faculty Feedback Form', href: '/documents/faculty_feedback_form.pdf', file: true },
       { label: 'Bed Distribution', to: '/bed-distribution' },
+      { label: 'Committees', to: '/committees' },
     ],
   },
   {
