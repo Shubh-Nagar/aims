@@ -3,11 +3,22 @@
 // live page so the copy can be lifted verbatim during migration.
 export const leadership = [
   {
+    slug: 'founder-chairman',
+    name: 'Shri Suresh Singh Bhadoria',
+    role: 'Founder Chairman',
+    image: '/images/leadership/founder-chairman.jpg',
+    featured: true,
+    blurb:
+      'Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences institution.',
+  },
+  {
     slug: 'chairmans-message',
     name: 'Shri Mayankraj Singh Bhadoria',
     role: 'Chairman',
     image: '/images/leadership/chairman.jpg',
     featured: true,
+    blurb:
+      "Steering the Amaltas group's mission to bring metropolitan-standard healthcare and medical education to Dewas and the villages around it.",
     message: [
       'At Amaltas, we start from a simple belief: everyone who walks through our doors is family, not a case number. That conviction shapes every decision we make — from how we train our students to how we care for every patient who puts their trust in us.',
       'Our purpose is straightforward: deliver the finest medical treatment we can, as efficiently as possible, without ever cutting corners on quality. It is a standard we hold ourselves to every single day, in every department and on every shift.',
@@ -21,6 +32,8 @@ export const leadership = [
     role: 'Vice-Chancellor',
     image: '/images/leadership/vice-chancellor.jpg',
     featured: true,
+    blurb:
+      "Safeguarding academic quality across every programme as the university grows in the right direction, not just in size.",
     contact: {
       mobile: '+91 96857-93577',
       mobileHref: 'tel:+919685793577',
@@ -39,6 +52,8 @@ export const leadership = [
     qualifications: 'MS, FAIS, FMAS, FIAGES',
     image: '/images/leadership/dean.jpg',
     featured: true,
+    blurb:
+      "Keeping classroom learning and bedside practice in step, with clinical training starting from a student's very first year.",
     contact: {
       phone: '07272-482590',
       phoneHref: 'tel:+917272482590',
@@ -60,6 +75,8 @@ export const leadership = [
     qualifications: 'M.D. (General Medicine)',
     image: '/images/leadership/medical-superintendent.jpg',
     featured: true,
+    blurb:
+      'Running a teaching hospital that treats every patient seriously while giving students real, supervised clinical exposure.',
     contact: {
       phone: '07272-426505',
       phoneHref: 'tel:+917272426505',
@@ -80,6 +97,8 @@ export const leadership = [
     role: 'Registrar',
     image: '/images/leadership/registrar.jpg',
     featured: true,
+    blurb:
+      'Keeping admissions, examinations and academic records running smoothly for students and faculty alike.',
     contact: {
       mobile: '+91 92053-83081',
       mobileHref: 'tel:+919205383081',
@@ -94,4 +113,4 @@ export const leadership = [
 ]
 
 export const leadershipIntro =
-  'Discover the vision and aspirations of Amaltas Institute of Medical Sciences through the voices of our Chairman, Vice-Chancellor and Dean. Their reflections offer insight into the institution\u2019s journey, our commitment to excellence in medical education, and the future we are building together.'
+  'Discover the vision and aspirations of Amaltas Institute of Medical Sciences through the voices of our Founder Chairman, Chairman, Vice-Chancellor and Dean. Their reflections offer insight into the institution\u2019s journey, our commitment to excellence in medical education, and the future we are building together.'

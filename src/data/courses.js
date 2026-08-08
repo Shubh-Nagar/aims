@@ -107,29 +107,28 @@ export const permissionLetters = [
   { label: 'Letter of Permission for PG', href: '/documents/LOP%20PG%20merged.pdf' },
 ]
 
-export const programmeHighlights = [
+// Homepage "UG/PG Medical and Surgical Specialisation Courses" cards.
+export const courseHighlightCards = [
   {
-    code: 'MBBS',
-    title: 'M.B.B.S. Programme',
-    seats: '250 seats',
-    body: 'Our MBBS programme offers a comprehensive medical education that blends theoretical knowledge with practical clinical experience. This rigorous programme equips students with the skills needed to excel in the medical field, emphasising patient care, medical ethics and clinical expertise.',
+    id: 'mbbs',
+    title: 'M.B.B.S.',
+    subtitle: 'Bachelor of Medicine, Bachelor of Surgery',
+    seats: '250 Seats',
+    image: '/images/courses/lecture.jpg',
   },
   {
-    code: 'PG',
-    title: 'Postgraduate Programmes',
-    seats: '134 seats',
-    body: 'Our postgraduate programmes provide advanced training in medical specialities. With courses such as MD in Anaesthesiology, MS in General Surgery and MD in Pathology, we offer specialised education designed to enhance clinical skills and knowledge, fostering excellence in medical practice and research.',
+    id: 'md-ms',
+    title: 'MD / MS',
+    subtitle: 'Doctor of Medicine / Master of Surgery',
+    seats: '134 Seats',
+    image: '/images/courses/clinical-rounds.jpg',
   },
   {
-    code: 'DM/MCh',
-    title: 'Super Speciality',
-    seats: '10 seats',
-    body: 'DM Cardiology, DM Nephrology, M.Ch. Neuro Surgery and M.Ch. Urology — super-speciality training delivered alongside the tertiary caseload of Amaltas Hospital.',
-  },
-  {
-    code: 'PARA',
-    title: 'Nursing & Paramedical',
-    seats: '200+ seats',
-    body: 'B.Sc. and M.Sc. Nursing along with diploma and certificate programmes in medical laboratory technology, radiography, operation theatre technology and ultrasound technology.',
+    id: 'dm-mch',
+    title: 'Superspeciality',
+    subtitle: 'DM / MCh',
+    seats: '10 Seats',
+    image: '/images/courses/simulation.jpg',
   },
 ]
+

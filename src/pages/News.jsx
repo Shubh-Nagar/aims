@@ -85,8 +85,8 @@ export default function News({ title, lede, breadcrumb, only, path, downloadPdf 
               transition={{ duration: 0.35, ease: EASE }}
               className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
             >
-              {visible.map((item, i) => (
-                <NewsCard key={item.slug} item={item} delay={(i % PAGE_SIZE) * 0.05} />
+              {visible.map((item) => (
+                <NewsCard key={item.slug} item={item} reveal={false} />
               ))}
             </motion.ul>
           </AnimatePresence>

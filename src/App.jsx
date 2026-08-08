@@ -49,6 +49,7 @@ const CONTENT_SLUGS = [
 ]
 
 const LEADERSHIP_SLUGS = [
+  'founder-chairman',
   'chairmans-message',
   'vice-chancellor',
   'dean',

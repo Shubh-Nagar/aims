@@ -17,6 +17,13 @@ export const scaleIn = {
   show: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: EASE } },
 }
 
+// A deeper zoom used for photo-card grids (leadership, etc.) — noticeably
+// more pronounced than scaleIn so a staggered grid reads as "blooming in".
+export const zoomIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.85, ease: EASE } },
+}
+
 export const stagger = (staggerChildren = 0.09, delayChildren = 0) => ({
   hidden: {},
   show: { transition: { staggerChildren, delayChildren } },

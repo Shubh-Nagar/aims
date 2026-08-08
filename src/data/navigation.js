@@ -7,6 +7,7 @@ export const navigation = [
     children: [
       { label: 'About the Society', to: '/about-the-society' },
       { label: 'Details of Institution', to: '/details-of-institution' },
+      { label: 'Founder Chairman', to: '/founder-chairman' },
       { label: "Chairman's Message", to: '/chairmans-message' },
       { label: 'Dean', to: '/dean' },
       { label: 'Medical Superintendent', to: '/medical-superintendent' },
