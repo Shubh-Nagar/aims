@@ -27,6 +27,12 @@
        the cursor back on a dropdown trigger and fires a genuine mouseenter
        — reopening a menu that had just been closed by a click. */
     overflow-y: scroll;
+    /* Belt-and-braces: motion transforms (Reveal, AnimatePresence card
+       swaps) can round to a sub-pixel width past the viewport edge
+       mid-transition, flashing a horizontal scrollbar for a frame.
+       Inner elements that intentionally scroll sideways (e.g. the
+       campus-events tab list) use their own overflow-x, so this is safe. */
+    overflow-x: hidden;
   }
 
   body {

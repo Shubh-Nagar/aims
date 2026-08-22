@@ -38,15 +38,15 @@ export default function Footer() {
               <img
                 src="/images/aims-logo.png"
                 alt={site.name}
-                className="h-9 w-auto"
+                className="h-11 w-auto"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none'
                 }}
               />
             </div>
-            <p className="font-display text-2xl leading-tight text-brand-900">
+            {/* <p className="font-display text-2xl leading-tight text-brand-900">
               Amaltas Institute of Medical Sciences
-            </p>
+            </p> */}
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Supported by the {site.parent}, a 27.378-acre campus at {site.locality}.
             </p>
@@ -66,7 +66,7 @@ export default function Footer() {
               </a>
             </address>
 
-            <div className="mt-7 rounded-2xl border border-brand-900/10 bg-white/60 p-4">
+            {/* <div className="mt-7 rounded-2xl border border-brand-900/10 bg-white/60 p-4">
               <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">
                 Anti-ragging helpline
               </p>
@@ -74,7 +74,7 @@ export default function Footer() {
                 {helplines.tollFree}
               </a>
               <p className="mt-1 text-xs text-muted">{helplines.numbers.join(' · ')}</p>
-            </div>
+            </div> */}
           </Reveal>
 
           {footerColumns.map((column, i) => (

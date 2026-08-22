@@ -59,7 +59,7 @@ const pages = Array.from({ length: Math.ceil(departments.length / PER_PAGE) }, (
 const slide = {
   enter: (direction) => ({ x: direction > 0 ? 60 : -60, opacity: 0 }),
   center: { x: 0, opacity: 1 },
-  exit: (direction) => ({ x: direction > 0 ? -60 : 60, opacity: 0, position: 'absolute', top: 0 }),
+  exit: (direction) => ({ x: direction > 0 ? -60 : 60, opacity: 0 }),
 }
 
 function DepartmentCard({ department, i }) {
@@ -79,6 +79,10 @@ function DepartmentCard({ department, i }) {
       </span>
       <h3 className="relative mt-5 text-base font-semibold leading-snug text-brand-900">{department.name}</h3>
       <p className="relative mt-2 text-sm leading-relaxed text-muted">{department.summary}</p>
+      <span className="relative mt-4 inline-flex -translate-y-1 items-center gap-2 text-sm font-medium text-brand-700 opacity-0 transition-all duration-300 ease-smooth group-hover:translate-y-0 group-hover:opacity-100">
+        Read more
+        <span className="h-px w-5 bg-gold-500 transition-all duration-400 ease-smooth group-hover:w-10" />
+      </span>
     </Link>
   )
 }
@@ -103,7 +107,7 @@ export default function Departments() {
 
         <div className="relative mt-14">
           <div className="relative overflow-hidden">
-            <AnimatePresence mode="wait" custom={direction} initial={false}>
+            <AnimatePresence mode="popLayout" custom={direction} initial={false}>
               <motion.ul
                 key={page}
                 custom={direction}

@@ -10,6 +10,17 @@ export const leadership = [
     featured: true,
     blurb:
       'Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences institution.',
+    message: [
+      'Dear Students,',
+      'When I established Mayank Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.',
+      'I have spent my life in service of this community. I have seen the consequences of a healthcare gap — families travelling hundreds of kilometres for treatment, young people with the aptitude to become doctors but no institution willing to open its doors to them. Amaltas was my answer to that silence.',
+      'Building a university is not the work of one man or one year. It is the accumulation of thousands of decisions, sacrifices, and acts of faith. Every building you walk through, every laboratory you learn in, every patient you will one day treat — each of these traces its origin to a belief that service is the highest calling.',
+      'To our students: you did not come to Amaltas by accident. You came because something in you recognised this place as more than an institution — it is a family, a mission, and a promise. I ask only one thing of you: carry that promise into the world with the same sincerity with which we planted it.',
+      'Amaltas means Cassia fistula — the golden shower tree. It blooms fully, without hesitation, transforming its surroundings. I hope each of you will do the same.',
+      'Best Regards,',
+      'Shri Suresh Singh Bhadoria',
+      "Hon'ble Founder Chairman",
+    ],
   },
   {
     slug: 'chairmans-message',
@@ -20,10 +31,14 @@ export const leadership = [
     blurb:
       "Steering the Amaltas group's mission to bring metropolitan-standard healthcare and medical education to Dewas and the villages around it.",
     message: [
+      'Dear Students,',
       'At Amaltas, we start from a simple belief: everyone who walks through our doors is family, not a case number. That conviction shapes every decision we make — from how we train our students to how we care for every patient who puts their trust in us.',
       'Our purpose is straightforward: deliver the finest medical treatment we can, as efficiently as possible, without ever cutting corners on quality. It is a standard we hold ourselves to every single day, in every department and on every shift.',
       "I have long believed that good healthcare should not be a privilege reserved for those who can travel to a big city for it. Amaltas exists to close that gap — bringing metropolitan-standard treatment to families in Dewas and the villages around it, and building a pipeline of skilled, compassionate healthcare professionals who choose to stay and serve where they are needed most.",
       "That is the vision behind Amaltas Institute of Medical Sciences: educate tomorrow's doctors while raising the bar for healthcare across the region. I invite you to be part of that journey with us.",
+      'Best Regards,',
+      'Shri Mayankraj Singh Bhadoria',
+      'Chairman',
     ],
   },
   {
@@ -40,9 +55,13 @@ export const leadership = [
       email: 'vicechancellor@amaltasuniversity.in',
     },
     message: [
+      'Dear Students,',
       'A university is judged less by what it teaches and more by what its graduates can actually do once they leave — that is the standard I try to hold Amaltas to in everything from curriculum design to faculty appointments.',
       'My role as Vice-Chancellor is to protect academic quality across every programme we run, while making sure the institution keeps growing in the right direction rather than just growing bigger.',
       'We are building something meant to last well beyond any one batch of students, and I am glad to have you looking into being part of it.',
+      'Best Regards,',
+      'Dr. R. K. Singh',
+      'Vice-Chancellor',
     ],
   },
   {
@@ -63,9 +82,13 @@ export const leadership = [
       address: 'Dean Bungalow, Amaltas Medical College and Hospital Campus, Dewas, Madhya Pradesh – 455001',
     },
     message: [
+      'Dear Students,',
       "As Dean, my job is to keep the academic side of this institution moving in step with the clinical side — making sure what students learn in a classroom actually holds up at a patient's bedside.",
       'That is the principle our curriculum is built around. Students here start training under practising clinicians at Amaltas Hospital early in their course, not just in their final years, because medicine is a skill built through repetition and mentorship, not lectures alone.',
       'I welcome you to explore what we offer, and I look forward to guiding many of you through what I hope will be a demanding and genuinely rewarding medical education.',
+      'Best Regards,',
+      'Dr. (Prof.) Abhilash Kumar Pithawa',
+      'Dean',
     ],
   },
   {
@@ -86,9 +109,13 @@ export const leadership = [
       address: 'MS Bungalow, Amaltas Medical College and Hospital Campus, Dewas, Madhya Pradesh – 455001',
     },
     message: [
+      'Dear Students,',
       'My responsibility as Medical Superintendent is to keep the hospital itself running the way it needs to for both patients and the students training alongside our doctors — smooth admissions, well-coordinated departments, and care that does not slow down for anyone who walks through our doors.',
       'A teaching hospital has to get two things right at once: treat every patient with the same seriousness a private metropolitan hospital would, while giving our students real exposure to real cases under proper supervision. Balancing that is the part of the job I take most seriously.',
       'If you are visiting Amaltas Hospital as a patient or joining us as a student, my door is open — administration here exists to support both of you, not the other way around.',
+      'Best Regards,',
+      'Dr. Mahavir Khandelwal',
+      'Medical Superintendent',
     ],
   },
   {
@@ -105,9 +132,13 @@ export const leadership = [
       email: 'registrar@amaltasuniversity.in',
     },
     message: [
+      'Dear Students,',
       'The Registrar’s office is the part of Amaltas that keeps everything else on schedule — admissions, examinations, academic records, the paperwork nobody thinks about until they need it done right and on time.',
       'My aim is to make that side of the institution as painless as possible for students and faculty alike, so the actual work of teaching and learning does not get held up by administration.',
       'If you have a question about admissions, records or any academic process here, my office is the place to bring it.',
+      'Best Regards,',
+      'Dr. Abhay Gupta',
+      'Registrar',
     ],
   },
 ]

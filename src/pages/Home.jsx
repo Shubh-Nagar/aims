@@ -15,7 +15,6 @@ import Testimonials from '@/components/home/Testimonials'
 import Leadership from '@/components/home/Leadership'
 import HowToApply from '@/components/home/HowToApply'
 import Accreditation from '@/components/home/Accreditation'
-import NewsGrid from '@/components/home/NewsGrid'
 
 export default function Home() {
   return (
@@ -45,7 +44,6 @@ export default function Home() {
       <Leadership />
       <HowToApply />
       <Accreditation />
-      <NewsGrid />
     </>
   )
 }

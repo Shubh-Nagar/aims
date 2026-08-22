@@ -76,6 +76,10 @@ export default function ClinicalDepartments() {
                       {department.name}
                     </h3>
                     <p className="relative mt-2 text-sm leading-relaxed text-muted">{department.summary}</p>
+                    <span className="relative mt-4 inline-flex -translate-y-1 items-center gap-2 text-sm font-medium text-brand-700 opacity-0 transition-all duration-300 ease-smooth group-hover:translate-y-0 group-hover:opacity-100">
+                      Read more
+                      <span className="h-px w-5 bg-gold-500 transition-all duration-400 ease-smooth group-hover:w-10" />
+                    </span>
                   </Link>
                 </Reveal>
               )

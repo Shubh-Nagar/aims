@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { news } from '@/data/news'
 import { formatDate } from './NewsGrid'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
 import { EASE } from '@/lib/motion'
+
+const AUTO_ADVANCE_MS = 6000
 
 // Pinned to the five Activities/Events entries that already have a real
 // photograph (see public/images/IMAGE-GUIDE.md) — a plain category filter
@@ -23,7 +25,21 @@ const events = FEATURED_SLUGS.map((slug) => news.find((item) => item.slug === sl
 
 export default function CampusEvents() {
   const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const reduced = useReducedMotion()
   const current = events[active]
+
+  useEffect(() => {
+    if (paused || reduced || events.length < 2) return undefined
+    const id = setInterval(() => {
+      setActive((i) => (i + 1) % events.length)
+    }, AUTO_ADVANCE_MS)
+    return () => clearInterval(id)
+  }, [paused, reduced])
+
+  const selectEvent = (i) => {
+    setActive(i)
+  }
 
   return (
     <section className="section relative overflow-hidden bg-brand-100 text-brand-900">
@@ -39,18 +55,34 @@ export default function CampusEvents() {
           lede="A running record of what's happening on campus — festivals, ceremonies, drives and everything in between."
         />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-16">
+        <div
+          className="mt-14 grid gap-10 lg:grid-cols-[auto_1fr] lg:gap-16"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
           <ol className="flex gap-1 overflow-x-auto lg:flex-col lg:gap-2 lg:overflow-visible">
             {events.map((item, i) => (
               <li key={item.slug} className="shrink-0">
                 <button
                   type="button"
-                  onClick={() => setActive(i)}
+                  onClick={() => selectEvent(i)}
                   aria-current={i === active}
-                  className={`group flex items-center gap-3 rounded-full px-4 py-2.5 text-left transition-colors duration-300 lg:w-64 lg:rounded-xl ${
+                  className={`group relative flex items-center gap-3 overflow-hidden rounded-full px-4 py-2.5 text-left transition-colors duration-300 lg:w-64 lg:rounded-xl ${
                     i === active ? 'bg-brand-900/8' : 'hover:bg-brand-900/5'
                   }`}
                 >
+                  {i === active && !paused && !reduced && (
+                    <motion.span
+                      key={`${item.slug}-${active}`}
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-gold-500"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: AUTO_ADVANCE_MS / 1000, ease: 'linear' }}
+                    />
+                  )}
                   <span
                     className={`font-display text-lg tabular-nums transition-colors duration-300 ${
                       i === active ? 'text-gold-700' : 'text-brand-900/35'

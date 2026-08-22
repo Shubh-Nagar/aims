@@ -30,18 +30,18 @@ export default function CourseHighlights() {
               <Reveal as="li" key={course.id} delay={i * 0.1}>
                 <Link
                   to="/courses"
-                  className="group relative block rounded-2xl border border-line bg-white px-6 pb-8 pt-24 text-center shadow-sm transition-all duration-500 ease-smooth hover:-translate-y-1.5 hover:border-brand-300 hover:shadow-lg"
+                  className="group relative block rounded-2xl border border-line bg-white px-6 pb-8 pt-28 text-center shadow-sm transition-all duration-500 ease-smooth hover:-translate-y-1.5 hover:border-brand-300 hover:shadow-lg"
                 >
-                  <span className="absolute -top-20 left-1/2 -translate-x-1/2">
+                  <span className="absolute -top-24 left-1/2 -translate-x-1/2">
                     <Img
                       src={course.image}
                       alt={course.title}
                       ratio="aspect-square"
-                      wrapperClassName="h-40 w-40 rounded-full ring-4 ring-white shadow-md"
+                      wrapperClassName="h-48 w-48 rounded-full ring-4 ring-white shadow-md"
                       className="transition-transform duration-500 ease-smooth group-hover:scale-110"
                     />
-                    <span className="absolute -right-1 -top-1 grid h-10 w-10 place-items-center rounded-full bg-brand-700 text-white shadow-md ring-2 ring-white transition-colors duration-300 group-hover:bg-gold-600">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    <span className="absolute -right-1 -top-1 grid h-11 w-11 place-items-center rounded-full bg-brand-700 text-white shadow-md ring-2 ring-white transition-colors duration-300 group-hover:bg-gold-600">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
                     </span>
                   </span>
 

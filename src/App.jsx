@@ -90,6 +90,7 @@ export default function App() {
             path="events"
             element={
               <News
+                key="/events"
                 title="Activities / Events"
                 lede="Campus festivities, sports, community service and everything else our students organise through the year."
                 breadcrumb="Events"
@@ -104,6 +105,7 @@ export default function App() {
             path="cme-conference-academic-activities"
             element={
               <News
+                key="/cme-conference-academic-activities"
                 title="CME, Conference & Academic Activities"
                 lede="Continuing medical education, conferences and academic workshops hosted at AIMS."
                 breadcrumb="Events"
