@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import Reveal from '@/components/ui/Reveal'
 import Button from '@/components/ui/Button'
+import Blob from '@/components/ui/Blob'
+import SectionBg from '@/components/ui/SectionBg'
 import { scaleIn } from '@/lib/motion'
 
 const quickLinks = [
@@ -39,7 +41,11 @@ export default function Intro() {
   }
 
   return (
-    <section className="section">
+    <section className="section relative isolate overflow-hidden">
+      {/* Quiet beat: the pulse field ripples in the gutters and is masked
+          out behind the copy. */}
+      <SectionBg variant="wave" />
+      <Blob tone="brand" className="-z-10 -bottom-32 -left-24" size="h-80 w-80" duration={20} />
       <div className="container grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
         <div>
           <Reveal as="p" className="eyebrow">

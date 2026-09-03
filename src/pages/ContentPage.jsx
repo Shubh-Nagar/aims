@@ -6,9 +6,19 @@ import PageHero from '@/components/ui/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Button from '@/components/ui/Button'
 import Img from '@/components/ui/Img'
+import Blob from '@/components/ui/Blob'
+import SectionNav from '@/components/ui/SectionNav'
+import { BlockRenderer, blockNavItems } from '@/components/blocks'
 
 /**
  * Renders any page whose content lives in src/data/pages.js.
+ *
+ * Two content shapes are supported:
+ *  - `blocks` — the richer vocabulary (stats, meters, tables, cards, floors,
+ *    quotes). Gets a sticky scroll-spy rail and ambient motion.
+ *  - `sections` — the original heading/body/list/documents shape, kept so
+ *    already-migrated pages render unchanged.
+ *
  * Pages still awaiting migrated copy show an explicit notice rather than
  * filler text, so nothing invented is ever published.
  */
@@ -19,6 +29,9 @@ export default function ContentPage({ slug: fixedSlug }) {
 
   if (!page) return <Navigate to="/404" replace />
 
+  const navItems = page.blocks ? blockNavItems(page.blocks) : []
+  const hasRail = navItems.length > 1 || Boolean(page.image)
+
   return (
     <>
       <Seo
@@ -26,16 +39,33 @@ export default function ContentPage({ slug: fixedSlug }) {
         description={page.lede ?? `${page.title} — Amaltas Institute of Medical Sciences, Dewas.`}
         path={`/${slug}`}
       />
-      <PageHero title={page.title} lede={page.lede} breadcrumb={page.breadcrumb} />
+      <PageHero title={page.title} lede={page.lede} breadcrumb={page.breadcrumb} vitals={Boolean(page.blocks)} />
 
-      <section className="section">
-        <div className="container grid gap-12 lg:grid-cols-[1.3fr_0.7fr] lg:gap-16">
-          <div className="max-w-3xl">
+      <section className="section relative overflow-hidden">
+        {page.blocks && (
+          <>
+            <Blob tone="mixed" className="-left-40 top-32" size="h-[30rem] w-[30rem]" duration={24} />
+            <Blob tone="gold" className="-right-48 top-[60%]" size="h-[26rem] w-[26rem]" duration={30} delay={3} />
+          </>
+        )}
+
+        <div
+          className={`container relative grid gap-12 ${
+            hasRail
+              ? page.image
+                ? 'lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-16'
+                : 'lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16'
+              : ''
+          }`}
+        >
+          <div className={page.blocks ? 'min-w-0' : 'max-w-3xl'}>
+            {page.blocks && <BlockRenderer blocks={page.blocks} />}
+
             {page.sections?.map((section, i) => (
               <Reveal key={section.heading} delay={i * 0.06} className={i ? 'mt-12' : ''}>
                 <h2 className="text-2xl md:text-[1.75rem]">{section.heading}</h2>
                 <div className="mt-2 h-px w-14 bg-gold-500" aria-hidden="true" />
-                {section.body.map((paragraph) => (
+                {section.body?.map((paragraph) => (
                   <p key={paragraph.slice(0, 40)} className="prose-aims mt-5 text-base">
                     {paragraph}
                   </p>
@@ -76,7 +106,7 @@ export default function ContentPage({ slug: fixedSlug }) {
             ))}
 
             {page.pendingSource && (
-              <Reveal className={page.sections ? 'mt-14' : ''}>
+              <Reveal className={page.sections || page.blocks ? 'mt-14' : ''}>
                 <div className="rounded-2xl border border-dashed border-gold-400 bg-gold-100/50 p-7">
                   <p className="text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">
                     Content migration pending
@@ -111,10 +141,20 @@ export default function ContentPage({ slug: fixedSlug }) {
             )}
           </div>
 
-          {page.image && (
-            <Reveal delay={0.1}>
-              <Img src={page.image} alt={page.title} ratio="aspect-[3/4]" wrapperClassName="rounded-2xl" />
-            </Reveal>
+          {hasRail && (
+            <aside className="hidden lg:block">
+              {navItems.length > 1 && <SectionNav items={navItems} />}
+              {page.image && (
+                <Reveal delay={0.1} className={navItems.length > 1 ? 'mt-10' : ''}>
+                  <Img
+                    src={page.image}
+                    alt={page.title}
+                    ratio="aspect-[3/4]"
+                    wrapperClassName="rounded-2xl"
+                  />
+                </Reveal>
+              )}
+            </aside>
           )}
         </div>
       </section>

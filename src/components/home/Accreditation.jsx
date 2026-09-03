@@ -1,11 +1,15 @@
 import { accreditations } from '@/data/site'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
+import SectionBg from '@/components/ui/SectionBg'
 import { FileText } from 'lucide-react'
 
 export default function Accreditation() {
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      {/* Last beat before the footer — the colour pools settle rather than
+          drift, so the page lands instead of trailing off. */}
+      <SectionBg variant="mesh" parallax />
       <div className="container">
         <SectionHeading
           eyebrow="Awards & accreditation"

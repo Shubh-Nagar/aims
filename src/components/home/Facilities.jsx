@@ -42,6 +42,7 @@ export default function Facilities() {
     <section className="section bg-surface">
       <div className="container">
         <SectionHeading
+          from="right"
           eyebrow="Facilities"
           title={
             <>

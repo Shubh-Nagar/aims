@@ -21,6 +21,7 @@ export default function Leadership() {
     <section className="section bg-surface">
       <div className="container">
         <SectionHeading
+          from="right"
           eyebrow="Insights from our leadership"
           title={
             <>

@@ -4,6 +4,7 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
 import Button from '@/components/ui/Button'
+import Blob from '@/components/ui/Blob'
 
 const strands = [
   { label: 'Campus festivities', image: '/images/student-life/festivities.jpg' },
@@ -13,9 +14,11 @@ const strands = [
 
 export default function StudentLife() {
   return (
-    <section className="section">
+    <section className="section relative isolate overflow-hidden">
+      <Blob tone="gold" className="-z-10 -right-32 top-0" size="h-96 w-96" duration={22} />
       <div className="container">
         <SectionHeading
+          from="left"
           eyebrow="Student life"
           title={
             <>

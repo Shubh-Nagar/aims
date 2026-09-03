@@ -1,6 +1,7 @@
 import { applySteps } from '@/data/site'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
+import SectionBg from '@/components/ui/SectionBg'
 
 /**
  * The steps genuinely are a sequence, so the numbering carries real
@@ -8,9 +9,13 @@ import Reveal from '@/components/ui/Reveal'
  */
 export default function HowToApply() {
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      {/* Deliberate break in the rhythm: the warm spotlight lands on the one
+          section that asks the reader to act. */}
+      <SectionBg variant="spotlight" />
       <div className="container">
         <SectionHeading
+          from="left"
           eyebrow="How to apply"
           title={
             <>

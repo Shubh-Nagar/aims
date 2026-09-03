@@ -5,6 +5,7 @@ import { testimonials } from '@/data/testimonials'
 import { EASE } from '@/lib/motion'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Img from '@/components/ui/Img'
+import SectionBg from '@/components/ui/SectionBg'
 
 const AUTOPLAY_MS = 2200
 const N = testimonials.length
@@ -101,9 +102,13 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      {/* Trust reads as steadiness: one still wash, no drift, behind the
+          card conveyor that is already moving. */}
+      <SectionBg variant="calm" />
       <div className="container">
         <SectionHeading
+          from="zoom"
           eyebrow="Testimonials"
           title="Hear it from our students"
           lede="Real experiences from students who have trained and studied at Amaltas Institute of Medical Sciences."

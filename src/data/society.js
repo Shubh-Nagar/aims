@@ -9,18 +9,11 @@ export const society = {
     'With over 20 years of excellence, Amaltas Educational Welfare Society develops skilled professionals through hands-on healthcare education, committed to community welfare and service.',
   intro:
     'The Amaltas Educational Welfare Society, established under Registration Incorporation 03/27/03/16579/13 on 18th December 2013, is committed to fostering high-quality healthcare education and services. The society is governed by an executive committee composed of eminent doctors, administrators, and professionals, each contributing to the mission of elevating healthcare standards and ensuring widespread access to medical education and services.',
-  collage: '/images/about-society/collage.jpg',
 
   stats: [
     { value: 10, suffix: '+', label: 'Institutions' },
     { value: 100, suffix: '+', label: 'Activities' },
     { value: 20, suffix: '+', label: 'Years of history' },
-  ],
-
-  gallery: [
-    '/images/about-society/strip-1.jpg',
-    '/images/about-society/strip-2.jpg',
-    '/images/about-society/strip-3.jpg',
   ],
 
   committee: {

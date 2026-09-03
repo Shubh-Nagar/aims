@@ -99,38 +99,6 @@ export default function AboutSociety() {
         </div>
       </section>
 
-      {/* Collage */}
-      <section className="pb-4">
-        <div className="container">
-          <Reveal>
-            <Img
-              src={society.collage}
-              alt="Amaltas Educational Welfare Society — collage of institutions and activities"
-              ratio="aspect-[16/9]"
-              wrapperClassName="rounded-2xl"
-            />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Photo strip */}
-      <section className="pb-4 pt-8">
-        <div className="container">
-          <ul className="grid grid-cols-3 gap-4">
-            {society.gallery.map((src, i) => (
-              <Reveal as="li" key={src} delay={i * 0.06}>
-                <Img
-                  src={src}
-                  alt="Amaltas Educational Welfare Society activities"
-                  ratio="aspect-[2/3]"
-                  wrapperClassName="rounded-2xl"
-                />
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* Executive committee */}
       <section className="section">
         <div className="container">

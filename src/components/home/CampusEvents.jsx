@@ -46,6 +46,7 @@ export default function CampusEvents() {
       <div className="pointer-events-none absolute inset-0 grain opacity-40" aria-hidden="true" />
       <div className="container relative">
         <SectionHeading
+          from="left"
           eyebrow="Current events & activities"
           title={
             <>

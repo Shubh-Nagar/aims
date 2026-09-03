@@ -4,6 +4,7 @@ import { courseHighlightCards } from '@/data/courses'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
+import SectionBg from '@/components/ui/SectionBg'
 
 const ICONS = {
   mbbs: GraduationCap,
@@ -13,9 +14,13 @@ const ICONS = {
 
 export default function CourseHighlights() {
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      {/* Shapes flow upward — the section is about progressing UG → PG →
+          super-speciality, and there is little body copy to compete with. */}
+      <SectionBg variant="rise" parallax />
       <div className="container">
         <SectionHeading
+          from="zoom"
           align="center"
           eyebrow="Courses"
           title="UG / PG medical and surgical specialisation courses"

@@ -8,6 +8,8 @@ import Vitals from '@/components/ui/Vitals'
 
 const HEADLINE = ['A', 'sprawling', 'medical', 'campus']
 
+const HERO_VIDEO_ID = 'cGgg0Tvr_jE'
+
 const SOCIAL_ICONS = {
   Facebook,
   Twitter,
@@ -24,21 +26,33 @@ export default function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-brand-950 pb-16 pt-[calc(var(--header-h)+5rem)]">
-      {/* Aerial of the 27.378-acre campus. The gradient sits underneath as the
-          fallback, so a missing file degrades to pine rather than to nothing. */}
+      {/* Campus tour video plays behind the headline. The gradient sits underneath as the
+          fallback, so a missing/blocked embed degrades to pine rather than to nothing.
+          Reduced-motion visitors get the static aerial instead of an autoplaying video. */}
       <motion.div
         style={reduced ? undefined : { y: imageY }}
-        className="absolute inset-0 -z-20 scale-105 bg-gradient-to-br from-brand-900 via-brand-950 to-brand-800"
+        className="absolute inset-0 -z-20 scale-105 overflow-hidden bg-gradient-to-br from-brand-900 via-brand-950 to-brand-800"
       >
-        <img
-          src="/images/campus/hero.jpg"
-          alt=""
-          fetchpriority="high"
-          className="h-full w-full object-cover"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none'
-          }}
-        />
+        {reduced ? (
+          <img
+            src="/images/medical.png"
+            alt=""
+            fetchpriority="high"
+            className="h-full w-full object-cover"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none'
+            }}
+          />
+        ) : (
+          <iframe
+            src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1`}
+            title="Amaltas campus tour"
+            allow="autoplay; encrypted-media"
+            tabIndex={-1}
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+          />
+        )}
       </motion.div>
 
       <motion.div

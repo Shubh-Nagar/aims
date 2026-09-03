@@ -24,6 +24,25 @@ export const zoomIn = {
   show: { opacity: 1, scale: 1, transition: { duration: 0.85, ease: EASE } },
 }
 
+// Directional entrances. A section that slides its heading in from the side
+// reads as a distinct "beat" from one that lifts it — alternating them down
+// the page is what stops a long scroll feeling like one repeated animation.
+export const fadeLeft = {
+  hidden: { opacity: 0, x: -48 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.85, ease: EASE } },
+}
+
+export const fadeRight = {
+  hidden: { opacity: 0, x: 48 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.85, ease: EASE } },
+}
+
+// Photography settles out of a slight over-scale rather than fading flat.
+export const imgIn = {
+  hidden: { opacity: 0, scale: 1.06 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.9, ease: EASE } },
+}
+
 export const stagger = (staggerChildren = 0.09, delayChildren = 0) => ({
   hidden: {},
   show: { transition: { staggerChildren, delayChildren } },
@@ -42,3 +61,9 @@ export const pageTransition = {
 }
 
 export const viewportOnce = { once: true, margin: '-80px 0px -80px 0px' }
+
+// Replaying counterpart: the element resets once it is comfortably out of
+// frame, so scrolling back up plays the entrance again. The margin is a
+// percentage so the reset point scales with the viewport rather than firing
+// twice on a short screen.
+export const viewportReplay = { once: false, margin: '-12% 0px -12% 0px' }

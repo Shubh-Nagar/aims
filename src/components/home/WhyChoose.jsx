@@ -146,6 +146,7 @@ export default function WhyChoose() {
     <section className="section bg-surface">
       <div className="container">
         <SectionHeading
+          from="left"
           eyebrow="Why choose us"
           title={
             <>

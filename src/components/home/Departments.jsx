@@ -99,6 +99,7 @@ export default function Departments() {
     <section className="section">
       <div className="container">
         <SectionHeading
+          from="right"
           eyebrow="Departments"
           title="Explore our academic and clinical departments"
           lede="Pre-clinical foundations through to full clinical services — fourteen departments training students alongside practising clinicians at Amaltas Hospital."

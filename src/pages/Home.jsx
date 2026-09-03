@@ -1,10 +1,10 @@
 import Seo from '@/components/ui/Seo'
 import { site } from '@/data/site'
+import { ReplayReveals } from '@/components/ui/Reveal'
 import Hero from '@/components/home/Hero'
 import NewsTicker from '@/components/home/NewsTicker'
 import Intro from '@/components/home/Intro'
 import CinematicBreak from '@/components/home/CinematicBreak'
-import Stats from '@/components/home/Stats'
 import WhyChoose from '@/components/home/WhyChoose'
 import CourseHighlights from '@/components/home/CourseHighlights'
 import Departments from '@/components/home/Departments'
@@ -31,19 +31,24 @@ export default function Home() {
       </div>
 
       <NewsTicker />
-      <Intro />
-      <CinematicBreak />
-      <Stats />
-      <WhyChoose />
-      <CourseHighlights />
-      <Departments />
-      <CampusEvents />
-      <Facilities />
-      <StudentLife />
-      <Testimonials />
-      <Leadership />
-      <HowToApply />
-      <Accreditation />
+
+      {/* Everything below the hero replays its entrance each time it scrolls
+          into frame, so moving back up the page is as animated as coming
+          down it. Reveals outside this wrapper still fire once. */}
+      <ReplayReveals>
+        <Intro />
+        <CinematicBreak />
+        <WhyChoose />
+        <CourseHighlights />
+        <Departments />
+        <CampusEvents />
+        <Facilities />
+        <StudentLife />
+        <Testimonials />
+        <Leadership />
+        <HowToApply />
+        <Accreditation />
+      </ReplayReveals>
     </>
   )
 }
