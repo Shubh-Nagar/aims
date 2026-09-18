@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FileText, X } from 'lucide-react'
 import { accreditations } from '@/data/site'
-import { EASE } from '@/lib/motion'
+import { EASE, imgIn } from '@/lib/motion'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
 import Reveal from '@/components/ui/Reveal'
@@ -32,6 +32,7 @@ export default function AwardsAchievements() {
         title="Awards & Achievements"
         lede="Certificates, accreditations and recognitions earned by Amaltas Institute of Medical Sciences."
         breadcrumb="Events"
+        image="/images/awards/award-1.jpg"
       />
 
       <section className="section-tight">
@@ -78,7 +79,7 @@ export default function AwardsAchievements() {
 
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {photos.map((photo, i) => (
-              <Reveal as="li" key={photo.src} delay={(i % 3) * 0.06}>
+              <Reveal as="li" key={photo.src} delay={(i % 3) * 0.06} variants={imgIn}>
                 <button
                   type="button"
                   onClick={() => setActive(photo)}

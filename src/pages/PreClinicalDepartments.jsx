@@ -31,6 +31,7 @@ export default function PreClinicalDepartments() {
         title="Pre-Clinical Departments"
         lede="Anatomy, Physiology and Biochemistry — the foundation years, taught across dedicated laboratories, museums and demonstration rooms. Select a department for its full facility details."
         breadcrumb="Infrastructure"
+        image="/images/courses/anatomy-lab.jpg"
       />
 
       <section className="section-tight">

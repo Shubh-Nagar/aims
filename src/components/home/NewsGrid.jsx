@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { imgIn } from '@/lib/motion'
 import { news } from '@/data/news'
 import SectionHeading from '@/components/ui/SectionHeading'
+import SectionBg from '@/components/ui/SectionBg'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
 
@@ -46,7 +48,7 @@ export function NewsCard({ item, delay = 0, reveal = true }) {
   if (!reveal) return <li>{card}</li>
 
   return (
-    <Reveal as="li" delay={delay}>
+    <Reveal as="li" delay={delay} variants={imgIn}>
       {card}
     </Reveal>
   )
@@ -54,7 +56,8 @@ export function NewsCard({ item, delay = 0, reveal = true }) {
 
 export default function NewsGrid() {
   return (
-    <section className="section">
+    <section className="section relative isolate overflow-hidden">
+      <SectionBg variant="mesh" parallax />
       <div className="container">
         <SectionHeading
           eyebrow="Events & activities"

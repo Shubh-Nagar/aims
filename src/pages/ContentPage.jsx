@@ -39,7 +39,13 @@ export default function ContentPage({ slug: fixedSlug }) {
         description={page.lede ?? `${page.title} — Amaltas Institute of Medical Sciences, Dewas.`}
         path={`/${slug}`}
       />
-      <PageHero title={page.title} lede={page.lede} breadcrumb={page.breadcrumb} vitals={Boolean(page.blocks)} />
+      <PageHero
+        title={page.title}
+        lede={page.lede}
+        breadcrumb={page.breadcrumb}
+        image={page.heroImage}
+        vitals={Boolean(page.blocks)}
+      />
 
       <section className="section relative overflow-hidden">
         {page.blocks && (

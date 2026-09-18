@@ -21,6 +21,7 @@ import {
 import { clinicalDepartments, preClinicalDepartments } from '@/data/departments'
 import { EASE } from '@/lib/motion'
 import SectionHeading from '@/components/ui/SectionHeading'
+import SectionBg from '@/components/ui/SectionBg'
 
 const ICONS = {
   anatomy: Bone,
@@ -96,7 +97,8 @@ export default function Departments() {
     setPage(([current]) => [(current + delta + pages.length) % pages.length, delta > 0 ? 1 : -1])
 
   return (
-    <section className="section">
+    <section className="section relative isolate overflow-hidden">
+      <SectionBg variant="wave" />
       <div className="container">
         <SectionHeading
           from="right"

@@ -5,3 +5,10 @@ dist-ssr
 *.local
 .env
 .vite
+
+# Hero footage. The current campus-tour.mp4 is ~134 MB, over GitHub's hard
+# 100 MB per-file limit, so committing it makes `git push` fail outright.
+# Transcode it (see README "Before go-live") and remove this rule, or host the
+# file on a CDN. While it is ignored the hero falls back to its poster frame.
+public/videos/*.mp4
+public/videos/*.webm

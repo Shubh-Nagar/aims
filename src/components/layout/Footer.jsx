@@ -4,6 +4,7 @@ import { site, helplines } from '@/data/site'
 import { footerColumns } from '@/data/navigation'
 import Reveal from '@/components/ui/Reveal'
 import Vitals from '@/components/ui/Vitals'
+import SectionBg from '@/components/ui/SectionBg'
 
 function FooterLink({ link }) {
   const classes =
@@ -27,8 +28,21 @@ function FooterLink({ link }) {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-brand-100 text-brand-900">
+    <footer className="relative isolate overflow-hidden bg-brand-100 text-brand-900">
+      {/* The last thing every visitor sees, so it gets the one variant with
+          continuous motion. */}
+      <SectionBg variant="aurora" />
       <div className="pointer-events-none absolute inset-0 grain opacity-40" aria-hidden="true" />
+      <img
+        src="/images/aims-emblem.png"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="pointer-events-none absolute -bottom-20 -right-16 -z-10 w-80 opacity-[.05] md:w-[26rem]"
+        onError={(e) => {
+          e.currentTarget.style.display = 'none'
+        }}
+      />
       <Vitals tone="pine" className="h-8 opacity-50" duration={2.6} />
 
       <div className="container relative pb-10 pt-12 md:pt-16">

@@ -19,7 +19,7 @@ export default function NewsPressRelease() {
         description="Press and media coverage of Amaltas Institute of Medical Sciences."
         path="/news-press-release"
       />
-      <PageHero title="News - Press Release" breadcrumb="Events" />
+      <PageHero title="News - Press Release" breadcrumb="Events" image="/images/news/convocation.jpg" />
 
       <section className="section">
         <div className="container">

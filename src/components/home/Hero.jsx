@@ -8,8 +8,6 @@ import Vitals from '@/components/ui/Vitals'
 
 const HEADLINE = ['A', 'sprawling', 'medical', 'campus']
 
-const HERO_VIDEO_ID = 'cGgg0Tvr_jE'
-
 const SOCIAL_ICONS = {
   Facebook,
   Twitter,
@@ -22,12 +20,12 @@ export default function Hero() {
   const reduced = useReducedMotion()
   const { scrollY } = useScroll()
   const imageY = useTransform(scrollY, [0, 600], [0, 90])
-  const overlayOpacity = useTransform(scrollY, [0, 500], [0.62, 0.85])
+  const scrimOpacity = useTransform(scrollY, [0, 500], [0.9, 1])
 
   return (
     <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-brand-950 pb-16 pt-[calc(var(--header-h)+5rem)]">
       {/* Campus tour video plays behind the headline. The gradient sits underneath as the
-          fallback, so a missing/blocked embed degrades to pine rather than to nothing.
+          fallback, so a missing/blocked file degrades to pine rather than to nothing.
           Reduced-motion visitors get the static aerial instead of an autoplaying video. */}
       <motion.div
         style={reduced ? undefined : { y: imageY }}
@@ -35,7 +33,7 @@ export default function Hero() {
       >
         {reduced ? (
           <img
-            src="/images/medical.png"
+            src="/images/campus/hero.jpg"
             alt=""
             fetchpriority="high"
             className="h-full w-full object-cover"
@@ -44,22 +42,56 @@ export default function Hero() {
             }}
           />
         ) : (
-          <iframe
-            src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1`}
-            title="Amaltas campus tour"
-            allow="autoplay; encrypted-media"
-            tabIndex={-1}
+          <motion.video
+            src="/videos/campus-tour.mp4"
+            /* First paint is a real frame of the campus rather than a
+               gradient, which matters while a heavy file is still arriving —
+               and it is the fallback outright when the file is absent, so
+               there is deliberately no onError hiding this element. */
+            poster="/images/campus/hero.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            disablePictureInPicture
+            preload="auto"
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+            /* Graded in CSS: the footage is under-saturated for a campus this
+               green, and a little contrast stops it reading as phone video. */
+            className="h-full w-full object-cover [filter:saturate(1.2)_contrast(1.08)_brightness(.88)]"
+            /* A slow drift, so the hero breathes even across the stillest
+               stretch of the loop. Only reached when motion is allowed. */
+            animate={{ scale: [1.06, 1.14, 1.06] }}
+            transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
           />
         )}
       </motion.div>
 
+      {/* Legibility scrim, weighted into the bottom-left corner where the
+          headline sits — so the top-right two thirds of the footage stay at
+          full strength. A full-bleed wash dark enough to carry the headline is
+          dark enough to turn the whole campus to mud. */}
       <motion.div
-        style={reduced ? undefined : { opacity: overlayOpacity }}
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-950 via-brand-950/70 to-brand-950/30"
+        aria-hidden="true"
+        style={reduced ? undefined : { opacity: scrimOpacity }}
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top_right,rgba(5,27,13,.95)_0%,rgba(5,27,13,.82)_28%,rgba(5,27,13,.52)_54%,rgba(5,27,13,.16)_78%,rgba(5,27,13,0)_100%)]"
       />
-      <div className="absolute inset-0 -z-10 grain opacity-70" aria-hidden="true" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 -z-10 h-[45%] bg-gradient-to-t from-brand-950/85 via-brand-950/25 to-transparent"
+      />
+      {/* Amaltas light leak — a warm flare in the corner the copy never
+          reaches. Screen blend lifts the footage instead of tinting it. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(52%_44%_at_82%_14%,rgba(233,168,37,.26),transparent_68%)] mix-blend-screen"
+      />
+      {/* Vignette — pulls the eye inward and hides the footage's soft edges. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_100%_at_50%_50%,transparent_42%,rgba(5,27,13,.55)_100%)]"
+      />
+      <div className="absolute inset-0 -z-10 grain opacity-40" aria-hidden="true" />
 
       <div className="container relative flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-4xl">
@@ -76,12 +108,16 @@ export default function Hero() {
             variants={stagger(0.09, 0.15)}
             initial="hidden"
             animate="show"
-            className="mt-6 max-w-4xl font-display text-[clamp(2.6rem,7vw,5.4rem)] font-semibold leading-[0.98] text-white"
+            className="mt-6 max-w-4xl font-display text-[clamp(2.6rem,7vw,5.4rem)] font-semibold leading-[0.98] text-white [text-shadow:0_2px_40px_rgba(5,27,13,.6)]"
           >
             {HEADLINE.map((word, i) => (
               <span key={word} className="mr-[0.28em] inline-block overflow-hidden align-bottom">
                 <motion.span variants={wordUp} className="inline-block">
-                  {i === HEADLINE.length - 1 ? <em className="not-italic text-gold-400">{word}</em> : word}
+                  {i === HEADLINE.length - 1 ? (
+                    <em className="not-italic bg-gold-sweep bg-clip-text text-transparent">{word}</em>
+                  ) : (
+                    word
+                  )}
                 </motion.span>
               </span>
             ))}
@@ -91,7 +127,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
-            className="mt-7 max-w-xl text-base leading-relaxed text-white/75"
+            className="mt-7 max-w-xl text-base leading-relaxed text-white/85"
           >
             Modern classrooms, cutting-edge labs and quiet study spaces across {site.heroKicker}, eight
             kilometres from Dewas — designed to support your learning through medical school and beyond.

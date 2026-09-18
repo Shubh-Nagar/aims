@@ -30,6 +30,7 @@ export default function Antiragging() {
         title="Antiragging Measures"
         lede="A proactive Anti-Ragging Committee, a toll-free helpline and support lines that answer around the clock."
         breadcrumb="Antiragging"
+        image="/images/antiragging/poster-1.jpg"
       />
 
       <section className="section">

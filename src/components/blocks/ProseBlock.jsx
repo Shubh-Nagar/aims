@@ -3,11 +3,20 @@ import { stagger, fadeUp } from '@/lib/motion'
 import { motion } from 'framer-motion'
 
 /** Body copy: paragraphs, and an optional bulleted list that staggers in. */
-export default function ProseBlock({ body = [], list, columns = 1 }) {
+export default function ProseBlock({ body = [], list, columns = 1, dropCap = false }) {
   return (
     <>
       {body.map((paragraph, i) => (
-        <Reveal as="p" key={paragraph.slice(0, 48)} delay={i * 0.05} className="prose-aims mt-5 text-base">
+        <Reveal
+          as="p"
+          key={paragraph.slice(0, 48)}
+          delay={i * 0.05}
+          className={`prose-aims mt-5 text-base ${
+            dropCap && i === 0
+              ? 'first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.25rem] first-letter:leading-[0.78] first-letter:text-brand-700'
+              : ''
+          }`}
+        >
           {paragraph}
         </Reveal>
       ))}

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+import { imgIn } from '@/lib/motion'
 import { helplines } from '@/data/site'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
 import Button from '@/components/ui/Button'
-import Blob from '@/components/ui/Blob'
+import SectionBg from '@/components/ui/SectionBg'
 
 const strands = [
   { label: 'Campus festivities', image: '/images/student-life/festivities.jpg' },
@@ -15,7 +16,7 @@ const strands = [
 export default function StudentLife() {
   return (
     <section className="section relative isolate overflow-hidden">
-      <Blob tone="gold" className="-z-10 -right-32 top-0" size="h-96 w-96" duration={22} />
+      <SectionBg variant="aurora" />
       <div className="container">
         <SectionHeading
           from="left"
@@ -30,7 +31,7 @@ export default function StudentLife() {
 
         <ul className="mt-14 grid gap-6 md:grid-cols-3">
           {strands.map((strand, i) => (
-            <Reveal as="li" key={strand.label} delay={i * 0.08}>
+            <Reveal as="li" key={strand.label} delay={i * 0.08} variants={imgIn}>
               <Link to="/events" className="card group block overflow-hidden">
                 <div className="card-media">
                   <Img src={strand.image} alt={strand.label} ratio="aspect-[5/4]" />

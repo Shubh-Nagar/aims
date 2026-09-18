@@ -1,10 +1,12 @@
 import { Navigate, useParams } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { ExternalLink, Mail, MapPin, Phone, Smartphone } from 'lucide-react'
 import { leadership } from '@/data/leadership'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
+import { fadeUp, stagger } from '@/lib/motion'
 
 export default function LeadershipPage({ slug: fixedSlug }) {
   const params = useParams()
@@ -19,40 +21,49 @@ export default function LeadershipPage({ slug: fixedSlug }) {
         description={`${person.name}, ${person.role} of Amaltas Institute of Medical Sciences, Dewas.`}
         path={`/${slug}`}
       />
-      <PageHero title={person.role} breadcrumb="About Us" />
+      <PageHero title={person.role} breadcrumb="About Us" image="/images/campus/night.jpg" />
 
       <section className="section">
         <div className="container grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
-          <Reveal>
-            <Img src={person.image} alt={person.name} ratio="aspect-[4/5]" wrapperClassName="rounded-2xl" />
-            <h2 className="mt-6 text-2xl">{person.name}</h2>
-            <p className="mt-1 text-2xs font-semibold uppercase tracking-eyebrow text-gold-600">
+          <Reveal onMount variants={stagger(0.1)}>
+            <motion.div variants={fadeUp}>
+              <Img src={person.image} alt={person.name} ratio="aspect-[4/5]" wrapperClassName="rounded-2xl" />
+            </motion.div>
+            <motion.h2 variants={fadeUp} className="mt-6 text-2xl">
+              {person.name}
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="mt-1 text-2xs font-semibold uppercase tracking-eyebrow text-gold-600"
+            >
               {person.role}
-            </p>
+            </motion.p>
             {person.qualifications && (
-              <p className="mt-1 text-sm text-muted">{person.qualifications}</p>
+              <motion.p variants={fadeUp} className="mt-1 text-sm text-muted">
+                {person.qualifications}
+              </motion.p>
             )}
 
             {person.contact && (
-              <ul className="mt-6 space-y-3 border-t border-line pt-6 text-sm">
+              <motion.ul variants={stagger(0.06)} className="mt-6 space-y-3 border-t border-line pt-6 text-sm">
                 {person.contact.phone && (
-                  <li className="flex items-start gap-3">
+                  <motion.li variants={fadeUp} className="flex items-start gap-3">
                     <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
                     <a href={person.contact.phoneHref} className="text-brand-800 transition-colors hover:text-gold-700">
                       {person.contact.phone}
                     </a>
-                  </li>
+                  </motion.li>
                 )}
                 {person.contact.mobile && (
-                  <li className="flex items-start gap-3">
+                  <motion.li variants={fadeUp} className="flex items-start gap-3">
                     <Smartphone className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
                     <a href={person.contact.mobileHref} className="text-brand-800 transition-colors hover:text-gold-700">
                       {person.contact.mobile}
                     </a>
-                  </li>
+                  </motion.li>
                 )}
                 {person.contact.email && (
-                  <li className="flex items-start gap-3">
+                  <motion.li variants={fadeUp} className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
                     <a
                       href={`mailto:${person.contact.email}`}
@@ -60,24 +71,28 @@ export default function LeadershipPage({ slug: fixedSlug }) {
                     >
                       {person.contact.email}
                     </a>
-                  </li>
+                  </motion.li>
                 )}
                 {person.contact.address && (
-                  <li className="flex items-start gap-3">
+                  <motion.li variants={fadeUp} className="flex items-start gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" aria-hidden="true" />
                     <span className="text-muted">{person.contact.address}</span>
-                  </li>
+                  </motion.li>
                 )}
-              </ul>
+              </motion.ul>
             )}
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal onMount delay={0.08} variants={stagger(0.12)}>
             {person.message ? (
               person.message.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="prose-aims mt-5 text-base first:mt-0">
+                <motion.p
+                  key={paragraph.slice(0, 40)}
+                  variants={fadeUp}
+                  className="prose-aims mt-5 text-base first:mt-0"
+                >
                   {paragraph}
-                </p>
+                </motion.p>
               ))
             ) : (
               <div className="rounded-2xl border border-dashed border-gold-400 bg-gold-100/50 p-7">

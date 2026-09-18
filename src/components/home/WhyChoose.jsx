@@ -10,6 +10,7 @@ import {
   HeartHandshake,
 } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
+import SectionBg from '@/components/ui/SectionBg'
 import Reveal from '@/components/ui/Reveal'
 
 /**
@@ -143,7 +144,8 @@ function Crest({ className = '', size = 'h-24' }) {
 
 export default function WhyChoose() {
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      <SectionBg variant="radiant" />
       <div className="container">
         <SectionHeading
           from="left"

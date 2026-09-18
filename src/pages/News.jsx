@@ -18,7 +18,7 @@ function inCategory(item, category) {
  * Shared listing for Events, News and CME. `only` restricts the filter to a
  * single category so the three routes stay distinct without duplicating code.
  */
-export default function News({ title, lede, breadcrumb, only, path, downloadPdf }) {
+export default function News({ title, lede, breadcrumb, image, only, path, downloadPdf }) {
   const [active, setActive] = useState(only ?? 'All')
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
@@ -37,7 +37,7 @@ export default function News({ title, lede, breadcrumb, only, path, downloadPdf 
   return (
     <>
       <Seo title={`${title} | Amaltas Institute of Medical Sciences`} description={lede} path={path} />
-      <PageHero title={title} lede={lede} breadcrumb={breadcrumb} />
+      <PageHero title={title} lede={lede} breadcrumb={breadcrumb} image={image} />
 
       <section className="section">
         <div className="container">

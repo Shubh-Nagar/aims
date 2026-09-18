@@ -44,7 +44,12 @@ export default function ClinicalDepartmentDetail() {
         description={department.summary}
         path={`/clinical-departments/${slug}`}
       />
-      <PageHero title={department.name} lede={department.summary} breadcrumb="Clinical Departments" />
+      <PageHero
+        title={department.name}
+        lede={department.summary}
+        breadcrumb="Clinical Departments"
+        image="/images/courses/hospital-training.jpg"
+      />
 
       <section className="section">
         <div className="container max-w-3xl">

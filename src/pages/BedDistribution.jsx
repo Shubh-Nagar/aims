@@ -66,6 +66,7 @@ export default function BedDistribution() {
         title="Bed Distribution"
         lede={`Ward-wise bed capacity across broad speciality and super-speciality departments at Amaltas Hospital. Broad speciality figures updated ${bedDistributionUpdated}; super-speciality updated ${superSpecialityUpdated}.`}
         breadcrumb="Institutional"
+        image="/images/courses/hospital-training.jpg"
       />
 
       <section className="section-tight">

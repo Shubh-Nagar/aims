@@ -57,6 +57,33 @@ const LAYERS = {
     </>
   ),
 
+  /* Radiant — concentric rings around a warm centre. Built for WhyChoose,
+     whose hub-and-spoke diagram deserves a field that echoes its geometry
+     instead of yet another corner blob. */
+  radiant: (
+    <>
+      <div className="absolute left-1/2 top-1/2 h-[46rem] w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(233,168,37,.13),transparent_62%)] blur-2xl" />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <div
+          key={i}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand-200/40"
+          style={{ height: `${14 + i * 9}rem`, width: `${14 + i * 9}rem` }}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface" />
+    </>
+  ),
+
+  /* Aurora — two slowly counter-rotating conic pools. The only variant with
+     continuous motion, so it earns at most one appearance per page, and only
+     on a section with little body copy over it. */
+  aurora: (
+    <>
+      <div className="absolute -left-1/4 -top-1/3 h-[42rem] w-[42rem] animate-aurora-slow rounded-full bg-[conic-gradient(from_0deg,rgba(16,126,59,.16),transparent_42%,rgba(233,168,37,.16),transparent_78%)] blur-3xl" />
+      <div className="absolute -bottom-1/3 -right-1/4 h-[38rem] w-[38rem] animate-aurora-slower rounded-full bg-[conic-gradient(from_120deg,rgba(233,168,37,.14),transparent_48%,rgba(16,126,59,.14),transparent_82%)] blur-3xl" />
+    </>
+  ),
+
   /* Soft close — two off-canvas colour pools settling into the page ground. */
   mesh: (
     <>

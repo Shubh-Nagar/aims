@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { clipUp } from '@/lib/motion'
 import SectionHeading from '@/components/ui/SectionHeading'
+import SectionBg from '@/components/ui/SectionBg'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
 
@@ -39,7 +41,8 @@ export default function Facilities() {
   const category = CATEGORIES.find((c) => c.key === active)
 
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      <SectionBg variant="rise" parallax />
       <div className="container">
         <SectionHeading
           from="right"
@@ -72,7 +75,7 @@ export default function Facilities() {
 
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {category.items.map((item, i) => (
-            <Reveal as="li" key={item.label} delay={i * 0.06}>
+            <Reveal as="li" key={item.label} delay={i * 0.06} variants={clipUp}>
               <figure className="group relative overflow-hidden rounded-2xl">
                 <Img
                   src={item.image}

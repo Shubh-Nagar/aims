@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
 import { ChevronDown, Menu, Phone, Mail, FileText } from 'lucide-react'
 import { navigation } from '@/data/navigation'
 import { site } from '@/data/site'
@@ -57,6 +57,11 @@ function MegaPanel({ items, onClose, left }) {
 
 export default function Header() {
   const { scrolled } = useScrollState()
+  const reduced = useReducedMotion()
+  const { scrollYProgress } = useScroll()
+  // Springing the value stops the bar juddering on trackpad/inertial scroll.
+  const smooth = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 })
+  const progress = reduced ? scrollYProgress : smooth
   const [openMenu, setOpenMenu] = useState(null)
   const [panelLeft, setPanelLeft] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -136,9 +141,9 @@ export default function Header() {
         </div>
 
         <div
-          className={`border-b transition-all duration-400 ease-smooth ${
+          className={`relative border-b transition-all duration-400 ease-smooth ${
             scrolled
-              ? 'border-line bg-surface shadow-card'
+              ? 'border-line bg-surface/85 shadow-card backdrop-blur-xl backdrop-saturate-150'
               : 'border-transparent bg-surface'
           }`}
         >
@@ -232,6 +237,16 @@ export default function Header() {
               </button>
             </div>
           </div>
+
+          {/* Reading progress, sitting on the header's bottom edge so it reads
+              as part of the chrome rather than a bar bolted above it. On a
+              route change the scroll resets, so this empties just as the
+              route sweep in Layout plays — the two never compete. */}
+          <motion.div
+            aria-hidden="true"
+            style={{ scaleX: progress }}
+            className="absolute inset-x-0 -bottom-px h-[2px] origin-left bg-gold-sweep"
+          />
         </div>
       </header>
 

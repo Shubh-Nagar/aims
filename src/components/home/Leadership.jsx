@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { leadership, leadershipIntro } from '@/data/leadership'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
+import SectionBg from '@/components/ui/SectionBg'
 import Img from '@/components/ui/Img'
 import { zoomIn } from '@/lib/motion'
 
@@ -18,7 +19,8 @@ function rowStartClass(i, total) {
 
 export default function Leadership() {
   return (
-    <section className="section bg-surface">
+    <section className="section relative isolate overflow-hidden bg-surface">
+      <SectionBg variant="calm" />
       <div className="container">
         <SectionHeading
           from="right"

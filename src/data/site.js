@@ -35,12 +35,41 @@ export const stats = [
   { value: 27.378, suffix: ' acres', label: 'Campus', note: 'Village Bangar, Dewas', decimals: 3 },
 ]
 
+// Copy for the full-bleed quote band on the homepage. The line is lifted
+// verbatim from the Founder Chairman's published message in
+// src/data/leadership.js, and `href` points at the page carrying that message
+// in full — so the band reads as an excerpt with a route back to its source
+// rather than a decontextualised line. Never put words here that the named
+// person did not actually publish.
+export const campusQuote = {
+  quote:
+    'Amaltas means Cassia fistula — the golden shower tree. It blooms fully, without hesitation, transforming its surroundings.',
+  name: 'Shri Suresh Singh Bhadoria',
+  role: 'Founder Chairman',
+  href: '/founder-chairman',
+  image: '/images/campus/night.jpg',
+}
+
 export const accreditations = [
   { label: 'Certificate of CMHO', href: '/documents/CMHO.jpeg' },
   { label: 'Certification of ISO', href: '/documents/ISO.jpeg' },
   { label: 'Certificate of NABH Accreditation', href: '/documents/NABH.jpeg' },
   { label: 'Certificate of NABL Accreditation', href: '/documents/NABL.jpeg' },
   { label: 'Awards & Achievements', href: '/documents/Awards-and-Achievement.pdf' },
+]
+
+// Scrolling admissions strip, migrated from the marquee on the current site's
+// homepage. `href` items open the published PDF; the first is plain text there.
+export const admissionNotices = [
+  { label: 'Admission Open for 2026-27' },
+  {
+    label: 'Fees of Super Speciality Courses & Stipend',
+    href: 'https://amaltasmedicalcollege.in/wp-content/uploads/2026/08/AIMS.DN_.2026.464-dated-18.08.2026.pdf',
+  },
+  {
+    label: 'Documents Checklist (for UG Counselling 2026-27)',
+    href: 'https://amaltasmedicalcollege.in/wp-content/uploads/2026/08/Documents-Checklist.pdf',
+  },
 ]
 
 export const applySteps = [

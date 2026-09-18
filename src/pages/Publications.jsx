@@ -43,6 +43,7 @@ export default function Publications() {
         title="Publications"
         lede="Research and case studies published by AIMS faculty across departments — search by title, author or journal, or filter by department."
         breadcrumb="Institutional"
+        image="/images/campus/library.jpg"
       />
 
       <section className="section-tight">

@@ -24,7 +24,7 @@ export default function EventDetail() {
         description={item.excerpt}
         path={`/events/${slug}`}
       />
-      <PageHero title={item.title} breadcrumb="Events" />
+      <PageHero title={item.title} breadcrumb="Events" image={item.image} />
 
       <section className="section">
         <div className="container max-w-3xl">

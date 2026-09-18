@@ -36,6 +36,7 @@ export default function Courses() {
         title={coursesIntro.title}
         lede={coursesIntro.lede}
         breadcrumb="Institutional"
+        image="/images/courses/simulation.jpg"
         image="/images/courses/lecture.jpg"
       />
 

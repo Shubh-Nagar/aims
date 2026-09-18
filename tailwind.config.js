@@ -63,9 +63,12 @@ export default {
           from: { opacity: '0', transform: 'translateY(14px)' },
           to: { opacity: '1', transform: 'none' },
         },
+        'aurora-spin': { from: { transform: 'rotate(0deg)' }, to: { transform: 'rotate(360deg)' } },
       },
       animation: {
         marquee: 'marquee 32s linear infinite',
+        'aurora-slow': 'aurora-spin 46s linear infinite',
+        'aurora-slower': 'aurora-spin 62s linear infinite reverse',
         'fade-up': 'fade-up .5s cubic-bezier(.22,1,.36,1) both',
       },
       transitionTimingFunction: {

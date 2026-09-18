@@ -23,6 +23,7 @@ export default function Contact() {
       <PageHero
         title="Contact Us"
         lede="The campus sits on the Dewas-Ujjain Highway, eight kilometres from Dewas. Here is every way to reach us."
+        image="/images/campus/aerial.jpg"
       />
 
       <section className="section">

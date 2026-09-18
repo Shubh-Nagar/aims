@@ -15,6 +15,7 @@ export const contentPages = {
   'details-of-institution': {
     title: 'Details of Institution',
     breadcrumb: 'About Us',
+    heroImage: '/images/campus/hero.jpg', // the campus as a whole
     lede: 'A 27.378-acre campus in village Bangar on the Dewas-Ujjain Highway, eight kilometres from Dewas.',
     image: '/images/details-of-institution.jpg',
     sections: [
@@ -31,6 +32,7 @@ export const contentPages = {
   'quality-policy': {
     title: 'Quality Policy',
     breadcrumb: 'About Us',
+    heroImage: '/images/facilities/seminar-hall.jpg', // teaching and office working
     lede: 'The standard the institution holds itself to, in teaching and in administration alike.',
     blocks: [
       {
@@ -67,6 +69,7 @@ export const contentPages = {
   'academic-and-hospital-facilities': {
     title: 'Academic and Hospital Facilities',
     breadcrumb: 'Infrastructure',
+    heroImage: '/images/campus/hospital.jpg', // the hospital block
     lede: 'A 300-bed functional teaching hospital — outpatient, inpatient and round-the-clock casualty services on one campus.',
     blocks: [
       {
@@ -235,6 +238,7 @@ export const contentPages = {
   'built-up-area': {
     title: 'Built Up Area',
     breadcrumb: 'Infrastructure',
+    heroImage: '/images/about-society/aims.jpg', // the built blocks themselves
     lede: 'Over one lakh square metres of constructed facility across hospital, college, hostels and residences.',
     blocks: [
       {
@@ -288,6 +292,7 @@ export const contentPages = {
   'college-layout': {
     title: 'College Layout',
     breadcrumb: 'Infrastructure',
+    heroImage: '/images/campus/aerial.jpg', // the layout read from above
     lede: 'Four levels of the college building — where every department, hall and laboratory sits.',
     blocks: [
       {
@@ -351,6 +356,7 @@ export const contentPages = {
   'library-photography': {
     title: 'Library & Photography',
     breadcrumb: 'Infrastructure',
+    heroImage: '/images/facilities/reading-room.jpg', // the reading room
     lede: 'A 26,200 sq. ft. central library open from 8am to 10pm, and a modern central photography section.',
     blocks: [
       {
@@ -369,6 +375,13 @@ export const contentPages = {
         body: [
           'The library occupies the ground floor with a total area of 26,200 sq. ft., featuring distinct sections with adequate capacity for each.',
         ],
+      },
+      {
+        type: 'figure',
+        src: '/images/campus/library.jpg',
+        alt: 'The central library at Amaltas Institute of Medical Sciences',
+        caption: 'The central library, on the ground floor of the college building.',
+        bleed: true,
       },
       {
         type: 'table',
@@ -446,6 +459,7 @@ export const contentPages = {
   'residential-facilities': {
     title: 'Residential Facilities',
     breadcrumb: 'Infrastructure',
+    heroImage: '/images/facilities/hostel-girls.jpg', // the hostels
     lede: 'Hostels for students, residents and nurses inside the campus, alongside quarters for teaching and non-teaching staff.',
     blocks: [
       {
@@ -499,6 +513,12 @@ export const contentPages = {
             list: ['35 nurses', '48 rooms', 'Room size 24 sq. m.'],
           },
         ],
+      },
+      {
+        type: 'figure',
+        src: '/images/facilities/hostel-room.jpg',
+        alt: 'A twin-sharing hostel room on the Amaltas campus',
+        caption: 'Rooms are twin-sharing at 24 sq. m., against an 18 sq. m. requirement.',
       },
       {
         type: 'chips',
@@ -574,6 +594,7 @@ export const contentPages = {
   'teaching-schedule': {
     title: 'Teaching Schedule',
     breadcrumb: 'Institutional',
+    heroImage: '/images/courses/lecture.jpg', // a lecture in progress
     lede: 'Competency-based timetables and academic schedules, published phase by phase.',
     blocks: [
       {
@@ -655,6 +676,7 @@ export const contentPages = {
   'citizen-charter': {
     title: 'Citizen Charter',
     breadcrumb: 'Important Links',
+    heroImage: '/images/student-life/community.jpg', // the community the charter is addressed to
     lede: 'Our motto, mission, facilities, and the rights and responsibilities of every patient who walks through the door.',
     blocks: [
       {
@@ -788,6 +810,7 @@ export const contentPages = {
   'bmw-west-annual-report': {
     title: 'BMW West Annual Report',
     breadcrumb: 'Important Links',
+    heroImage: '/images/campus/labs.jpg', // the labs that generate the waste
     lede: 'Bio-medical waste annual reports, published year on year.',
     blocks: [
       {
@@ -807,6 +830,7 @@ export const contentPages = {
   'college-information-pro-forma-status': {
     title: 'College Information Pro forma Status',
     breadcrumb: 'Important Links',
+    heroImage: '/images/campus/lecture-hall.jpg', // teaching infrastructure
     lede: 'The college information pro forma, as filed.',
     blocks: [
       {
@@ -822,6 +846,7 @@ export const contentPages = {
   'ugmsr-pgmsr-information': {
     title: 'Information as per UGMSR 2023 & PGMSR Amendment 2026',
     breadcrumb: 'Important Links',
+    heroImage: '/images/courses/anatomy-lab.jpg', // the UG/PG teaching the regulations govern
     lede: 'Mandatory institutional disclosure under the Undergraduate and Postgraduate Medical Standards Regulations.',
     blocks: [
       {
@@ -889,6 +914,7 @@ export const contentPages = {
   'affiliations-permissions': {
     title: 'Affiliations & Permissions',
     breadcrumb: 'Important Links',
+    heroImage: '/images/campus/night.jpg', // the institution at its most formal
     lede: 'Affiliation, statutory permissions, licences and accreditation certificates, published in full.',
     blocks: [
       {
@@ -990,6 +1016,7 @@ export const contentPages = {
   'erp-login': {
     title: 'ERP Staff & Students Log in',
     breadcrumb: 'Important Links',
+    heroImage: '/images/facilities/computer-lab.jpg', // the computer lab
     lede: 'Access the ERP portal for staff and student management — academic records, attendance and updates in one place.',
     sections: [
       {

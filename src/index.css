@@ -122,7 +122,16 @@
     @apply relative rounded-2xl bg-surface shadow-card ring-1 ring-line
            transition-all duration-500 ease-smooth;
   }
-  .card:hover { @apply -translate-y-1.5 shadow-lift ring-gold-300; }
+  /* The lift, plus a magnetic nudge toward the cursor. The offsets are
+     written by <MagneticCards>; with no pointer (or reduced motion, or a
+     touch device) both fall back to 0px and this is exactly the old lift.
+     A shorter duration on hover keeps the nudge feeling responsive without
+     making the 500ms settle-back feel abrupt. */
+  .card:hover {
+    @apply shadow-lift ring-gold-300;
+    transform: translate3d(var(--card-mx, 0px), calc(-0.375rem + var(--card-my, 0px)), 0);
+    transition-duration: 220ms;
+  }
 
   .card-media { @apply overflow-hidden; }
   .card-media img {

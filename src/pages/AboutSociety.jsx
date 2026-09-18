@@ -61,7 +61,12 @@ export default function AboutSociety() {
         description={society.kicker}
         path="/about-the-society"
       />
-      <PageHero title={society.title} lede={society.kicker} breadcrumb={society.breadcrumb} />
+      <PageHero
+        title={society.title}
+        lede={society.kicker}
+        breadcrumb={society.breadcrumb}
+        image="/images/about-society/collage.jpg"
+      />
 
       {/* Intro + registration facts */}
       <section className="section">

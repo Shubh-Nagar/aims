@@ -51,6 +51,7 @@ export default function ClinicalDepartments() {
         title="Clinical Departments"
         lede="Eleven clinical services delivered through Amaltas Hospital, where students train alongside practising clinicians. Select a department for its full details."
         breadcrumb="Infrastructure"
+        image="/images/courses/clinical-rounds.jpg"
       />
 
       <section className="section">

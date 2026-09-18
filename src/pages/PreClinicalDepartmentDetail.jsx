@@ -87,7 +87,12 @@ export default function PreClinicalDepartmentDetail() {
         description={department.summary}
         path={`/pre-clinical-departments/${slug}`}
       />
-      <PageHero title={department.name} lede={department.summary} breadcrumb="Pre-Clinical Departments" />
+      <PageHero
+        title={department.name}
+        lede={department.summary}
+        breadcrumb="Pre-Clinical Departments"
+        image="/images/campus/labs.jpg"
+      />
 
       <section className="section-tight">
         <div className="container">

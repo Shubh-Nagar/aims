@@ -37,6 +37,22 @@ export const fadeRight = {
   show: { opacity: 1, x: 0, transition: { duration: 0.85, ease: EASE } },
 }
 
+// A wipe: the image is uncovered from the bottom edge up while settling out
+// of a slight over-scale. Noticeably more considered than a fade for a pure
+// photo grid.
+//
+// Only for elements WITHOUT a box-shadow. clip-path clips the shadow too, so
+// on a `.card` (shadow-card, and shadow-lift on hover) this would shear the
+// lift off. Use `imgIn` for those.
+export const clipUp = {
+  hidden: { clipPath: 'inset(100% 0% 0% 0%)', scale: 1.06 },
+  show: {
+    clipPath: 'inset(0% 0% 0% 0%)',
+    scale: 1,
+    transition: { duration: 1, ease: EASE },
+  },
+}
+
 // Photography settles out of a slight over-scale rather than fading flat.
 export const imgIn = {
   hidden: { opacity: 0, scale: 1.06 },

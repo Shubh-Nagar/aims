@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { imgIn } from '@/lib/motion'
 import { Award, GraduationCap, Stethoscope } from 'lucide-react'
 import { courseHighlightCards } from '@/data/courses'
 import SectionHeading from '@/components/ui/SectionHeading'
@@ -32,7 +33,7 @@ export default function CourseHighlights() {
           {courseHighlightCards.map((course, i) => {
             const Icon = ICONS[course.id] ?? GraduationCap
             return (
-              <Reveal as="li" key={course.id} delay={i * 0.1}>
+              <Reveal as="li" key={course.id} delay={i * 0.1} variants={imgIn}>
                 <Link
                   to="/courses"
                   className="group relative block rounded-2xl border border-line bg-white px-6 pb-8 pt-28 text-center shadow-sm transition-all duration-500 ease-smooth hover:-translate-y-1.5 hover:border-brand-300 hover:shadow-lg"

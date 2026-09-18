@@ -101,6 +101,7 @@ export default function App() {
                   title="Activities / Events"
                   lede="Campus festivities, sports, community service and everything else our students organise through the year."
                   breadcrumb="Events"
+                  image="/images/student-life/sports.jpg"
                   only="Activities / Events"
                   path="/events"
                 />
@@ -116,6 +117,7 @@ export default function App() {
                   title="CME, Conference & Academic Activities"
                   lede="Continuing medical education, conferences and academic workshops hosted at AIMS."
                   breadcrumb="Events"
+                  image="/images/facilities/seminar-hall.jpg"
                   only="CME & Academic"
                   path="/cme-conference-academic-activities"
                   downloadPdf={{ href: '/documents/CMEs-Workshop-Details.pdf', label: 'Download CME & Workshop List (PDF)' }}

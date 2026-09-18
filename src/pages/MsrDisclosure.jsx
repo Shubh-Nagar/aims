@@ -60,6 +60,7 @@ export default function MsrDisclosure() {
         title="Information Under MSR Clause B.1.11"
         lede="Mandatory public disclosures required under Minimum Standard Requirements (MSR) Clause B.1.11."
         breadcrumb="Important Links"
+        image="/images/about-society/aims.jpg"
       />
 
       <section className="section">
