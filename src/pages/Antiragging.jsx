@@ -1,14 +1,12 @@
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 import { helplines, site } from '@/data/site'
-import { EASE } from '@/lib/motion'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
 import Reveal from '@/components/ui/Reveal'
 import Button from '@/components/ui/Button'
 import Img from '@/components/ui/Img'
-import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
-import { Phone, ShieldCheck, FileText, X } from 'lucide-react'
+import Lightbox from '@/components/ui/Lightbox'
+import { Phone, ShieldCheck, FileText } from 'lucide-react'
 
 const posters = Array.from({ length: 5 }, (_, i) => ({
   src: `/images/antiragging/poster-${i + 1}.jpg`,
@@ -17,7 +15,6 @@ const posters = Array.from({ length: 5 }, (_, i) => ({
 
 export default function Antiragging() {
   const [active, setActive] = useState(null)
-  useLockBodyScroll(Boolean(active))
 
   return (
     <>
@@ -64,8 +61,10 @@ export default function Antiragging() {
             </Reveal>
           </div>
 
-          <Reveal delay={0.1}>
-            <div className="sticky top-28 rounded-2xl bg-brand-100 p-8">
+          {/* Sticky goes on the grid item itself: inside a wrapper sized to
+              its own content it would have no room to stick. */}
+          <Reveal delay={0.1} className="self-start lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
+            <div className="rounded-2xl bg-brand-100 p-8">
               <ShieldCheck className="h-7 w-7 text-gold-700" aria-hidden="true" />
               <p className="mt-5 text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">
                 Toll-free helpline
@@ -76,12 +75,12 @@ export default function Antiragging() {
               >
                 {helplines.tollFree}
               </a>
-              <ul className="mt-6 space-y-3 border-t border-brand-900/10 pt-6">
+              <ul className="mt-6 space-y-1 border-t border-brand-900/10 pt-5">
                 {helplines.numbers.map((number) => (
                   <li key={number}>
                     <a
                       href={`tel:${number.replace(/-/g, '')}`}
-                      className="flex items-center gap-3 text-sm text-brand-800 transition-colors hover:text-gold-700"
+                      className="flex items-center gap-3 py-1.5 text-sm text-brand-800 transition-colors hover:text-gold-700"
                     >
                       <Phone className="h-4 w-4 text-gold-600" aria-hidden="true" />
                       {number}
@@ -112,12 +111,12 @@ export default function Antiragging() {
               <Reveal as="li" key={poster.src} delay={(i % 3) * 0.06}>
                 <button
                   type="button"
-                  onClick={() => setActive(poster)}
+                  onClick={() => setActive(i)}
                   className="card group block w-full overflow-hidden text-left"
                   aria-label={`Open ${poster.alt}`}
                 >
                   <div className="card-media">
-                    <Img src={poster.src} alt={poster.alt} ratio="aspect-[4/3]" />
+                    <Img src={poster.src} alt={poster.alt} ratio="aspect-square" wrapperClassName="bg-white" className="!object-contain" />
                   </div>
                 </button>
               </Reveal>
@@ -126,40 +125,7 @@ export default function Antiragging() {
         </div>
       </section>
 
-      <AnimatePresence>
-        {active && (
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            aria-label={active.alt}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[80] grid place-items-center bg-brand-950/90 p-6 backdrop-blur"
-            onClick={() => setActive(null)}
-          >
-            <button
-              type="button"
-              onClick={() => setActive(null)}
-              className="absolute right-6 top-6 grid h-11 w-11 place-items-center rounded-full border border-white/25 text-white transition-colors hover:bg-white hover:text-brand-900"
-              aria-label="Close"
-            >
-              <X className="h-5 w-5" aria-hidden="true" />
-            </button>
-            <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.35, ease: EASE }}
-              className="w-full max-w-4xl overflow-hidden rounded-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Img src={active.src} alt={active.alt} ratio="aspect-[16/10]" />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox items={posters} index={active} onClose={() => setActive(null)} onIndex={setActive} />
     </>
   )
 }

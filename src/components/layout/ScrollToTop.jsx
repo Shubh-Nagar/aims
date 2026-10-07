@@ -5,7 +5,10 @@ import { useLocation } from 'react-router-dom'
 export default function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' })
+    // 'instant' explicitly: 'auto' defers to the `scroll-behavior: smooth`
+    // set on <html>, which would visibly scroll every new page up from
+    // wherever the last one was left.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname])
   return null
 }

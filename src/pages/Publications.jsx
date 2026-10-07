@@ -12,7 +12,8 @@ const latestYear = Math.max(...publications.map((p) => p.year))
 const STATS = [
   { value: publications.length, suffix: '', label: 'Published works' },
   { value: publicationDepartments.length, suffix: '', label: 'Departments represented' },
-  { value: latestYear, suffix: '', label: 'Most recent intake year' },
+  // A year, not a quantity: shown as-is rather than counted up and grouped.
+  { value: latestYear, label: 'Most recent publication year', plain: true },
 ]
 
 const field =
@@ -50,18 +51,18 @@ export default function Publications() {
         <div className="container">
           <dl className="grid gap-x-8 gap-y-8 sm:grid-cols-3 lg:divide-x lg:divide-dashed lg:divide-line">
             {STATS.map((stat, i) => (
-              <Reveal key={stat.label} delay={i * 0.06} className="lg:pl-8 lg:first:pl-0">
-                <dd className="font-display text-4xl leading-none text-brand-900 md:text-[2.75rem]">
-                  <Counter value={stat.value} suffix={stat.suffix} />
-                </dd>
+              <Reveal key={stat.label} delay={i * 0.06} className="flex flex-col-reverse lg:pl-8 lg:first:pl-0">
                 <dt className="mt-3 text-2xs font-semibold uppercase tracking-eyebrow text-gold-700">{stat.label}</dt>
+                <dd className="font-display text-4xl leading-none text-brand-900 md:text-[2.75rem]">
+                  {stat.plain ? <span className="tabular-nums">{stat.value}</span> : <Counter value={stat.value} />}
+                </dd>
               </Reveal>
             ))}
           </dl>
         </div>
       </section>
 
-      <section className="section pt-6">
+      <section className="pb-16 pt-6 md:pb-24">
         <div className="container">
           <Reveal className="relative max-w-md">
             <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" aria-hidden="true" />

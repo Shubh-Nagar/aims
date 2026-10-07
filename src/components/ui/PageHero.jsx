@@ -122,7 +122,7 @@ export default function PageHero({
             }`}
           >
             <li>
-              <Link to="/" className={`transition-colors ${light ? 'hover:text-gold-700' : 'hover:text-gold-300'}`}>
+              <Link to="/" className={`-my-2 inline-block py-2 transition-colors ${light ? 'hover:text-gold-700' : 'hover:text-gold-300'}`}>
                 Home
               </Link>
             </li>

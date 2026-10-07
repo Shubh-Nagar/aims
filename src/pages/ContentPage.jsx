@@ -47,7 +47,9 @@ export default function ContentPage({ slug: fixedSlug }) {
         vitals={Boolean(page.blocks)}
       />
 
-      <section className="section relative overflow-hidden">
+      {/* overflow-clip, not overflow-hidden: it clips the blobs without
+          becoming a scroll container, which would break the sticky rail. */}
+      <section className="section relative overflow-clip">
         {page.blocks && (
           <>
             <Blob tone="mixed" className="-left-40 top-32" size="h-[30rem] w-[30rem]" duration={24} />

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { imgIn } from '@/lib/motion'
-import { helplines } from '@/data/site'
+// import { helplines } from '@/data/site'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import Img from '@/components/ui/Img'
-import Button from '@/components/ui/Button'
+// import Button from '@/components/ui/Button'
 import SectionBg from '@/components/ui/SectionBg'
 
 const strands = [
@@ -47,6 +47,7 @@ export default function StudentLife() {
           ))}
         </ul>
 
+        {/* Anti-ragging panel — hidden from the homepage for now.
         <Reveal delay={0.1} className="mt-8">
           <div className="grid gap-8 rounded-2xl bg-brand-100 p-8 md:grid-cols-[1.4fr_1fr] md:items-center md:p-12">
             <div>
@@ -76,10 +77,10 @@ export default function StudentLife() {
               >
                 {helplines.tollFree}
               </a>
-              <ul className="mt-5 space-y-2 text-sm text-brand-800">
+              <ul className="mt-4 space-y-0.5 text-sm text-brand-800">
                 {helplines.numbers.map((number) => (
                   <li key={number}>
-                    <a href={`tel:${number.replace(/-/g, '')}`} className="transition-colors hover:text-gold-700">
+                    <a href={`tel:${number.replace(/-/g, '')}`} className="inline-block py-1.5 transition-colors hover:text-gold-700">
                       {number}
                     </a>
                   </li>
@@ -88,6 +89,7 @@ export default function StudentLife() {
             </div>
           </div>
         </Reveal>
+        */}
       </div>
     </section>
   )

@@ -21,43 +21,43 @@ import Reveal from '@/components/ui/Reveal'
 const reasons = [
   {
     icon: Stethoscope,
-    title: 'A Teaching Hospital On Campus',
-    note: 'Clinical Training Where Patients Are Treated',
+    title: 'A teaching hospital on campus',
+    note: 'Clinical training where patients are treated',
   },
   {
     icon: Users,
-    title: 'Experienced Teaching Faculty',
-    note: '537 Teachers Across The Departments',
+    title: 'Experienced teaching faculty',
+    note: '537 teachers across the departments',
   },
   {
     icon: BadgeCheck,
-    title: 'Accredited And Verifiable',
-    note: 'NABH, NABL And ISO 9001 Certified',
+    title: 'Accredited and verifiable',
+    note: 'NABH, NABL and ISO 9001 certified',
   },
   {
     icon: HeartHandshake,
-    title: 'Rural And Community Outreach',
-    note: 'Medicine Practised Where It Is Needed',
+    title: 'Rural and community outreach',
+    note: 'Medicine practised where it is needed',
   },
   {
     icon: Trees,
-    title: 'A 27.378-Acre Residential Campus',
-    note: 'Room To Learn, Live And Grow',
+    title: 'A 27.378-acre residential campus',
+    note: 'Room to learn, live and grow',
   },
   {
     icon: GraduationCap,
-    title: 'UG, PG And Paramedical Pathways',
-    note: '302 Seats Across The Programmes',
+    title: 'UG, PG and paramedical pathways',
+    note: '302 seats across the programmes',
   },
   {
     icon: Microscope,
-    title: 'Modern Laboratories And Library',
-    note: 'Anatomy, Physiology And Biochemistry',
+    title: 'Modern laboratories and library',
+    note: 'Anatomy, physiology and biochemistry',
   },
   {
     icon: ShieldCheck,
-    title: 'Round-The-Clock Student Safety',
-    note: 'An Anti-Ragging Helpline That Answers',
+    title: 'Round-the-clock student safety',
+    note: 'An anti-ragging helpline that answers',
   },
 ]
 

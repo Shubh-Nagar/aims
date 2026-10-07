@@ -58,7 +58,7 @@ export default function PreClinicalDepartments() {
         </div>
       </section>
 
-      <section className="section pt-4">
+      <section className="pb-16 pt-4 md:pb-24">
         <div className="container">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {preClinicalDepartments.map((department, i) => {

@@ -125,7 +125,7 @@ export default function PreClinicalDepartmentDetail() {
 
       <Vitals className="h-8 opacity-60" duration={2.2} />
 
-      <section className="section pt-10">
+      <section className="pb-16 pt-10 md:pb-24">
         <div className="container">
           <div className="grid gap-6 md:grid-cols-2">
             {department.blocks.map((block, i) => (

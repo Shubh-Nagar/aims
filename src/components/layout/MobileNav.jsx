@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, X, Phone, Mail } from 'lucide-react'
 import { navigation } from '@/data/navigation'
@@ -10,7 +10,30 @@ import Button from '@/components/ui/Button'
 
 export default function MobileNav({ open, onClose }) {
   const [expanded, setExpanded] = useState(null)
+  const closeRef = useRef(null)
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+  const { pathname } = useLocation()
   useLockBodyScroll(open)
+
+  // Dialog basics: focus moves into the drawer, Escape closes it, and focus
+  // returns to whatever opened it. The section holding the current page
+  // starts expanded so the reader can see where they are.
+  useEffect(() => {
+    if (!open) return
+    const opener = document.activeElement
+    const current = navigation.find((entry) => entry.children?.some((child) => child.to === pathname))
+    setExpanded(current?.label ?? null)
+    closeRef.current?.focus()
+    const onKey = (e) => e.key === 'Escape' && onCloseRef.current()
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      if (opener instanceof HTMLElement) opener.focus()
+    }
+    // Runs per opening only; pathname is read at the moment the drawer opens.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open])
 
   return (
     <AnimatePresence>
@@ -38,6 +61,7 @@ export default function MobileNav({ open, onClose }) {
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
               <span className="font-display text-lg text-brand-900">Menu</span>
               <button
+                ref={closeRef}
                 type="button"
                 onClick={onClose}
                 aria-label="Close menu"
@@ -97,7 +121,10 @@ export default function MobileNav({ open, onClose }) {
                                     <Link
                                       to={child.to}
                                       onClick={onClose}
-                                      className="block rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:text-brand-700"
+                                      aria-current={child.to === pathname ? 'page' : undefined}
+                                      className={`block rounded-lg px-3 py-2.5 text-sm transition-colors hover:text-brand-700 ${
+                                        child.to === pathname ? 'font-medium text-brand-800' : 'text-muted'
+                                      }`}
                                     >
                                       {child.label}
                                     </Link>
@@ -112,7 +139,10 @@ export default function MobileNav({ open, onClose }) {
                       <Link
                         to={entry.to}
                         onClick={onClose}
-                        className="block rounded-xl px-4 py-3 text-[15px] font-medium text-brand-900 transition-colors hover:bg-brand-50"
+                        aria-current={entry.to === pathname ? 'page' : undefined}
+                        className={`block rounded-xl px-4 py-3 text-[15px] font-medium text-brand-900 transition-colors hover:bg-brand-50 ${
+                          entry.to === pathname ? 'bg-brand-50' : ''
+                        }`}
                       >
                         {entry.label}
                       </Link>

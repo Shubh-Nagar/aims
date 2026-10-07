@@ -1,35 +1,10 @@
-import { useState } from 'react'
 import { applySteps, site } from '@/data/site'
 import Seo from '@/components/ui/Seo'
 import PageHero from '@/components/ui/PageHero'
 import Reveal from '@/components/ui/Reveal'
-import Button from '@/components/ui/Button'
-import { Check } from 'lucide-react'
-
-const COURSE_OPTIONS = [
-  'M.B.B.S.',
-  'B.Sc. Nursing',
-  'M.Sc. Nursing',
-  'Paramedical Courses',
-  'P.G. Courses',
-  'B.H.M.S.',
-  'B.Pharm',
-  'D.Pharm',
-]
-
-const field =
-  'w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink transition-colors duration-200 placeholder:text-muted/70 focus:border-brand-500'
+import EnquiryForm from '@/components/ui/EnquiryForm'
 
 export default function Admission() {
-  const [sent, setSent] = useState(false)
-
-  // No backend is wired up yet — point `action` at the college's form
-  // handler (or an API route) when the endpoint is available.
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    setSent(true)
-  }
-
   return (
     <>
       <Seo
@@ -41,7 +16,6 @@ export default function Admission() {
         title="Admission"
         lede="Fill out the enquiry form and we guide you through the rest. We simplify the admission process and assist with financial aid if you are eligible."
         breadcrumb="Institutional"
-        image="/images/campus/walkway.jpg"
         image="/images/campus/walkway.jpg"
       />
 
@@ -73,11 +47,10 @@ export default function Admission() {
                 Admissions office
               </p>
               <p className="mt-3 text-sm text-muted">{site.address}</p>
-              <p className="mt-3 text-sm">
+              <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
                 <a href={site.phoneHref} className="font-medium text-brand-800 hover:text-gold-600">
                   {site.phone}
                 </a>
-                {' · '}
                 <a href={`mailto:${site.email}`} className="font-medium text-brand-800 hover:text-gold-600">
                   {site.email}
                 </a>
@@ -92,67 +65,7 @@ export default function Admission() {
                 Tell us which course you are interested in and an admissions representative will contact you.
               </p>
 
-              {sent ? (
-                <div className="mt-8 flex items-start gap-4 rounded-xl bg-brand-50 p-6">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-700 text-white">
-                    <Check className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="font-medium text-brand-900">Enquiry ready to send</p>
-                    <p className="prose-aims mt-1">
-                      Connect this form to the college mail handler or ERP endpoint to deliver it. Until then,
-                      reach the admissions office on {site.phone}.
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="mt-8 space-y-5" noValidate={false}>
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div>
-                      <label htmlFor="name" className="mb-2 block text-xs font-medium text-brand-900">
-                        Full name
-                      </label>
-                      <input id="name" name="name" type="text" required autoComplete="name" className={field} placeholder="Your name" />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="mb-2 block text-xs font-medium text-brand-900">
-                        Phone
-                      </label>
-                      <input id="phone" name="phone" type="tel" required autoComplete="tel" className={field} placeholder="10-digit mobile number" />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="mb-2 block text-xs font-medium text-brand-900">
-                      Email
-                    </label>
-                    <input id="email" name="email" type="email" required autoComplete="email" className={field} placeholder="you@example.com" />
-                  </div>
-                  <div>
-                    <label htmlFor="course" className="mb-2 block text-xs font-medium text-brand-900">
-                      Select course
-                    </label>
-                    <select id="course" name="course" required className={field} defaultValue="">
-                      <option value="" disabled>
-                        Choose a course
-                      </option>
-                      {COURSE_OPTIONS.map((course) => (
-                        <option key={course} value={course}>
-                          {course}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="mb-2 block text-xs font-medium text-brand-900">
-                      Message <span className="font-normal text-muted">(optional)</span>
-                    </label>
-                    <textarea id="message" name="message" rows={4} className={field} placeholder="Anything you would like us to know" />
-                  </div>
-                  <Button as="button" type="submit" variant="gold" className="w-full">
-                    Send enquiry
-                  </Button>
-                </form>
-              )}
+              <EnquiryForm idPrefix="admission" className="mt-8" />
             </div>
           </Reveal>
         </div>

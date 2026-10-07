@@ -1,7 +1,6 @@
 // Mirrors the information architecture of the current site.
 // `file: true` marks a link that should point at a PDF in /public/documents.
 export const navigation = [
-  { label: 'Home', to: '/' },
   {
     label: 'About Us',
     children: [
@@ -21,6 +20,7 @@ export const navigation = [
     label: 'Institutional',
     children: [
       { label: 'Admission', to: '/admission' },
+      { label: 'How to Apply', to: '/how-to-apply' },
       { label: 'Courses', to: '/courses' },
       { label: 'Fees', to: '/fees' },
       { label: 'Students', to: '/students' },

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowDown, ArrowUpRight, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
-import { site } from '@/data/site'
+import { ArrowRight, ArrowUpRight, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
+import { site, recognitions } from '@/data/site'
 import { EASE, stagger, wordUp } from '@/lib/motion'
 import Button from '@/components/ui/Button'
 import Vitals from '@/components/ui/Vitals'
@@ -23,7 +23,7 @@ export default function Hero() {
   const scrimOpacity = useTransform(scrollY, [0, 500], [0.9, 1])
 
   return (
-    <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-brand-950 pb-16 pt-[calc(var(--header-h)+5rem)]">
+    <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-brand-950 pb-12 pt-[calc(var(--header-h)+3.5rem)]">
       {/* Campus tour video plays behind the headline. The gradient sits underneath as the
           fallback, so a missing/blocked file degrades to pine rather than to nothing.
           Reduced-motion visitors get the static aerial instead of an autoplaying video. */}
@@ -151,20 +151,47 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-14 flex items-center gap-6"
+            className="mt-9 flex items-center gap-6"
           >
             <Link
               to="/details-of-institution"
               className="group flex items-center gap-3 text-2xs uppercase tracking-eyebrow text-white/55 transition-colors hover:text-gold-300"
             >
               <span className="grid h-9 w-9 place-items-center rounded-full border border-white/25 transition-colors group-hover:border-gold-400">
-                <ArrowDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden="true" />
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
               Campus overview
             </Link>
             <div className="hidden flex-1 sm:block">
               <Vitals tone="light" className="h-8 opacity-60" duration={2.8} repeat />
             </div>
+          </motion.div>
+
+          {/* Recognised by — the marks sit on white chips because the source
+              files carry their own white grounds. */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1, ease: EASE }}
+            className="mt-7"
+          >
+            <p className="text-2xs font-semibold uppercase tracking-eyebrow text-white/55">Recognised &amp; accredited by</p>
+            <ul className="mt-3 flex flex-wrap items-center gap-2.5">
+              {recognitions.map((item) => (
+                <li
+                  key={item.label}
+                  className="grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-white p-1.5 shadow-lg ring-1 ring-white/30 sm:h-14 sm:w-14"
+                >
+                  <img
+                    src={item.logo}
+                    alt={item.label}
+                    title={item.label}
+                    loading="lazy"
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
 
@@ -176,6 +203,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.75, ease: EASE }}
           className="hidden w-72 shrink-0 flex-col items-end gap-6 lg:flex"
         >
+          {site.socials.length > 0 && (
           <ul className="flex items-center gap-2">
             {site.socials.map((social) => {
               const Icon = SOCIAL_ICONS[social.label]
@@ -195,6 +223,7 @@ export default function Hero() {
               )
             })}
           </ul>
+          )}
 
           <Link
             to="/admission"
@@ -211,7 +240,7 @@ export default function Hero() {
               />
             </span>
             <span className="flex-1">
-              <span className="block text-sm font-semibold text-white">Admissions Open 2026</span>
+              <span className="block text-sm font-semibold text-white">Admissions open 2026-27</span>
               <span className="mt-0.5 block text-xs leading-snug text-white/60">
                 Apply for MBBS, MD/MS and paramedical programmes
               </span>

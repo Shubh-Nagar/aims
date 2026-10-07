@@ -9,6 +9,7 @@ import lazyWithRetry from '@/lib/lazyWithRetry'
 // possible bundle.
 const Courses = lazyWithRetry(() => import('@/pages/Courses'))
 const Admission = lazyWithRetry(() => import('@/pages/Admission'))
+const HowToApply = lazyWithRetry(() => import('@/pages/HowToApply'))
 const Contact = lazyWithRetry(() => import('@/pages/Contact'))
 const News = lazyWithRetry(() => import('@/pages/News'))
 const ClinicalDepartments = lazyWithRetry(() => import('@/pages/ClinicalDepartments'))
@@ -82,6 +83,7 @@ export default function App() {
 
             <Route path="courses" element={<Courses />} />
             <Route path="admission" element={<Admission />} />
+            <Route path="how-to-apply" element={<HowToApply />} />
             <Route path="contact" element={<Contact />} />
             <Route path="clinical-departments" element={<ClinicalDepartments />} />
             <Route path="clinical-departments/:slug" element={<ClinicalDepartmentDetail />} />

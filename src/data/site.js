@@ -13,13 +13,16 @@ export const site = {
   mapsLink: 'https://maps.app.goo.gl/eAeYWQHuBTNvmDiK9',
   mapsEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9818015611695!2d75.96934018885497!3d23.02444040000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396374403e555555%3A0xbb515b17db0c3f77!2sAmaltas%20Hospital%20Dewas%20%7C%20Hospital%20in%20Dewas!5e0!3m2!1sen!2sin!4v1720865798738!5m2!1sen!2sin',
+  // Placeholders until the college's real profile URLs are known. Only
+  // entries that point at an actual profile (a path past the domain) are
+  // rendered — a bare homepage link sends visitors nowhere useful.
   socials: [
     { label: 'Facebook', href: 'https://www.facebook.com/' },
     { label: 'Twitter', href: 'https://twitter.com/' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
     { label: 'YouTube', href: 'https://www.youtube.com/' },
     { label: 'Instagram', href: 'https://www.instagram.com/' },
-  ],
+  ].filter((social) => new URL(social.href).pathname.length > 1),
 }
 
 // Anti-ragging helplines, as published on the current site.
@@ -49,6 +52,16 @@ export const campusQuote = {
   href: '/founder-chairman',
   image: '/images/campus/night.jpg',
 }
+
+// Regulator and accreditation marks shown in the homepage hero.
+export const recognitions = [
+  { label: 'National Medical Commission', logo: '/images/recognition/nmc.png' },
+  { label: 'University Grants Commission', logo: '/images/recognition/ugc.png' },
+  { label: 'Indian Nursing Council', logo: '/images/recognition/inc.png' },
+  { label: 'Madhya Pradesh Private University Regulatory Commission', logo: '/images/recognition/mppurc.png' },
+  { label: 'NABH accredited', logo: '/images/recognition/nabh.png' },
+  { label: 'NABL accredited', logo: '/images/recognition/nabl.png' },
+]
 
 export const accreditations = [
   { label: 'Certificate of CMHO', href: '/documents/CMHO.jpeg' },

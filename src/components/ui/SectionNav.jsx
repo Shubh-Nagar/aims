@@ -64,7 +64,7 @@ export default function SectionNav({ items }) {
               <li key={item.id} className="relative">
                 <span
                   aria-hidden="true"
-                  className={`absolute -left-[7px] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-gold-500 transition-transform duration-300 ease-smooth ${
+                  className={`absolute -left-[19px] top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-gold-500 transition-transform duration-300 ease-smooth ${
                     current ? 'scale-100' : 'scale-0'
                   }`}
                 />

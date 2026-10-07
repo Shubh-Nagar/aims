@@ -49,7 +49,7 @@ export default function Leadership() {
                 <Img
                   src={person.image}
                   alt={person.name}
-                  ratio="aspect-[3/4]"
+                  ratio="aspect-[4/5]"
                   wrapperClassName="shrink-0"
                   className="object-top transition-transform duration-500 ease-smooth group-hover:scale-105"
                 />

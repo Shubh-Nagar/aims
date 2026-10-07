@@ -14,7 +14,7 @@ function StatusItem({ item }) {
         href={item.href}
         target="_blank"
         rel="noreferrer noopener"
-        className="text-xs font-medium text-brand-700 underline decoration-gold-400 decoration-2 underline-offset-2 transition-colors hover:text-gold-700"
+        className="inline-block py-1 text-xs font-medium text-brand-700 underline decoration-gold-400 decoration-2 underline-offset-2 transition-colors hover:text-gold-700"
       >
         {item.label}
       </a>
@@ -23,7 +23,7 @@ function StatusItem({ item }) {
   return (
     <Link
       to={item.href}
-      className="text-xs font-medium text-brand-700 underline decoration-gold-400 decoration-2 underline-offset-2 transition-colors hover:text-gold-700"
+      className="inline-block py-1 text-xs font-medium text-brand-700 underline decoration-gold-400 decoration-2 underline-offset-2 transition-colors hover:text-gold-700"
     >
       {item.label}
     </Link>
@@ -33,7 +33,7 @@ function StatusItem({ item }) {
 function StatusCell({ status }) {
   if (Array.isArray(status)) {
     return (
-      <ul className="space-y-1.5">
+      <ul className="space-y-0.5">
         {status.map((item) => (
           <li key={typeof item === 'string' ? item : item.label}>
             <StatusItem item={item} />
@@ -65,9 +65,25 @@ export default function MsrDisclosure() {
 
       <section className="section">
         <div className="container">
-          <Reveal>
+          {/* Phones get a stacked list: a three-column, 720px table would
+              leave the disclosure text clipped off the right edge. */}
+          <Reveal className="sm:hidden">
+            <ol className="divide-y divide-line overflow-hidden rounded-2xl bg-surface ring-1 ring-line">
+              {msrDisclosures.map((row) => (
+                <li key={row.no} className="flex gap-4 p-5">
+                  <span className="font-medium text-brand-900">{row.no}.</span>
+                  <div className="min-w-0 space-y-2.5">
+                    <p className="text-sm text-muted">{row.details}</p>
+                    <StatusCell status={row.status} />
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
+          <Reveal className="hidden sm:block">
             <div className="overflow-hidden rounded-2xl ring-1 ring-line">
-              <div className="overflow-x-auto scrollbar-none">
+              <div className="overflow-x-auto">
                 <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                   <caption className="sr-only">Information Under MSR Clause B.1.11</caption>
                   <thead>

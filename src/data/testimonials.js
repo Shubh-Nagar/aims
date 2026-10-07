@@ -3,6 +3,10 @@
 // see CLAUDE.md's migration-pending convention. Photos fall back to the
 // branded placeholder via <Img> until real ones are dropped into
 // /public/images/testimonials.
+// The homepage only renders the testimonials section once this is true.
+// Flip it after every entry below has been replaced with a real quote.
+export const testimonialsPublished = false
+
 export const testimonials = [
   {
     id: 't1',

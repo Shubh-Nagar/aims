@@ -9,7 +9,7 @@ import { useScrollState } from '@/hooks/useScrollState'
 import Button from '@/components/ui/Button'
 import MobileNav from './MobileNav'
 
-function MegaPanel({ items, onClose, left }) {
+function MegaPanel({ items, onClose, left, pathname }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -41,7 +41,10 @@ function MegaPanel({ items, onClose, left }) {
                 <Link
                   to={item.to}
                   onClick={onClose}
-                  className="group flex items-center justify-between gap-4 rounded-xl px-4 py-2.5 text-sm text-brand-900 transition-colors duration-200 hover:bg-brand-50"
+                  aria-current={item.to === pathname ? 'page' : undefined}
+                  className={`group flex items-center justify-between gap-4 rounded-xl px-4 py-2.5 text-sm text-brand-900 transition-colors duration-200 hover:bg-brand-50 ${
+                    item.to === pathname ? 'bg-brand-50 font-medium' : ''
+                  }`}
                 >
                   <span>{item.label}</span>
                   <span className="h-px w-0 bg-gold-500 transition-all duration-300 ease-smooth group-hover:w-5" />
@@ -121,7 +124,7 @@ export default function Header() {
           <div className="container flex h-10 items-center justify-between text-xs">
             <p className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden="true" />
-              Admissions open for the 2025-26 session
+              Admissions open for the 2026-27 session
             </p>
             <div className="flex items-center gap-6">
               <a href={site.phoneHref} className="flex items-center gap-2 transition-colors hover:text-gold-300">
@@ -178,6 +181,7 @@ export default function Header() {
                       <button
                         type="button"
                         className="nav-link text-brand-900 hover:text-brand-600"
+                        data-active={entry.children.some((child) => child.to === location.pathname)}
                         aria-expanded={openMenu === entry.label}
                         aria-haspopup="true"
                         onClick={() => (openMenu === entry.label ? closeMenu() : openMenuNow(entry.label))}
@@ -216,7 +220,7 @@ export default function Header() {
                   render, so it can't get stuck regardless of what else re-renders. */}
               {(() => {
                 const activeEntry = navigation.find((entry) => entry.children && entry.label === openMenu)
-                return activeEntry && <MegaPanel key={activeEntry.label} items={activeEntry.children} onClose={closeMenu} left={panelLeft} />
+                return activeEntry && <MegaPanel key={activeEntry.label} items={activeEntry.children} onClose={closeMenu} left={panelLeft} pathname={location.pathname} />
               })()}
             </nav>
 

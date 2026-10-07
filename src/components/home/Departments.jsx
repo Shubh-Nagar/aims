@@ -141,7 +141,7 @@ export default function Departments() {
                 <ChevronLeft className="h-4 w-4" aria-hidden="true" />
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center">
                 {pages.map((_, i) => (
                   <button
                     key={i}
@@ -149,10 +149,16 @@ export default function Departments() {
                     onClick={() => goTo(i)}
                     aria-label={`Show departments page ${i + 1}`}
                     aria-current={i === page}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === page ? 'w-6 bg-brand-700' : 'w-1.5 bg-line hover:bg-gold-400'
-                    }`}
-                  />
+                    className="group grid h-8 place-items-center px-1"
+                  >
+                    {/* The visible dot stays small; the button around it is a
+                        finger-sized target. */}
+                    <span
+                      className={`block h-1.5 rounded-full transition-all duration-300 ${
+                        i === page ? 'w-6 bg-brand-700' : 'w-1.5 bg-line group-hover:bg-gold-400'
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
 

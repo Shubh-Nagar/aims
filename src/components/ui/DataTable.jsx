@@ -2,7 +2,7 @@
 export default function DataTable({ caption, head, rows, total }) {
   return (
     <div className="overflow-hidden rounded-2xl ring-1 ring-line">
-      <div className="overflow-x-auto scrollbar-none">
+      <div className="overflow-x-auto">
         <table className="w-full min-w-[420px] border-collapse text-left text-sm">
           {caption && <caption className="sr-only">{caption}</caption>}
           <thead>

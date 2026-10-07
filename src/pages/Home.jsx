@@ -1,21 +1,22 @@
 import Seo from '@/components/ui/Seo'
 import { site } from '@/data/site'
+import { testimonialsPublished } from '@/data/testimonials'
 import { ReplayReveals } from '@/components/ui/Reveal'
 import Hero from '@/components/home/Hero'
+import EnquiryPopup from '@/components/home/EnquiryPopup'
 import AdmissionMarquee from '@/components/home/AdmissionMarquee'
 import Intro from '@/components/home/Intro'
-import Stats from '@/components/home/Stats'
 import WhyChoose from '@/components/home/WhyChoose'
 import CourseHighlights from '@/components/home/CourseHighlights'
 import Departments from '@/components/home/Departments'
 import CampusEvents from '@/components/home/CampusEvents'
-import Facilities from '@/components/home/Facilities'
-import StudentLife from '@/components/home/StudentLife'
+// import Facilities from '@/components/home/Facilities'
+// import StudentLife from '@/components/home/StudentLife'
 import Testimonials from '@/components/home/Testimonials'
-import CampusQuote from '@/components/home/CampusQuote'
+// import CampusQuote from '@/components/home/CampusQuote'
 import Leadership from '@/components/home/Leadership'
-import HowToApply from '@/components/home/HowToApply'
-import Accreditation from '@/components/home/Accreditation'
+// import HowToApply from '@/components/home/HowToApply'
+// import Accreditation from '@/components/home/Accreditation'
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
         description="A 27.378-acre medical campus in Dewas, Madhya Pradesh offering MBBS, postgraduate, super-speciality, nursing and paramedical programmes with clinical training at Amaltas Hospital."
       />
       <Hero />
+      <EnquiryPopup />
 
       <div className="border-y border-line bg-brand-50 py-3.5 text-center text-sm text-brand-800">
         <span className="font-medium">{site.name}</span> is a unit of the{' '}
@@ -38,18 +40,19 @@ export default function Home() {
           down it. Reveals outside this wrapper still fire once. */}
       <ReplayReveals>
         <Intro />
-        <Stats />
         <WhyChoose />
         <CourseHighlights />
         <Departments />
         <CampusEvents />
-        <Facilities />
-        <StudentLife />
-        <Testimonials />
-        <CampusQuote />
+        {/* <Facilities /> */}
+        {/* <StudentLife /> */}
+        {testimonialsPublished && <Testimonials />}
+        {/* <CampusQuote /> */}
         <Leadership />
-        <HowToApply />
-        <Accreditation />
+        {/* How to apply now has its own page: /how-to-apply */}
+        {/* <HowToApply /> */}
+        {/* Awards & accreditation — the recognition logos now sit in the Hero */}
+        {/* <Accreditation /> */}
       </ReplayReveals>
     </>
   )
