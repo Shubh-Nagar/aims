@@ -9,6 +9,7 @@ import { imgIn } from '@/lib/motion'
  * these every few blocks gives the eye somewhere to land. `bleed` lets the
  * frame break slightly past the text column so it reads as a full-width
  * plate rather than another element in the measure.
+ * hello
  */
 export default function FigureBlock({
   src,
