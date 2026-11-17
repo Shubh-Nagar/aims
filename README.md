@@ -216,26 +216,17 @@ is included:
 1. Drop in the real images and PDFs.
 2. Point the admission form at a real endpoint — `handleSubmit` in
    `src/pages/Admission.jsx` currently only sets local state.
-3. Transcode the hero footage. `public/videos/campus-tour.mp4` is ~134 MB,
-   which is over GitHub's hard 100 MB per-file limit and makes `dist/` about
-   250 MB, so it is currently in `.gitignore` and the hero falls back to its
-   poster frame (`/images/campus/hero.jpg`). Target a silent 10-12s loop under
-   ~6 MB:
+3. Hero footage: done. The hero plays `public/videos/campus-tour.web.mp4`, a
+   silent ~12s, ~4 MB loop of the aerial shots, cut from the raw
+   `campus-tour.mp4` (~134 MB, git-ignored, kept locally as the master). To
+   re-cut it:
 
    ```bash
    cd public/videos
-   # 1080p H.264, no audio, 12s, fast-start for progressive playback
-   ffmpeg -i campus-tour.mp4 -t 12 -an -vf "scale=1920:-2,fps=25"      -c:v libx264 -crf 25 -preset slow -movflags +faststart campus-tour.web.mp4
-   # smaller VP9 sibling for browsers that prefer it
-   ffmpeg -i campus-tour.web.mp4 -an -c:v libvpx-vp9 -crf 34 -b:v 0 campus-tour.webm
-   # a real poster frame instead of reusing the stills
-   ffmpeg -i campus-tour.web.mp4 -vframes 1 -q:v 3 campus-tour-poster.jpg
+   # opening aerials (0:01-0:07.7) + closing aerials (4:42-4:47.5), 1080p H.264, no audio
+   ffmpeg -i campus-tour.mp4 -filter_complex "[0:v]trim=1:7.7,setpts=PTS-STARTPTS[a];[0:v]trim=282:287.5,setpts=PTS-STARTPTS[b];[a][b]concat=n=2:v=1,fps=25,scale=1920:-2,format=yuv420p[v]" -map "[v]" -an -c:v libx264 -crf 26 -preset slow -movflags +faststart campus-tour.web.mp4
+   ffmpeg -ss 1.5 -i campus-tour.mp4 -frames:v 1 -vf scale=1920:-2 -q:v 4 campus-tour-poster.jpg
    ```
-
-   Then replace `campus-tour.mp4` with `campus-tour.web.mp4`, drop the
-   `.gitignore` rule, and point `poster` in `src/components/home/Hero.jsx` at
-   the new frame. If the file has to stay large, host it on a CDN and give the
-   `<video>` an absolute `src` instead.
 4. Replace the placeholder social URLs in `src/data/site.js`.
 5. Add a `sitemap.xml` to `public/` listing the routes in `App.jsx`.
 6. Set 301s from the old WordPress slugs. Most map one-to-one; the ones that

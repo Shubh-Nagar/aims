@@ -43,12 +43,12 @@ export default function Hero() {
           />
         ) : (
           <motion.video
-            src="/videos/campus-tour.mp4"
+            src="/videos/campus-tour.web.mp4"
             /* First paint is a real frame of the campus rather than a
                gradient, which matters while a heavy file is still arriving —
                and it is the fallback outright when the file is absent, so
                there is deliberately no onError hiding this element. */
-            poster="/images/campus/hero.jpg"
+            poster="/videos/campus-tour-poster.jpg"
             autoPlay
             muted
             loop
