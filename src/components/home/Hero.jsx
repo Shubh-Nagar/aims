@@ -20,7 +20,7 @@ export default function Hero() {
   const reduced = useReducedMotion()
   const { scrollY } = useScroll()
   const imageY = useTransform(scrollY, [0, 600], [0, 90])
-  const scrimOpacity = useTransform(scrollY, [0, 500], [0.9, 1])
+  const scrimOpacity = useTransform(scrollY, [0, 500], [0.85, 1])
 
   return (
     <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden bg-brand-950 pb-12 pt-[calc(var(--header-h)+3.5rem)]">
@@ -58,7 +58,7 @@ export default function Hero() {
             aria-hidden="true"
             /* Graded in CSS: the footage is under-saturated for a campus this
                green, and a little contrast stops it reading as phone video. */
-            className="h-full w-full object-cover [filter:saturate(1.2)_contrast(1.08)_brightness(.88)]"
+            className="h-full w-full object-cover [filter:saturate(1.15)_contrast(1.04)_brightness(1.08)]"
             /* A slow drift, so the hero breathes even across the stillest
                stretch of the loop. Only reached when motion is allowed. */
             animate={{ scale: [1.06, 1.14, 1.06] }}
@@ -74,11 +74,11 @@ export default function Hero() {
       <motion.div
         aria-hidden="true"
         style={reduced ? undefined : { opacity: scrimOpacity }}
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top_right,rgba(5,27,13,.95)_0%,rgba(5,27,13,.82)_28%,rgba(5,27,13,.52)_54%,rgba(5,27,13,.16)_78%,rgba(5,27,13,0)_100%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top_right,rgba(5,27,13,.78)_0%,rgba(5,27,13,.5)_26%,rgba(5,27,13,.18)_50%,rgba(5,27,13,0)_72%)]"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 -z-10 h-[45%] bg-gradient-to-t from-brand-950/85 via-brand-950/25 to-transparent"
+        className="absolute inset-x-0 bottom-0 -z-10 h-[40%] bg-gradient-to-t from-brand-950/65 via-brand-950/15 to-transparent"
       />
       {/* Amaltas light leak — a warm flare in the corner the copy never
           reaches. Screen blend lifts the footage instead of tinting it. */}
@@ -89,12 +89,14 @@ export default function Hero() {
       {/* Vignette — pulls the eye inward and hides the footage's soft edges. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_100%_at_50%_50%,transparent_42%,rgba(5,27,13,.55)_100%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_100%_at_50%_50%,transparent_55%,rgba(5,27,13,.25)_100%)]"
       />
       <div className="absolute inset-0 -z-10 grain opacity-40" aria-hidden="true" />
 
       <div className="container relative flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-4xl">
+        {/* The footage runs bright, so the copy carries its own soft shadow
+            rather than relying on a heavy scrim that would dim the campus. */}
+        <div className="max-w-4xl [text-shadow:0_1px_2px_rgba(5,27,13,.55),0_2px_20px_rgba(5,27,13,.5)] [&_h1]:[text-shadow:none]">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
