@@ -65,7 +65,7 @@ export default function AboutSociety() {
         title={society.title}
         lede={society.kicker}
         breadcrumb={society.breadcrumb}
-        image="/images/about-society/collage.jpg"
+        image="/images/gallery/gallery-11.jpg"
       />
 
       {/* Intro + registration facts */}

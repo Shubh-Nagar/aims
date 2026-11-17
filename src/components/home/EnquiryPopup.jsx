@@ -125,8 +125,8 @@ export default function EnquiryPopup() {
                   e.currentTarget.style.display = 'none'
                 }}
               />
-              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,27,13,.95)_0%,rgba(5,27,13,.72)_45%,rgba(5,27,13,.35)_100%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_85%_10%,rgba(233,168,37,.28),transparent_70%)] mix-blend-screen" />
+              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,29,16,.95)_0%,rgba(7,29,16,.72)_45%,rgba(7,29,16,.35)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_85%_10%,rgba(249,230,45,.28),transparent_70%)] mix-blend-screen" />
               <div className="absolute inset-0 grain opacity-30" aria-hidden="true" />
 
               <div className="relative flex h-full flex-col justify-end p-9">

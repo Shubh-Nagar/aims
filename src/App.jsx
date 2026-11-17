@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Layout from '@/components/layout/Layout'
 import Home from '@/pages/Home'
 import ErrorBoundary from '@/components/layout/ErrorBoundary'
@@ -90,7 +90,8 @@ export default function App() {
             <Route path="pre-clinical-departments" element={<PreClinicalDepartments />} />
             <Route path="pre-clinical-departments/:slug" element={<PreClinicalDepartmentDetail />} />
             <Route path="antiragging-measures" element={<Antiragging />} />
-            <Route path="photogallery" element={<Gallery />} />
+            <Route path="gallery" element={<Gallery />} />
+            <Route path="photogallery" element={<Navigate to="/gallery" replace />} />
             <Route path="about-the-society" element={<AboutSociety />} />
             <Route path="publications" element={<Publications />} />
             <Route path="bed-distribution" element={<BedDistribution />} />

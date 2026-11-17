@@ -7,6 +7,7 @@ import EnquiryPopup from '@/components/home/EnquiryPopup'
 import AdmissionMarquee from '@/components/home/AdmissionMarquee'
 import Intro from '@/components/home/Intro'
 import WhyChoose from '@/components/home/WhyChoose'
+import CampusMoments from '@/components/home/CampusMoments'
 import CourseHighlights from '@/components/home/CourseHighlights'
 import Departments from '@/components/home/Departments'
 import CampusEvents from '@/components/home/CampusEvents'
@@ -41,6 +42,7 @@ export default function Home() {
       <ReplayReveals>
         <Intro />
         <WhyChoose />
+        <CampusMoments />
         <CourseHighlights />
         <Departments />
         <CampusEvents />

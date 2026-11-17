@@ -8,10 +8,15 @@
    ------------------------------------------------------------------ */
 @layer base {
   :root {
-    --pine: 16 126 59;
-    --pine-deep: 11 81 38;
-    --gold: 233 168 37;
+    --pine: 17 128 60;
+    --pine-deep: 17 128 60;
+    --gold: 249 230 45;
     --header-h: 76px;
+    /* The utility strip above the nav (h-10 + 1px border), lg+ only. */
+    --topbar-h: 0px;
+  }
+  @media (min-width: 1024px) {
+    :root { --topbar-h: 41px; }
   }
 
   * { @apply border-line; }

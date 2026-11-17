@@ -42,32 +42,50 @@ function Row({ i, animate, children, className = '' }) {
  * `compact` drops the optional message so the form fits a modal; `animated`
  * staggers the fields in (used by the popup).
  *
- * No backend is wired up yet, so the enquiry is handed to the visitor's mail
- * app, pre-addressed to admissions. Swap handleSubmit for a POST to the
- * college's form handler (or an API route) once that endpoint exists.
+ * Submissions are POSTed to FormSubmit (formsubmit.co), which emails them to
+ * the admissions inbox in `site.email`. The first submission makes FormSubmit
+ * send an activation link to that inbox; nothing is delivered until someone
+ * clicks it. `_honey` is FormSubmit's spam trap — real visitors never see it.
  */
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${site.email}`
 export default function EnquiryForm({ idPrefix = 'enquiry', compact = false, animated = false, className = '' }) {
-  const [sent, setSent] = useState(false)
+  // 'idle' | 'sending' | 'sent' | 'error'
+  const [status, setStatus] = useState('idle')
   const reduced = useReducedMotion()
   const id = (name) => `${idPrefix}-${name}`
   const stagger = animated && !reduced
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const body = [
-      `Name: ${data.get('name')}`,
-      `Phone: ${data.get('phone')}`,
-      `Email: ${data.get('email')}`,
-      `Course: ${data.get('course')}`,
-      data.get('message') ? `\n${data.get('message')}` : '',
-    ].join('\n')
-    const subject = `Admission enquiry: ${data.get('course')}`
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setSent(true)
+    const form = event.currentTarget
+    const data = new FormData(form)
+    setStatus('sending')
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          Name: data.get('name'),
+          Phone: data.get('phone'),
+          Email: data.get('email'),
+          Course: data.get('course'),
+          Message: data.get('message') || '',
+          _subject: `Admission enquiry: ${data.get('course')} — ${data.get('name')}`,
+          _replyto: data.get('email'),
+          _template: 'table',
+          _honey: data.get('_honey') || '',
+        }),
+      })
+      const result = await response.json().catch(() => ({}))
+      if (!response.ok || String(result.success) === 'false') throw new Error(result.message || 'Request failed')
+      form.reset()
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
-  if (sent) {
+  if (status === 'sent') {
     return (
       <motion.div
         initial={reduced ? false : { opacity: 0, scale: 0.97 }}
@@ -80,25 +98,20 @@ export default function EnquiryForm({ idPrefix = 'enquiry', compact = false, ani
           <Check className="h-4 w-4" aria-hidden="true" />
         </span>
         <div>
-          <p className="font-medium text-brand-900">Your enquiry is ready to send</p>
+          <p className="font-medium text-brand-900">Thank you, your enquiry has been sent</p>
           <p className="prose-aims mt-1">
-            Your email app should have opened with the enquiry filled in — press send there to reach the
-            admissions office. If nothing opened, call{' '}
+            Our admissions team will contact you shortly. For anything urgent, call{' '}
             <a href={site.phoneHref} className="font-medium text-brand-800 hover:text-gold-600">
               {site.phone}
-            </a>{' '}
-            or write to{' '}
-            <a href={`mailto:${site.email}`} className="font-medium text-brand-800 hover:text-gold-600">
-              {site.email}
             </a>
             .
           </p>
           <button
             type="button"
-            onClick={() => setSent(false)}
+            onClick={() => setStatus('idle')}
             className="mt-4 text-sm font-medium text-brand-700 underline-offset-4 hover:text-gold-600 hover:underline"
           >
-            Edit enquiry
+            Send another enquiry
           </button>
         </div>
       </motion.div>
@@ -107,6 +120,8 @@ export default function EnquiryForm({ idPrefix = 'enquiry', compact = false, ani
 
   return (
     <form onSubmit={handleSubmit} className={`space-y-4 sm:space-y-5 ${className}`}>
+      {/* Spam trap: hidden from people, filled in by bots. */}
+      <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <Row i={0} animate={stagger} className="grid gap-4 sm:grid-cols-2 sm:gap-5">
         <div>
           <label htmlFor={id('name')} className={label}>
@@ -151,8 +166,27 @@ export default function EnquiryForm({ idPrefix = 'enquiry', compact = false, ani
         </Row>
       )}
       <Row i={4} animate={stagger}>
-        <Button as="button" type="submit" variant="gold" className="w-full">
-          Send enquiry
+        {status === 'error' && (
+          <p role="alert" className="mb-3 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">
+            Sorry, your enquiry could not be sent. Please try again, or call{' '}
+            <a href={site.phoneHref} className="font-medium underline underline-offset-2">
+              {site.phone}
+            </a>{' '}
+            or email{' '}
+            <a href={`mailto:${site.email}`} className="font-medium underline underline-offset-2">
+              {site.email}
+            </a>
+            .
+          </p>
+        )}
+        <Button
+          as="button"
+          type="submit"
+          variant="gold"
+          className="w-full disabled:cursor-wait disabled:opacity-70"
+          disabled={status === 'sending'}
+        >
+          {status === 'sending' ? 'Sending…' : 'Send enquiry'}
         </Button>
       </Row>
     </form>

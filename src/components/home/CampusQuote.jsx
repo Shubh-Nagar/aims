@@ -50,7 +50,7 @@ export default function CampusQuote() {
           Centred copy wants a vignette, not the hero's directional wedge. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(85%_75%_at_50%_50%,rgba(5,27,13,.40),rgba(5,27,13,.80))]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(85%_75%_at_50%_50%,rgba(7,29,16,.40),rgba(7,29,16,.80))]"
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 grain opacity-40" />
 
@@ -68,7 +68,7 @@ export default function CampusQuote() {
           >
             &ldquo;
           </span>
-          <p className="mt-8 font-display text-[clamp(1.5rem,3.2vw,2.75rem)] leading-[1.35] text-white [text-shadow:0_2px_36px_rgba(5,27,13,.6)]">
+          <p className="mt-8 font-display text-[clamp(1.5rem,3.2vw,2.75rem)] leading-[1.35] text-white [text-shadow:0_2px_36px_rgba(7,29,16,.6)]">
             {campusQuote.quote}
           </p>
           <footer className="mt-9">

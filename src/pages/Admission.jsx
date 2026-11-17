@@ -16,7 +16,7 @@ export default function Admission() {
         title="Admission"
         lede="Fill out the enquiry form and we guide you through the rest. We simplify the admission process and assist with financial aid if you are eligible."
         breadcrumb="Institutional"
-        image="/images/campus/walkway.jpg"
+        image="/images/students/cohort.webp"
       />
 
       <section className="section">

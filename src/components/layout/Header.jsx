@@ -155,7 +155,7 @@ export default function Header() {
               <img
                 src="/images/aims-logo.png"
                 alt={site.name}
-                className="h-10 w-auto sm:h-11"
+                className="h-12 w-auto sm:h-14 lg:h-[52px] xl:h-[60px]"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none'
                 }}

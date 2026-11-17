@@ -48,7 +48,7 @@ export default function ClinicalDepartmentDetail() {
         title={department.name}
         lede={department.summary}
         breadcrumb="Clinical Departments"
-        image="/images/courses/hospital-training.jpg"
+        image="/images/students/residents.webp"
       />
 
       <section className="section">

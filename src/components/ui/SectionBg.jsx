@@ -43,7 +43,7 @@ const LAYERS = {
      calmest beat on the page. */
   calm: (
     <>
-      <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_40%,rgba(223,244,231,.7),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_40%,rgba(218,238,225,.7),transparent_70%)]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-line to-transparent" />
     </>
   ),
@@ -53,7 +53,7 @@ const LAYERS = {
   spotlight: (
     <>
       <div className="absolute inset-0 field-grid mask-top text-brand-200/45" />
-      <div className="absolute inset-x-0 -top-40 mx-auto h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(233,168,37,.2),transparent_65%)] blur-2xl" />
+      <div className="absolute inset-x-0 -top-40 mx-auto h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,rgba(249,230,45,.2),transparent_65%)] blur-2xl" />
     </>
   ),
 
@@ -62,7 +62,7 @@ const LAYERS = {
      instead of yet another corner blob. */
   radiant: (
     <>
-      <div className="absolute left-1/2 top-1/2 h-[46rem] w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(233,168,37,.13),transparent_62%)] blur-2xl" />
+      <div className="absolute left-1/2 top-1/2 h-[46rem] w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(249,230,45,.13),transparent_62%)] blur-2xl" />
       {[0, 1, 2, 3, 4].map((i) => (
         <div
           key={i}
@@ -79,8 +79,8 @@ const LAYERS = {
      on a section with little body copy over it. */
   aurora: (
     <>
-      <div className="absolute -left-1/4 -top-1/3 h-[42rem] w-[42rem] animate-aurora-slow rounded-full bg-[conic-gradient(from_0deg,rgba(16,126,59,.16),transparent_42%,rgba(233,168,37,.16),transparent_78%)] blur-3xl" />
-      <div className="absolute -bottom-1/3 -right-1/4 h-[38rem] w-[38rem] animate-aurora-slower rounded-full bg-[conic-gradient(from_120deg,rgba(233,168,37,.14),transparent_48%,rgba(16,126,59,.14),transparent_82%)] blur-3xl" />
+      <div className="absolute -left-1/4 -top-1/3 h-[42rem] w-[42rem] animate-aurora-slow rounded-full bg-[conic-gradient(from_0deg,rgba(17,128,60,.16),transparent_42%,rgba(249,230,45,.16),transparent_78%)] blur-3xl" />
+      <div className="absolute -bottom-1/3 -right-1/4 h-[38rem] w-[38rem] animate-aurora-slower rounded-full bg-[conic-gradient(from_120deg,rgba(249,230,45,.14),transparent_48%,rgba(17,128,60,.14),transparent_82%)] blur-3xl" />
     </>
   ),
 

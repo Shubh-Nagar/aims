@@ -1,6 +1,14 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react'
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Youtube,
+} from 'lucide-react'
 import { site, recognitions } from '@/data/site'
 import { EASE, stagger, wordUp } from '@/lib/motion'
 import Button from '@/components/ui/Button'
@@ -74,7 +82,7 @@ export default function Hero() {
       <motion.div
         aria-hidden="true"
         style={reduced ? undefined : { opacity: scrimOpacity }}
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top_right,rgba(5,27,13,.78)_0%,rgba(5,27,13,.5)_26%,rgba(5,27,13,.18)_50%,rgba(5,27,13,0)_72%)]"
+        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top_right,rgba(7,29,16,.78)_0%,rgba(7,29,16,.5)_26%,rgba(7,29,16,.18)_50%,rgba(7,29,16,0)_72%)]"
       />
       <div
         aria-hidden="true"
@@ -84,19 +92,19 @@ export default function Hero() {
           reaches. Screen blend lifts the footage instead of tinting it. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(52%_44%_at_82%_14%,rgba(233,168,37,.26),transparent_68%)] mix-blend-screen"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(52%_44%_at_82%_14%,rgba(249,230,45,.26),transparent_68%)] mix-blend-screen"
       />
       {/* Vignette — pulls the eye inward and hides the footage's soft edges. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_100%_at_50%_50%,transparent_55%,rgba(5,27,13,.25)_100%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_100%_at_50%_50%,transparent_55%,rgba(7,29,16,.25)_100%)]"
       />
       <div className="absolute inset-0 -z-10 grain opacity-40" aria-hidden="true" />
 
       <div className="container relative flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
         {/* The footage runs bright, so the copy carries its own soft shadow
             rather than relying on a heavy scrim that would dim the campus. */}
-        <div className="max-w-4xl [text-shadow:0_1px_2px_rgba(5,27,13,.55),0_2px_20px_rgba(5,27,13,.5)] [&_h1]:[text-shadow:none]">
+        <div className="max-w-4xl [text-shadow:0_1px_2px_rgba(7,29,16,.55),0_2px_20px_rgba(7,29,16,.5)] [&_h1]:[text-shadow:none]">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,7 +118,7 @@ export default function Hero() {
             variants={stagger(0.09, 0.15)}
             initial="hidden"
             animate="show"
-            className="mt-6 max-w-4xl font-display text-[clamp(2.6rem,7vw,5.4rem)] font-semibold leading-[0.98] text-white [text-shadow:0_2px_40px_rgba(5,27,13,.6)]"
+            className="mt-6 max-w-4xl font-display text-[clamp(2.6rem,7vw,5.4rem)] font-semibold leading-[0.98] text-white [text-shadow:0_2px_40px_rgba(7,29,16,.6)]"
           >
             {HEADLINE.map((word, i) => (
               <span key={word} className="mr-[0.28em] inline-block overflow-hidden align-bottom">
@@ -229,13 +237,13 @@ export default function Hero() {
 
           <Link
             to="/admission"
-            className="group flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.06] p-3 backdrop-blur-sm transition-colors duration-300 hover:border-gold-400/50 hover:bg-white/[0.09]"
+            className="group flex w-full items-center gap-4 rounded-2xl border border-white/15 bg-brand-950/75 p-3 shadow-2xl backdrop-blur-md transition-colors duration-300 hover:border-gold-400/50 hover:bg-brand-950/85"
           >
             <span className="h-16 w-16 shrink-0 overflow-hidden rounded-xl">
               <img
-                src="/images/student-life/festivities.jpg"
+                src="/images/students/cohort.webp"
                 alt=""
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-[50%_30%]"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none'
                 }}

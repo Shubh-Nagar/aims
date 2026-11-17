@@ -32,7 +32,7 @@ export default function AwardsAchievements() {
         title="Awards & Achievements"
         lede="Certificates, accreditations and recognitions earned by Amaltas Institute of Medical Sciences."
         breadcrumb="Events"
-        image="/images/awards/award-1.jpg"
+        image="/images/awards/award-9.jpg"
       />
 
       <section className="section-tight">

@@ -4,8 +4,6 @@ import {
   pgCourses,
   pgCoursesSecondary,
   superSpeciality,
-  nursingCourses,
-  paramedicalCourses,
   permissionLetters,
 } from '@/data/courses'
 import { FileDown } from 'lucide-react'
@@ -23,7 +21,7 @@ const galleryImages = [
 ]
 
 export default function Courses() {
-  const tables = [sanctionedIntake, pgCourses, pgCoursesSecondary, superSpeciality, nursingCourses, paramedicalCourses]
+  const tables = [sanctionedIntake, pgCourses, pgCoursesSecondary, superSpeciality]
 
   return (
     <>

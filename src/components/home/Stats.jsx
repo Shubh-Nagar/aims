@@ -51,7 +51,7 @@ export default function Stats() {
       {/* Pine light rising off the floor — depth without a photograph. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(130%_95%_at_50%_125%,rgba(16,126,59,.5),transparent_66%)]"
+        className="absolute inset-0 bg-[radial-gradient(130%_95%_at_50%_125%,rgba(17,128,60,.5),transparent_66%)]"
       />
       {/* The pulse field, held clear of the numbers by the inverse vignette. */}
       <div aria-hidden="true" className="absolute inset-0 mask-edges text-gold-300/25">
@@ -82,7 +82,7 @@ export default function Stats() {
               <dt className="-mt-3 text-2xs font-semibold uppercase tracking-eyebrow text-white/55 transition-colors duration-500 group-hover:text-gold-300">
                 {stat.label}
               </dt>
-              <dd className="mt-3 font-display text-[clamp(2.6rem,6vw,4.25rem)] leading-none tracking-[-.03em] text-gold-300 [text-shadow:0_0_44px_rgba(233,168,37,.3)]">
+              <dd className="mt-3 font-display text-[clamp(2.6rem,6vw,4.25rem)] leading-none tracking-[-.03em] text-gold-300 [text-shadow:0_0_44px_rgba(249,230,45,.3)]">
                 <Counter value={stat.value} decimals={stat.decimals ?? 0} replay />
                 {/* Rendered here rather than through Counter's `suffix`, so a
                     long unit like " acres" can sit at a fraction of the

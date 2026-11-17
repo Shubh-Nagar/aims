@@ -40,4 +40,6 @@ Choose the block that carries the *meaning*: `meters` where relative scale is th
 
 Static SPA (`dist/`) requiring an SPA fallback (serve `index.html` for unknown paths) at the host. Config for three targets is already checked in: `public/.htaccess` (Hostinger/Apache), `public/_redirects` (Netlify), `vercel.json` (Vercel).
 
-Known pre-go-live gaps (see `README.md` for the full list): `handleSubmit` in `src/pages/Admission.jsx` only sets local state (no real submit endpoint yet); social URLs in `src/data/site.js` are placeholders; no `sitemap.xml` yet.
+The admission enquiry form (`src/components/ui/EnquiryForm.jsx`, used on `/admission` and in the homepage popup) POSTs to FormSubmit (`formsubmit.co/ajax/<site.email>`), which emails `site.email`. FormSubmit only delivers after the activation link it emails on the first submission has been clicked.
+
+Known pre-go-live gaps (see `README.md` for the full list): social URLs in `src/data/site.js` are placeholders; no `sitemap.xml` yet.

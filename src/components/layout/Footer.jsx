@@ -107,17 +107,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 overflow-hidden rounded-2xl ring-1 ring-brand-900/10">
-          <iframe
-            src={site.mapsEmbed}
-            title="Amaltas Medical College and Hospital campus on Google Maps"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-64 w-full border-0 grayscale transition-all duration-700 hover:grayscale-0"
-          />
-        </div>
-
-        <div className="mt-10 flex flex-col gap-5 border-t border-brand-900/10 pt-7 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-5 border-t border-brand-900/10 pt-7 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             {site.socials.map((social) => (
               <a

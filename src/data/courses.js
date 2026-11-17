@@ -79,29 +79,6 @@ export const superSpeciality = {
   ],
 }
 
-export const nursingCourses = {
-  caption: 'M.Sc. Nursing & B.Sc. Nursing',
-  head: ['Course', 'Seats'],
-  rows: [
-    ['O.B.G.', '05 Seats'],
-    ['Child Health Nursing', '05 Seats'],
-    ['Community Health Nursing', '05 Seats'],
-    ['B.Sc. Nursing', '60 Seats'],
-    ['M.S.N', '05 Seats'],
-  ],
-}
-
-export const paramedicalCourses = {
-  caption: 'Paramedical Courses',
-  head: ['Course', 'Seats'],
-  rows: [
-    ['Medical Lab Technician Diploma', '50 Seats'],
-    ['X-ray (Radiographer) Tech. Certificate', '50 Seats'],
-    ['O.T. Tech. Certificate', '50 Seats'],
-    ['Ultrasound Tech. Certificate', '50 Seats'],
-  ],
-}
-
 export const permissionLetters = [
   { label: 'Letter of Permission for UG', href: '/documents/LOP%20UG.pdf' },
   { label: 'Letter of Permission for PG', href: '/documents/LOP%20PG%20merged.pdf' },

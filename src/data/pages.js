@@ -238,7 +238,7 @@ export const contentPages = {
   'built-up-area': {
     title: 'Built Up Area',
     breadcrumb: 'Infrastructure',
-    heroImage: '/images/about-society/aims.jpg', // the built blocks themselves
+    heroImage: '/images/campus/walkway.jpg', // the built blocks themselves
     lede: 'Over one lakh square metres of constructed facility across hospital, college, hostels and residences.',
     blocks: [
       {
@@ -553,6 +553,7 @@ export const contentPages = {
   students: {
     title: 'Students',
     breadcrumb: 'Institutional',
+    heroImage: '/images/students/class-group.webp', // a whole batch together
     lede: 'Nurturing talent from all backgrounds — enrolment records for every undergraduate and postgraduate batch.',
     blocks: [
       {
@@ -594,7 +595,7 @@ export const contentPages = {
   'teaching-schedule': {
     title: 'Teaching Schedule',
     breadcrumb: 'Institutional',
-    heroImage: '/images/courses/lecture.jpg', // a lecture in progress
+    heroImage: '/images/students/lecture-hall.webp', // a lecture in progress
     lede: 'Competency-based timetables and academic schedules, published phase by phase.',
     blocks: [
       {
@@ -613,6 +614,7 @@ export const contentPages = {
   fees: {
     title: 'Fees',
     breadcrumb: 'Institutional',
+    heroImage: '/images/students/classroom.webp', // the classroom the fees pay for
     lede: 'Fee structure for undergraduate, postgraduate and super speciality programmes.',
     blocks: [
       {
@@ -653,6 +655,7 @@ export const contentPages = {
   committees: {
     title: 'Committees',
     breadcrumb: 'Institutional',
+    heroImage: '/images/press/WhatsApp-Image-2026-08-06-at-9.30.35-AM.jpeg', // the faculty who sit on them
     lede: 'Statutory and institutional committees at Amaltas Institute of Medical Sciences, with member lists published in full.',
     sections: [
       {
