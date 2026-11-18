@@ -114,18 +114,29 @@ export default function EnquiryPopup() {
 
             {/* Visual panel — hidden on phones, where the sheet is form-first */}
             <div className="relative hidden overflow-hidden bg-brand-950 text-white md:block">
-              <motion.img
-                src="/images/courses/anatomy-lab.jpg"
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover"
-                initial={{ scale: 1.15 }}
-                animate={{ scale: reduced ? 1.15 : 1 }}
-                transition={{ duration: 6, ease: 'easeOut' }}
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none'
-                }}
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,29,16,.95)_0%,rgba(7,29,16,.72)_45%,rgba(7,29,16,.35)_100%)]" />
+              {/* Three AIMS students, cut out, standing on the pine ground —
+                  a warm halo behind them so the white coats lift off the
+                  dark, and the copy below fades their coats out. */}
+              <div className="absolute inset-0 bg-gradient-to-b from-brand-800 via-brand-900 to-brand-950" />
+              <div className="absolute left-1/2 top-[4%] h-[62%] w-[120%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgba(249,230,45,.32),rgba(17,128,60,.25)_55%,transparent)] blur-2xl" />
+              {/* Centring lives on the wrapper: Framer's y animation writes
+                  its own transform on the img and would cancel a translate. */}
+              <div className="absolute left-1/2 top-[5%] w-[108%] -translate-x-1/2">
+                <motion.img
+                  src="/images/students/hero-trio.webp"
+                  alt="Three AIMS medical students in white coats with stethoscopes"
+                  width="1704"
+                  height="1200"
+                  className="block h-auto w-full [filter:drop-shadow(0_18px_30px_rgba(7,29,16,.5))] [mask-image:linear-gradient(to_bottom,#000_62%,transparent_98%)]"
+                  initial={reduced ? false : { opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.1, ease: EASE }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+              </div>
+              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,29,16,.97)_0%,rgba(7,29,16,.9)_38%,rgba(7,29,16,.35)_58%,rgba(7,29,16,0)_72%)]" />
               <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_85%_10%,rgba(249,230,45,.28),transparent_70%)] mix-blend-screen" />
               <div className="absolute inset-0 grain opacity-30" aria-hidden="true" />
 
