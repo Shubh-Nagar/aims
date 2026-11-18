@@ -78,6 +78,16 @@ export default function Gallery() {
     return () => observer.disconnect()
   }, [])
 
+  // Keep the active chip visible in the jump bar, which scrolls sideways once
+  // there are more sections than fit. Only the bar moves — never the page.
+  useEffect(() => {
+    const chip = document.querySelector(`nav[aria-label="Gallery sections"] a[href="#${current}"]`)
+    const bar = chip?.closest('ul')
+    if (!chip || !bar) return
+    const left = chip.offsetLeft - (bar.clientWidth - chip.offsetWidth) / 2
+    bar.scrollTo({ left, behavior: 'smooth' })
+  }, [current])
+
   const openSection = open ? gallerySections.find((s) => s.id === open.section) : null
 
   return (

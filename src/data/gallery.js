@@ -87,6 +87,21 @@ export const gallerySections = [
     ],
   },
   {
+    id: 'yoga-day',
+    title: 'International Yoga Day',
+    blurb: "Yoga Mahotsav, 21 June 2026: students, faculty and staff practise together under the theme Yoga for Healthy Ageing, with The Art of Living.",
+    photos: [
+      { src: '/images/gallery/yoga-day/yoga-day-07.webp', thumb: '/images/gallery/yoga-day/yoga-day-07-thumb.webp', w: 1600, h: 900, alt: "Guests and organisers at the Yoga Mahotsav, Yoga for Healthy Ageing" },
+      { src: '/images/gallery/yoga-day/yoga-day-01.webp', thumb: '/images/gallery/yoga-day/yoga-day-01-thumb.webp', w: 1600, h: 900, alt: "A full hall practises yoga together on International Yoga Day" },
+      { src: '/images/gallery/yoga-day/yoga-day-02.webp', thumb: '/images/gallery/yoga-day/yoga-day-02-thumb.webp', w: 1600, h: 900, alt: "Participants seated on yoga mats in the hall" },
+      { src: '/images/gallery/yoga-day/yoga-day-03.webp', thumb: '/images/gallery/yoga-day/yoga-day-03-thumb.webp', w: 1600, h: 900, alt: "Students and staff in meditation posture" },
+      { src: '/images/gallery/yoga-day/yoga-day-04.webp', thumb: '/images/gallery/yoga-day/yoga-day-04-thumb.webp', w: 1600, h: 900, alt: "A participant in meditation during the Yoga Mahotsav" },
+      { src: '/images/gallery/yoga-day/yoga-day-05.webp', thumb: '/images/gallery/yoga-day/yoga-day-05-thumb.webp', w: 1600, h: 900, alt: "Rows of participants practising yoga" },
+      { src: '/images/gallery/yoga-day/yoga-day-06.webp', thumb: '/images/gallery/yoga-day/yoga-day-06-thumb.webp', w: 1600, h: 900, alt: "Guidance from the stage at the Yoga Mahotsav" },
+      { src: '/images/gallery/yoga-day/yoga-day-08.webp', thumb: '/images/gallery/yoga-day/yoga-day-08-thumb.webp', w: 1600, h: 900, alt: "Participants follow a standing yoga sequence" },
+    ],
+  },
+  {
     id: 'sports',
     title: 'Sports & Annual Fest',
     blurb: "March past, matches and medals from the sports meet and the Symphony fest.",
@@ -115,6 +130,18 @@ export const gallerySections = [
       { src: '/images/gallery/batch/batch-01.webp', thumb: '/images/gallery/batch/batch-01-thumb.webp', w: 1600, h: 1066, alt: "The batch photograph in front of the institute" },
       { src: '/images/gallery/batch/batch-02.webp', thumb: '/images/gallery/batch/batch-02-thumb.webp', w: 1600, h: 1066, alt: "Students and faculty gathered for a batch photograph" },
       { src: '/images/gallery/gallery-10.jpg', thumb: '/images/gallery/gallery-10.jpg', w: 1200, h: 700, alt: "MBBS students on campus" },
+    ],
+  },
+  {
+    id: 'de-addiction',
+    title: 'De-addiction Centre',
+    blurb: "Care, counselling and recreation at the Nasha Mukti Kendra (de-addiction centre), Amaltas Hospital.",
+    photos: [
+      { src: '/images/gallery/de-addiction/de-addiction-01.webp', thumb: '/images/gallery/de-addiction/de-addiction-01-thumb.webp', w: 1600, h: 765, alt: "The ward at the de-addiction centre, Amaltas Hospital" },
+      { src: '/images/gallery/de-addiction/de-addiction-02.webp', thumb: '/images/gallery/de-addiction/de-addiction-02-thumb.webp', w: 1516, h: 786, alt: "A counselling session at the de-addiction centre" },
+      { src: '/images/gallery/de-addiction/de-addiction-03.webp', thumb: '/images/gallery/de-addiction/de-addiction-03-thumb.webp', w: 1600, h: 733, alt: "A game of carrom during recreation time" },
+      { src: '/images/gallery/de-addiction/de-addiction-04.webp', thumb: '/images/gallery/de-addiction/de-addiction-04-thumb.webp', w: 1600, h: 783, alt: "Chess during a recreation session" },
+      { src: '/images/gallery/de-addiction/de-addiction-05.webp', thumb: '/images/gallery/de-addiction/de-addiction-05-thumb.webp', w: 1600, h: 766, alt: "Group activities at the de-addiction centre" },
     ],
   },
   {
